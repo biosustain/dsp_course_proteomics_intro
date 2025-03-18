@@ -8,6 +8,7 @@
 
 
 # %%
+import numpy as np
 import pandas as pd
 
 # %% [markdown]
@@ -30,8 +31,7 @@ _index = [
     "ProteinName",
     "PeptideSequence",
     "PrecursorCharge",
-    "Condition",
-    "BioReplicate",
+    "Run",
 ]
 precursors_openms.set_index(_index, inplace=True)
 # %%
@@ -52,5 +52,22 @@ precursor_triqler.describe(exclude="number")
 
 # %%
 precursor_triqler.groupby("proteins").size()
+
+# %% [markdown]
+# ## Protein Quantification
+# protein quantification results are not save as outputs directly. We can use the sum 
+# or median to summarize the peptide quantifications for each protein.
+#
+# Other tools are available to make the aggregation.
+
+# %%
+proteins_intensities = precursors_openms.groupby(["ProteinName", 'Run'])['Intensity'].sum().to_frame()
+proteins_intensities
+
+# %%
+np.log2(proteins_intensities)
+
+# %%
+ax = np.log2(proteins_intensities).hist()
 
 # %%

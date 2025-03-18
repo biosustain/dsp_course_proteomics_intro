@@ -21,3 +21,10 @@ will create a [folder `results_lfq`]() with the results of the test run.
 Check the 
 [ci workflow on the bigbio/quantms repository](https://github.com/bigbio/quantms/blob/master/.github/workflows/ci.yml)
 for seeing more test workflows.
+
+
+## Added to devcontainer postCreateCommand
+
+```bash
+conda install matplotlib
+```
