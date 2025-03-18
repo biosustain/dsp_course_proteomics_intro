@@ -1,0 +1,62 @@
+Loading required package: MSstats
+
+Attaching package: ‘MSstats’
+
+The following object is masked from ‘package:grDevices’:
+
+    savePlot
+
+Loading required package: tibble
+Loading required package: data.table
+INFO  [2025-03-17 14:59:08] ** Raw data from OpenMS imported successfully.
+INFO  [2025-03-17 14:59:08] ** Raw data from OpenMS cleaned successfully.
+INFO  [2025-03-17 14:59:08] ** Using annotation extracted from quantification data.
+INFO  [2025-03-17 14:59:08] ** Run labels were standardized to remove symbols such as '.' or '%'.
+INFO  [2025-03-17 14:59:08] ** The following options are used:
+  - Features will be defined by the columns: PeptideSequence, PrecursorCharge, FragmentIon, ProductCharge
+  - Shared peptides will be removed.
+  - Proteins with a single feature will be removed.
+  - Features with less than 3 measurements across runs will be removed.
+INFO  [2025-03-17 14:59:08] ** Features with all missing measurements across runs are removed.
+INFO  [2025-03-17 14:59:08] ** Shared peptides are removed.
+INFO  [2025-03-17 14:59:08] ** Multiple measurements in a feature and a run are summarized by summaryforMultipleRows: max
+INFO  [2025-03-17 14:59:08] ** Features with one or two measurements across runs are removed.
+INFO  [2025-03-17 14:59:08] Proteins with a single feature are removed.
+INFO  [2025-03-17 14:59:08] ** Run annotation merged with quantification data.
+INFO  [2025-03-17 14:59:08] ** Multiple fractionations exist: 2 fractionations per MS replicate.
+INFO  [2025-03-17 14:59:08] ** Features with one or two measurements across runs are removed.
+INFO  [2025-03-17 14:59:08] ** Fractionation handled.
+INFO  [2025-03-17 14:59:08] ** Updated quantification data to make balanced design. Missing values are marked by NA
+INFO  [2025-03-17 14:59:08] ** Finished preprocessing. The dataset is ready to be processed by the dataProcess function.
+INFO  [2025-03-17 14:59:08] ** Log2 intensities under cutoff = 18.295  were considered as censored missing values.
+INFO  [2025-03-17 14:59:08] ** Log2 intensities = NA were considered as censored missing values.
+INFO  [2025-03-17 14:59:08] ** Use top3 features that have highest average of log2(intensity) across runs.
+INFO  [2025-03-17 14:59:08] 
+ # proteins: 1
+ # peptides per protein: 9-9
+ # features per peptide: 1-1
+INFO  [2025-03-17 14:59:08] 
+                    1 2 3
+             # runs 1 1 1
+    # bioreplicates 1 1 1
+ # tech. replicates 0 0 0
+INFO  [2025-03-17 14:59:08]  == Start the summarization per subplot...
+  |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%
+INFO  [2025-03-17 14:59:08]  == Summarization is done.
+[1] "Contrasts to be tested:"
+         Levels
+Contrasts 1  2  3
+      1-2 1 -1  0
+      1-3 1  0 -1
+      2-3 0  1 -1
+[1] "Contrasts to be tested:"
+         Levels
+Contrasts 1  2  3
+      1-2 1 -1  0
+      1-3 1  0 -1
+      2-3 0  1 -1
+INFO  [2025-03-17 14:59:08]  == Start to test and get inference in whole plot ...
+  |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%
+INFO  [2025-03-17 14:59:08]  == Comparisons for all proteins are done.
+Warning message:
+Warning: Not enough proteins with valid p-values for comparison. Skipping groupComparisonPlots step! 
