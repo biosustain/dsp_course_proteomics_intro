@@ -1,0 +1,15 @@
+# general data files (track manually)
+*.csv
+
+# Proteomics data files
+*.raw
+*.mzML
+*.mzXML
+*.mzTab
+
+# logs
+*.log
+*.log.*
+
+# local mac files
+*.DS_Store
