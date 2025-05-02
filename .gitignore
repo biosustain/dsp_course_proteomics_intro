@@ -13,3 +13,10 @@
 
 # local mac files
 *.DS_Store
+
+# local results folder
+results/
+
+# local nextflow cache folder
+.nextflow/
+work/
