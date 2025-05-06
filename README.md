@@ -9,7 +9,8 @@ acore for the downstream analysis.
 ## Run nextflow
 
 ```
-nextflow run bigbio-quantms_1.3.0/1_3_0/main.nf \
+nextflow run bigbio/quantms \
+         -revision 1.3.0 \
          -params-file PXD040621_w_contaminants-params.yaml \
          -profile docker \
          -resume
