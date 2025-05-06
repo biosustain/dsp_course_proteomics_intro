@@ -2,8 +2,10 @@
 
 The course will introduce MS-based proteomics data, it's basic processing and
 the downstream analysis. The course will be a mix of lectures and hands-on session 
-where we will perform the basic processing steps using quantms, a nextflow workflow, and
-acore for the downstream analysis.
+where we will perform the basic processing steps using 
+[quantms](https://docs.quantms.org/en/latest/), a nextflow workflow, and
+[acore, short for analytical core](https://analytics-core.readthedocs.io/latest/) 
+for the downstream analysis.
 
 
 ## Run nextflow
