@@ -13,12 +13,13 @@ max_cpus: 4
 # local_input_type: raw
 local_input_type: mzML # default
 # ! root_folder only applies to the mzML or raw spectrum files
-root_folder: /workspaces/dsp_course_proteomics_intro/data/PXD040621/mzML
+root_folder: /workspaces/dsp_course_proteomics_intro/data/PXD040621/mzML/
 # see options for publishing results
+# "enum": ["symlink", "rellink", "link", "copy", "copyNoFollow", "move"]
 # publish_dir_mode: copy
-publish_dir_mode: move
-# run msstats?
-skip_post_msstats: false
+publish_dir_mode: symlink
+# running msstats: Only two pdfs which we do not use.
+skip_post_msstats: true
 #
 custom_config_base: https://raw.githubusercontent.com/nf-core/configs/master
 # minimum length of peptides

@@ -25,3 +25,18 @@ Check the local storage usage (you have maximum of 32GB in a GitHub codespace)
 du -hd 1 
 ```
 
+See the downloaded docker images
+
+```bash
+docker images
+```
+
+### Free up some more space
+
+```bash
+# some cache files
+rm -r  /.codespaces/bin/cache/bin/linux-x64/
+ls /vscode/extensionsCache/
+ls /vscode/serverCache/
+```
+
