@@ -40,3 +40,10 @@ ls /vscode/extensionsCache/
 ls /vscode/serverCache/
 ```
 
+## Tools 
+
+- [gdown](https://github.com/wkentaro/gdown) to download files from Google Drive
+
+```
+pip install gdown
+```
