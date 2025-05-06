@@ -8,7 +8,7 @@ acore for the downstream analysis.
 
 ## Run nextflow
 
-```
+```bash
 nextflow run bigbio/quantms \
          -revision 1.3.0 \
          -params-file PXD040621_w_contaminants-params.yaml \
@@ -16,5 +16,12 @@ nextflow run bigbio/quantms \
          -resume
 ```
 
+## help commands
 
+
+Check the local storage usage (you have maximum of 32GB in a GitHub codespace)
+
+```bash
+du -hd 1 
+```
 

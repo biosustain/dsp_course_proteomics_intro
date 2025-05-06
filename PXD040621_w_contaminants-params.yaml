@@ -1,14 +1,27 @@
 database: data/fasta/merged_ecoli_with_contaminants.fasta
 input: data/PXD040621/PXD040621.sdrf.tsv
 outdir: results/PXD040621
-max_memory: 16 GB # ! set to local maximum
-max_cpus: 10 # ! set to local maximum
+# max_memory: 16 GB # ! set to local maximum
+# max_cpus: 10 # ! set to local maximum
+# small github codespace:
+# max_memory: 7 GB
+# max_cpus: 2
+# 'large' github codespace:
+max_memory: 15 GB
+max_cpus: 4
 # root_folder: az://seqera/proteomics_course/PXD040621/raw
 # local_input_type: raw
-# ! root_folder only applies to the mzML or raw spectrum files
-root_folder: /Users/heweb/Documents/repos/course_dsp_proteomics_intro/data/PXD040621/mzML
 local_input_type: mzML # default
+# ! root_folder only applies to the mzML or raw spectrum files
+root_folder: /workspaces/dsp_course_proteomics_intro/data/PXD040621/mzML
+# see options for publishing results
+# publish_dir_mode: copy
+publish_dir_mode: move
+# run msstats?
+skip_post_msstats: false
+#
 custom_config_base: https://raw.githubusercontent.com/nf-core/configs/master
+# minimum length of peptides
 min_peptide_length: 6
 alignment_order: star
 fdr_level: psm_level_fdrs
@@ -42,7 +55,6 @@ corr_diff: 1
 pmultiqc_idxml_skip: true
 version: false
 openms_peakpicking: false
-publish_dir_mode: copy
 feature_without_id_min_score: 0.75
 msstatsiso_remove_norm_channel: true
 min_precursor_charge: 2
@@ -160,7 +172,6 @@ unmatched_action: warn
 skip_rescoring: false
 msstatsiso_reference_normalization: true
 idscoreswitcher_debug: 0
-skip_post_msstats: false
 diann_version: 1.8.1
 decoy_string_position: prefix
 max_mods: 3
