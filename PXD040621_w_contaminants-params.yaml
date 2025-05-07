@@ -1,0 +1,181 @@
+database: data/fasta/merged_ecoli_with_contaminants.fasta
+input: data/PXD040621/PXD040621.sdrf.tsv
+outdir: results/PXD040621
+# max_memory: 16 GB # ! set to local maximum
+# max_cpus: 10 # ! set to local maximum
+# small github codespace:
+# max_memory: 7 GB
+# max_cpus: 2
+# 'large' github codespace:
+max_memory: 15 GB
+max_cpus: 4
+# root_folder: az://seqera/proteomics_course/PXD040621/raw
+# local_input_type: raw
+local_input_type: mzML # default
+# ! root_folder only applies to the mzML or raw spectrum files
+root_folder: /workspaces/dsp_course_proteomics_intro/data/PXD040621/mzML/
+# see options for publishing results
+# "enum": ["symlink", "rellink", "link", "copy", "copyNoFollow", "move"]
+# publish_dir_mode: copy
+publish_dir_mode: symlink
+# running msstats: Only two pdfs which we do not use.
+skip_post_msstats: true
+#
+custom_config_base: https://raw.githubusercontent.com/nf-core/configs/master
+# minimum length of peptides
+min_peptide_length: 6
+alignment_order: star
+fdr_level: psm_level_fdrs
+msstatslfq_removeFewMeasurements: true
+plaintext_email: false
+luciphor_debug: 0
+isotope_correction: true
+extractpsmfeature_debug: 0
+msstatsiso_rmpsm_withfewmea_withinrun: true
+subset_max_train: 300000
+protein_score: best
+feature_with_id_min_score: 0.1
+ms2rescore: false
+shuffle_sequence_identity_threshold: 0.5
+protein_inference_method: aggregation
+min_corr: 2
+reindex_mzml: true
+min_reporter_intensity: 0
+normalize: false
+skip_preliminary_analysis: false
+description_correct_features: 0
+decoy_string: DECOY_ 
+variable_mods: Oxidation (M)
+fragment_mass_tolerance: 0.03
+msstatslfq_quant_summary_method: TMP
+skip_factor_validation: true
+psm_level_fdr_cutoff: 0.01
+skip_table_plots: false
+scan_window_automatic: true
+corr_diff: 1
+pmultiqc_idxml_skip: true
+version: false
+openms_peakpicking: false
+feature_without_id_min_score: 0.75
+msstatsiso_remove_norm_channel: true
+min_precursor_charge: 2
+consensusid_algorithm: best
+protein_quant: unique_peptides
+min_peptides_per_protein: 1
+validationSchemaIgnoreParams: genomes,igenomes_base
+precursor_isotope_deviation: 10
+num_hits: 1
+precursor_mass_tolerance: 5
+average: median
+decoy_method: reverse
+allowed_missed_cleavages: 2
+max_peptide_length: 40
+iso_normalization: false
+protein_level_fdr_cutoff: 0.01
+random_preanalysis: false
+diann_debug: 3
+mass_acc_automatic: true
+custom_config_version: master
+update_PSM_probabilities: false
+feature_generators: deeplc,ms2pip
+msstats_remove_one_feat_prot: true
+top: 3
+fixed_mods: Carbamidomethyl (C)
+msstatsiso_summaryformultiple_psm: sum
+msstats_plot_profile_qc: false
+pp_debug: 0
+fix_peptides: false
+pg_level: 2
+use_ols_cache_only: true
+IL_equivalent: true
+empirical_assembly_ms_n: 200
+peakpicking_inmemory: false
+run_fdr_cutoff: 0.1
+lfq_intensity_threshold: 1000
+protein_inference_debug: 0
+quantification_method: feature_intensity
+enable_pmultiqc: true
+use_shared_peptides: true
+sage_processes: 1
+help: false
+min_precursor_purity: 0
+enable_mod_localization: false
+train_FDR: 0.05
+skip_ms_validation: false
+export_mztab: true
+klammer: false
+search_engines: comet
+idfilter_debug: 0
+msstats_threshold: 0.05
+monochrome_logs: false
+diann_normalize: true
+test_FDR: 0.05
+precursor_mass_tolerance_unit: ppm
+outlier_handling: none
+validationFailUnrecognisedParams: false
+protocol: automatic
+skip_experimental_design_validation: false
+posterior_probabilities: percolator
+add_triqler_output: false
+targeted_only: true
+max_multiqc_email_size: 25.MB
+msstatsiso_useunique_peptide: true
+max_time: 10d
+min_consensus_support: 0
+time_corr_only: true
+max_precursor_charge: 4
+validate_params: true
+validationShowHiddenParams: false
+consensusid_debug: 0
+min_peaks: 10
+select_activation: HCD
+isotope_error_range: 0,1
+best_charge_and_fraction: false
+mod_localization: Phospho (S),Phospho (T),Phospho (Y)
+num_enzyme_termini: fully
+add_decoys: true
+percolator_debug: 0
+fragment_mass_tolerance_unit: Da
+msstatsiso_summarization_method: msstats
+db_debug: 0
+min_precursor_intensity: 1
+export_decoy_psm: true
+species_genes: false
+ms2pip_model: HCD2021
+picked_fdr: true
+scan_window: 8
+idpep_debug: 0
+iso_debug: 0
+msstatsiso_global_norm: true
+msstatslfq_feature_subset_protein: top3
+mass_recalibration: false
+shuffle_max_attempts: 30
+protein_quant_debug: 0
+id_only: false
+reporter_mass_shift: 0.002
+rescore_range: independent_run
+random_preanalysis_seed: 42
+calibration_set_size: 0.15
+quantify_decoys: false
+reference_channel: '126'
+contrasts: pairwise
+idmapper_debug: 0
+ratios: false
+enzyme: Trypsin
+include_all: true
+add_snr_feature_percolator: false
+validate_ontologies: true
+consensusid_considered_top_hits: 0
+validationLenientMode: false
+top_PSMs: 1
+convert_dotd: false
+unmatched_action: warn
+skip_rescoring: false
+msstatsiso_reference_normalization: true
+idscoreswitcher_debug: 0
+diann_version: 1.8.1
+decoy_string_position: prefix
+max_mods: 3
+decoydatabase_debug: 0
+plfq_debug: 0
+fragment_method: HCD
