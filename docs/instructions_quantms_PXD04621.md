@@ -2,14 +2,14 @@
 
 ## Download the data
 
-Currently the data is stored on a 
+Currently the data is stored on a
 [Google Drive folder](https://drive.google.com/drive/folders/1gxUh9nMx9icFLrI0vn3zAB9dDjZf-1Nh).
-A more persistent location would be great - probably on [Zenodo](https://zenodo.org/). 
+A more persistent location would be great - probably on [Zenodo](https://zenodo.org/).
 
 ```bash
 conda activate base
 pip install gdown
-python download.py
+python download_PXD040621_data.py
 ```
 
 ## Run the analysis
@@ -34,7 +34,6 @@ nextflow run bigbio/quantms \
          -resume
 ```
 
-
 ### Run quantms 1.3.0
 
 ```bash
@@ -45,3 +44,27 @@ nextflow run bigbio/quantms \
          -resume
 ```
 
+## Copy files for further analysis
+
+```bash
+cp -aL results/PXD040621/proteomicslfq/. data/PXD040621/processed/
+# And maybe save the parameters to reproduce the analysis (for 1.4.0 and above):
+cp -aL results/PXD040621/pipeline_info/. data/PXD040621/processed/pipeline_info/
+```
+
+Now it is safe to delete the results/PXD040621 folder.
+
+```bash
+rm -r results/PXD040621 work
+```
+
+## Clean up unused docker images
+
+As we are running in a GitHub codespace, we have limited storage. Therefore let's
+[clean up our docker images](https://docs.docker.com/engine/manage-resources/pruning/)
+store after the analysis is done.
+
+```bash
+docker images # see all images
+docker image prune -a
+```
