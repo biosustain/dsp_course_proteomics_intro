@@ -1,4 +1,4 @@
-# Instructions for PXD04621
+# QuantMS Hands-On for PXD04621
 
 ## Download the data
 
