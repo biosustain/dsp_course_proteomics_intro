@@ -57,7 +57,7 @@ html_theme = "sphinx_book_theme"
 # html_logo = "_static/logo-wide.svg"
 # html_favicon = "_static/logo-square.svg"
 html_theme_options = {
-    "github_url": "https://github.com/biosustain/",
+    "github_url": "https://github.com/biosustain/dsp_nextflow_training",
     "repository_url": "https://github.com/biosustain/dsp_nextflow_training",
     # "repository_branch": "main",
     # "home_page_in_toc": True,
