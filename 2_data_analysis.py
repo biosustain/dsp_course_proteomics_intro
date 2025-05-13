@@ -9,7 +9,7 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.17.1
 #   kernelspec:
-#     display_name: Python 3 (ipykernel)
+#     display_name: base
 #     language: python
 #     name: python3
 # ---
@@ -215,6 +215,7 @@ proteins.to_csv(out_dir_subsection / "proteins.csv")
 
 # %%
 out_dir_subsection = out_dir / "1_data" / "clustermap"
+out_dir_subsection.mkdir(parents=True, exist_ok=True)
 
 # %%
 _group_labels = label_encoding.values()
@@ -318,6 +319,9 @@ diff_reg["rejected"] = diff_reg["rejected"].astype(bool)
 diff_reg.sort_values("pvalue")
 
 # %%
+diff_reg.sort_values("pvalue").head(20)
+
+# %%
 diff_reg.plot(x="log2FC", y="-log10 pvalue", kind="scatter", title=group)
 
 # %% [markdown]
@@ -359,7 +363,7 @@ fig.write_json(
 diff_reg.to_csv(out_dir_subsection / "1_differential_regulation.csv")
 
 # %% [markdown]
-# # Enrichment Analysis
+# ## Enrichment Analysis
 
 # %%
 out_dir_subsection = out_dir / "uniprot_annotations"
@@ -388,16 +392,13 @@ annotations
 enriched = acore.enrichment_analysis.run_up_down_regulation_enrichment(
     regulation_data=diff_reg,
     annotation=annotations,
-    min_detected_in_set=2,
+    min_detected_in_set=1,
     lfc_cutoff=1,
-    pval_col="pvalue",
-    correction_alpha=0.05,  # adjust the p-value to see more or less results
+    correction_alpha=0.2,  # adjust the p-value to see more or less results
 )
 enriched
 
 # %%
-from vuecore.viz import get_enrichment_plots
-
 fig = get_enrichment_plots(
     enriched,
     identifier="anything",  # ToDo: figure out what this does
