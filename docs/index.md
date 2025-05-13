@@ -10,6 +10,7 @@
 :hidden:
 
 instructions_quantms_PXD04621
+quantms_input_files
 ```
 
 ```{toctree}
@@ -18,4 +19,6 @@ instructions_quantms_PXD04621
 :hidden:
 
 instructions_statistics_PXD04621
+2_data_analysis
 ```
+

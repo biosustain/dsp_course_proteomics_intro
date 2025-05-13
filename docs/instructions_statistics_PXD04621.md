@@ -25,7 +25,7 @@ pip install acore 'numpy<2.1.0'
 
 ## Open and run the notebook
 
-[2_read_peptide_output.ipynb](../2_read_peptide_output.ipynb)
+[2_data_analysis.ipynb](2_data_analysis.ipynb)
 is a Jupyter notebook that will guide you through the analysis of the data.
 
 > We will go through it an discuss it together in the class.
