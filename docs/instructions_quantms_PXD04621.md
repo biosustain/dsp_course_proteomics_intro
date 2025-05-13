@@ -9,7 +9,7 @@ A more persistent location would be great - probably on [Zenodo](https://zenodo.
 ```bash
 conda activate base
 pip install gdown
-python download_PXD040621_data.py
+python 0_download_PXD040621_data.py
 ```
 
 ## Run the analysis
@@ -19,7 +19,7 @@ python download_PXD040621_data.py
 nextflow run bigbio/quantms \
          -revision 1.4.0 \
          -params-file PXD040621_w_contaminants-params.yaml \
-         -profile docker,gitpod \
+         -profile docker \
          -resume
 ```
 
@@ -30,7 +30,7 @@ If you run locally on a Mac with Apple Silicion (M-ships), you need to addtional
 nextflow run bigbio/quantms \
          -revision 1.4.0 \
          -params-file PXD040621_w_contaminants-params.yaml \
-         -profile docker,arm,gitpod \
+         -profile docker,arm \
          -resume
 ```
 
