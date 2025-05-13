@@ -15,6 +15,7 @@ local_input_type: mzML # default
 # ! root_folder only applies to the mzML or raw spectrum files
 root_folder: /workspaces/dsp_course_proteomics_intro/data/PXD040621/mzML/
 # see options for publishing results
+# !!! copy is preferred as it is saver
 # "enum": ["symlink", "rellink", "link", "copy", "copyNoFollow", "move"]
 # publish_dir_mode: copy
 publish_dir_mode: symlink

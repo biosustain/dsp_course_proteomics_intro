@@ -1,4 +1,4 @@
-# Massspectrometry-based Proteomcis introduction
+# Massspectrometry-based Proteomics introduction
 
 The course will introduce MS-based proteomics data, it's basic processing and
 the downstream analysis. The course will be a mix of lectures and hands-on session
@@ -45,6 +45,22 @@ nextflow run bigbio/quantms \
          -profile docker \
          -resume
 ```
+
+running newer version of quantms
+
+```bash
+nextflow run bigbio/quantms \
+         -revision 1.4.0 \
+         -params-file PXD040621_w_contaminants-params.yaml \
+         -profile docker,arm,gitpod \
+         -resume
+```
+
+## QuantMS help
+
+- see the documentation for an overview: [docs.quantms.org](https://docs.quantms.org)
+- ask question on the nf-core slack channel `quantms`: [https://nf-co.re/join/slack](https://nf-co.re/join/slack)
+- submit an issue on the [GitHub repository](https://github.com/bigbio/quantms/issues)
 
 ## help commands
 

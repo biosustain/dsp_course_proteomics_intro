@@ -12,7 +12,7 @@
     // Nextflow installation version
     "NXF_HOME": "/workspaces/.nextflow",
     "NXF_EDGE": "0",
-    "NXF_VER": "24.10.4",
+    "NXF_VER": "24.10.6",
     // Other env vars
     "HOST_PROJECT_PATH": "/workspaces/dsp_course_proteomics_intro",
     "SHELL": "/bin/bash" // Ush bash
