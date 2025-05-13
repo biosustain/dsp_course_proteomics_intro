@@ -42,6 +42,9 @@ nb_merge_streams = True
 # https://myst-nb.readthedocs.io/en/latest/authoring/custom-formats.html#write-custom-formats
 nb_custom_formats = {".py": ["jupytext.reads", {"fmt": "py:percent"}]}
 
+# https://myst-nb.readthedocs.io/en/latest/configuration.html#warning-suppression
+suppress_warnings = ["mystnb.unknown_mime_type"]
+
 
 # -- Options for HTML output -------------------------------------------------
 
