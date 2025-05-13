@@ -19,8 +19,11 @@ python 1_download_PXD040621_results.py
 
 ## Install the required packages
 
+- [acore](https://analytics-core.readthedocs.io) for some analytical functions (developed by DSP and MoNA at DTU)
+- [vuegen](https://vuegen.readthedocs.io) for the report generation (developed by DSP and MoNA at DTU)
+
 ```bash
-pip install acore 'numpy<2.1.0' vuecore
+pip install acore 'numpy<2.1.0' nbformat vuecore vuegen
 ```
 
 ## Open and run the notebook
