@@ -1,4 +1,4 @@
-# Massspectrometry-based Proteomics introduction
+# Mass spectrometry-based Proteomics introduction
 
 The course will introduce MS-based proteomics data, it's basic processing and
 the downstream analysis. The course will be a mix of lectures and hands-on session
@@ -21,6 +21,8 @@ for the downstream analysis.
 
 #### 10.30-12.00 - details - data processing and hands-on quantms
 
+Find the instruction [here](docs/instructions_quantms_PXD04621.md)
+
 Steps in data processing (using [quantms](https://docs.quantms.org/en/latest/))
 
 - FASTA file to define search space
@@ -28,6 +30,8 @@ Steps in data processing (using [quantms](https://docs.quantms.org/en/latest/))
 - Running quantms to process spectra to identified and quantified peptide sequences
 
 #### 15.00 - 16.30 - details - hands-on statistical analysis
+
+Find the instruction [here](docs/instructions_statistics_PXD04621.md)
 
 Basic statistical analysis of a two-group experiment with one timepoint (option 1) or four timepoints (option 2)
 

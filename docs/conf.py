@@ -1,4 +1,4 @@
-project = "Massspectrometry-based Proteomcis introduction"
+project = "Mass spectrometry-based Proteomics introduction"
 copyright = "2025, DTU Biosustain, Informatics Platform, DSP"
 author = "Henry Webel, Alberto Santos, Marco Reverenna"
 
