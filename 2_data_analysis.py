@@ -23,13 +23,16 @@
 # - format data from long to wide format
 # - remove contaminant proteins
 # - check for missing values
+# - Clustermap of sample and proteins
 # - differential analysis (Volcano Plots)
+# - Enrichment Analysis
 # - check for maltose update pathway (Fig. 3 in paper)
 
 # %%
 from pathlib import Path
 
 import acore.differential_regulation
+import acore.enrichment_analysis
 import acore.normalization
 import matplotlib.pyplot as plt
 import numpy as np
@@ -37,6 +40,8 @@ import pandas as pd
 import plotly.express as px
 import seaborn as sns
 import vuecore
+from acore.io.uniprot import fetch_annotations, process_annotations
+from vuecore.viz import get_enrichment_plots
 
 # %% [markdown]
 # ## Read in the data
@@ -117,12 +122,13 @@ meta = df[["Condition", "BioReplicate", "Run", "Reference"]].drop_duplicates()
 meta
 
 # %%
+label_encoding = {0: "control", 1: "10 µm sulforaphane"}
 label_suf = pd.Series(
     proteins.index.str.contains("_Suf_").astype(int),
     index=proteins.index,
     name="label_suf",
     dtype=np.int8,
-)
+).map(label_encoding)
 label_suf
 
 # %% [markdown]
@@ -172,10 +178,33 @@ ax.get_figure().savefig(
     dpi=300,
 )
 
+# %%
+# Explode column names to examine split by '|'
+proteins_meta = (
+    proteins.columns.str.split("|", expand=True)
+    .to_frame()
+    .dropna(how="any", axis=1)
+    .reset_index(drop=True)
+)
+proteins_meta.columns = ["Source", "ProteinName", "GeneName"]
+proteins_meta["GeneName"] = proteins_meta["GeneName"].str.split("_").str[0]
+proteins_meta.index = proteins.columns
+proteins_meta.index.name = "identifier"
+proteins_meta
+
+
+# %% [markdown]
+# For later convenience let's replace the identifier with the UNIPROT ID
+
+# %%
+proteins.columns = proteins_meta["ProteinName"]
+proteins
+
 # %% [markdown]
 # And let's save a table with the data for inspection
 
 # %%
+proteins_meta.to_csv(out_dir_subsection / "proteins_identifiers.csv")
 proteins.to_csv(out_dir_subsection / "proteins.csv")
 
 
@@ -188,9 +217,8 @@ proteins.to_csv(out_dir_subsection / "proteins.csv")
 out_dir_subsection = out_dir / "1_data" / "clustermap"
 
 # %%
-_group_labels = ['control', '10 µm sulforaphane']
-_groups = [0, 1]
-lut = dict(zip(_groups, [f"C{i}" for i in range(len(_groups))]))
+_group_labels = label_encoding.values()
+lut = dict(zip(_group_labels, [f"C{i}" for i in range(len(_group_labels))]))
 row_colors = label_suf.map(lut).rename("group color")
 row_colors
 
@@ -231,11 +259,13 @@ fig.savefig(
 
 # %%
 normalization_method = "median"
-X = acore.normalization.normalize_data(proteins.dropna(how="any", axis=1), normalization_method)
+X = acore.normalization.normalize_data(
+    proteins.dropna(how="any", axis=1), normalization_method
+)
 X
 
 # %%
-X.median(axis='columns')
+X.median(axis="columns")
 
 # %%
 vuecore.set_font_sizes(7)
@@ -329,6 +359,59 @@ fig.write_json(
 diff_reg.to_csv(out_dir_subsection / "1_differential_regulation.csv")
 
 # %% [markdown]
+# # Enrichment Analysis
+
+# %%
+out_dir_subsection = out_dir / "uniprot_annotations"
+out_dir_subsection.mkdir(parents=True, exist_ok=True)
+
+# %% [markdown]
+# Fetch the annotations from UniProt API.
+
+# %%
+fname_annotations = out_dir_subsection / "annotations.csv"
+try:
+    annotations = pd.read_csv(fname_annotations, index_col=0)
+    print(f"Loaded annotations from {fname_annotations}")
+except FileNotFoundError:
+    print(f"Fetching annotations for {proteins.columns.size} UniProt IDs.")
+    FIELDS = "go_p,go_c,go_f"
+    annotations = fetch_annotations(proteins.columns, fields=FIELDS)
+    annotations = process_annotations(annotations, fields=FIELDS)
+    # cache the annotations
+    fname_annotations.parent.mkdir(exist_ok=True, parents=True)
+    annotations.to_csv(fname_annotations, index=True)
+
+annotations
+
+# %%
+enriched = acore.enrichment_analysis.run_up_down_regulation_enrichment(
+    regulation_data=diff_reg,
+    annotation=annotations,
+    min_detected_in_set=2,
+    lfc_cutoff=1,
+    pval_col="pvalue",
+    correction_alpha=0.05,  # adjust the p-value to see more or less results
+)
+enriched
+
+# %%
+from vuecore.viz import get_enrichment_plots
+
+fig = get_enrichment_plots(
+    enriched,
+    identifier="anything",  # ToDo: figure out what this does
+    args=dict(title="Enrichment Analysis"),
+)
+fig = fig[0]
+fig.write_json(
+    out_dir_subsection / "enrichment_analysis.json",
+    pretty=True,
+)
+fig
+
+
+# %% [markdown]
 # ## Check for Maltose Uptake
 
 # %%
@@ -353,10 +436,16 @@ view
 # Let's find the proteins highlighted in the volcano plot in Figure 3.
 
 # %%
-highlighted_proteins = ["LamB", "MalE", "Malk", "CitF", "CitT", "CitE", "Frd"]
-highlighted_proteins = "|".join([p.upper() for p in highlighted_proteins])
+highlighted_genes = ["LamB", "MalE", "Malk", "CitF", "CitT", "CitE", "Frd"]
+highlighted_genes = "|".join([p.upper() for p in highlighted_genes])
+highlighted_genes = proteins_meta.query(
+    f"`GeneName`.str.contains('{highlighted_genes}')"
+)
+highlighted_genes
 
-view  = diff_reg.query(f"`identifier`.str.contains('{highlighted_proteins}')")
+# %%
+highlighted_proteins = "|".join([p.upper() for p in highlighted_genes["ProteinName"]])
+view = diff_reg.query(f"`identifier`.str.contains('{highlighted_proteins}')")
 view.to_csv(
     out_dir_subsection / "2_highlighted_proteins_in_figure3.csv",
     index=False,
