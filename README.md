@@ -40,59 +40,14 @@ Basic statistical analysis of a two-group experiment with one timepoint (option 
   developed at biosustain and other Python libraries)
 - Building a report with [vuegen](https://vuegen.readthedocs.io/en/latest/) reports (developed at biosustain)
 
-## Run nextflow
-
-```bash
-nextflow run bigbio/quantms \
-         -revision 1.3.0 \
-         -params-file PXD040621_w_contaminants-params.yaml \
-         -profile docker \
-         -resume
-```
-
-running newer version of quantms
-
-```bash
-nextflow run bigbio/quantms \
-         -revision 1.4.0 \
-         -params-file PXD040621_w_contaminants-params.yaml \
-         -profile docker,arm,gitpod \
-         -resume
-```
-
 ## QuantMS help
 
 - see the documentation for an overview: [docs.quantms.org](https://docs.quantms.org)
 - ask question on the nf-core slack channel `quantms`: [https://nf-co.re/join/slack](https://nf-co.re/join/slack)
 - submit an issue on the [GitHub repository](https://github.com/bigbio/quantms/issues)
 
-## help commands
 
-Check the local storage usage (you have maximum of 32GB in a GitHub codespace)
 
-```bash
-du -hd 1
-```
 
-See the downloaded docker images
 
-```bash
-docker images
-```
 
-### Free up some more space
-
-```bash
-# some cache files
-rm -r  /.codespaces/bin/cache/bin/linux-x64/
-ls /vscode/extensionsCache/
-ls /vscode/serverCache/
-```
-
-## Tools
-
-- [gdown](https://github.com/wkentaro/gdown) to download files from Google Drive
-
-```
-pip install gdown
-```

@@ -7,9 +7,9 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.16.4
+#       jupytext_version: 1.17.1
 #   kernelspec:
-#     display_name: Python 3 (ipykernel)
+#     display_name: base
 #     language: python
 #     name: python3
 # ---
@@ -44,7 +44,7 @@ from acore.io.uniprot import fetch_annotations, process_annotations
 from vuecore.viz import get_enrichment_plots
 
 # %% [markdown]
-# ## Read in the data
+# # Read in the data
 # - `file_in`: input file with the quantified peptide data in MSstats format as provided by quantms
 #
 # The file can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1Nm5Ha-tCvjU-B323BLhna1GwHdNpK_lU?usp=drive_link)
@@ -82,14 +82,14 @@ out_dir.mkdir(parents=True, exist_ok=True)
 # ]
 
 # %% [markdown]
-# ## Log2 transform the intensity values
+# # Log2 transform the intensity values
 # - log2 transformations are common for lognormal distributed data
 
 # %%
 df["Intensity"] = np.log2(df["Intensity"].astype(float))
 
 # %% [markdown]
-# ## Aggregate the peptide intensities to protein intensities
+# # Aggregate the peptide intensities to protein intensities
 # - we use the median of the peptide intensities for each protein
 #
 # There are more sophisticated ways to do this, e.g. using MaxLFQ, iBAQ, FlashLFQ, DirectLFQ, etc.
@@ -101,7 +101,7 @@ proteins = (
 proteins
 
 # %% [markdown]
-# ## Remove contaminant proteins
+# # Remove contaminant proteins
 # Remove the contaminant proteins which were added to the fasta file used in the data processing.
 # Contaminant proteins are e.g. creation which gets into the sample from the human skin or hair
 # when the sample is prepared.
@@ -132,7 +132,7 @@ label_suf = pd.Series(
 label_suf
 
 # %% [markdown]
-# ## Plot the data completeness for each protein.
+# # Plot the data completeness for each protein.
 
 # %%
 view_name = "Protein"
@@ -209,12 +209,13 @@ proteins.to_csv(out_dir_subsection / "proteins.csv")
 
 
 # %% [markdown]
-# ## Hierarchical Clustering of data
+# # Hierarchical Clustering of data
 # - using completely observed data only
 # Find correlations in data
 
 # %%
 out_dir_subsection = out_dir / "1_data" / "clustermap"
+out_dir_subsection.mkdir(parents=True, exist_ok=True)
 
 # %%
 _group_labels = label_encoding.values()
@@ -253,7 +254,7 @@ fig.savefig(
 )
 
 # %% [markdown]
-# ### Hierarchical Clustering of normalized data
+# ## Hierarchical Clustering of normalized data
 # - using completely observed data only
 # Checkout the [recipe on normalization methods](https://analytics-core.readthedocs.io/latest/api_examples/normalization_analysis.html).
 
@@ -298,7 +299,7 @@ fig.savefig(
 )
 
 # %% [markdown]
-# ## Differential Regulation
+# # Differential Regulation
 
 # %%
 out_dir_subsection = out_dir / "2_differential_regulation"
@@ -318,10 +319,13 @@ diff_reg["rejected"] = diff_reg["rejected"].astype(bool)
 diff_reg.sort_values("pvalue")
 
 # %%
+diff_reg.sort_values("pvalue").head(20)
+
+# %%
 diff_reg.plot(x="log2FC", y="-log10 pvalue", kind="scatter", title=group)
 
 # %% [markdown]
-# ## Interactive Volcano Plot
+# # Interactive Volcano Plot
 
 # %%
 str_cols = diff_reg.dtypes[diff_reg.dtypes == "object"].index.tolist()
@@ -388,16 +392,13 @@ annotations
 enriched = acore.enrichment_analysis.run_up_down_regulation_enrichment(
     regulation_data=diff_reg,
     annotation=annotations,
-    min_detected_in_set=2,
+    min_detected_in_set=1,
     lfc_cutoff=1,
-    pval_col="pvalue",
-    correction_alpha=0.05,  # adjust the p-value to see more or less results
+    correction_alpha=0.2,  # adjust the p-value to see more or less results
 )
 enriched
 
 # %%
-from vuecore.viz import get_enrichment_plots
-
 fig = get_enrichment_plots(
     enriched,
     identifier="anything",  # ToDo: figure out what this does
@@ -412,7 +413,7 @@ fig
 
 
 # %% [markdown]
-# ## Check for Maltose Uptake
+# # Check for Maltose Uptake
 
 # %%
 out_dir_subsection = out_dir / "3_maltose_uptake"
