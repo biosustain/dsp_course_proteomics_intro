@@ -4,7 +4,7 @@
 
 Currently the data is stored on a
 [Google Drive folder](https://drive.google.com/drive/folders/1gxUh9nMx9icFLrI0vn3zAB9dDjZf-1Nh).
-A more persistent location would be great - probably on [Zenodo](https://zenodo.org/).
+We use [gdown](https://github.com/wkentaro/gdown) to download these files from Google Drive.
 
 ```bash
 conda activate base
@@ -68,6 +68,26 @@ store after the analysis is done.
 docker images # see all images
 docker image prune -a
 ```
+### Free up some more space
+
+> Should not be necessary
+
+```bash
+# some cache files
+rm -r  /.codespaces/bin/cache/bin/linux-x64/
+ls /vscode/extensionsCache/
+ls /vscode/serverCache/
+```
+
+### Check used disk space
+
+Check the local storage usage (you have maximum of 32GB in a GitHub codespace)
+in the root folder with the following command:
+
+```bash
+du -hd 1 /
+```
+
 
 ## Run a different analysis
 
