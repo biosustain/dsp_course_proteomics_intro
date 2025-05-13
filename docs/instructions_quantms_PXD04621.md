@@ -52,7 +52,7 @@ cp -aL results/PXD040621/proteomicslfq/. data/PXD040621/processed/
 cp -aL results/PXD040621/pipeline_info/. data/PXD040621/processed/pipeline_info/
 ```
 
-Now it is safe to delete the results/PXD040621 folder.
+Now it is safe to delete the `results/PXD040621` and `work` folder.
 
 ```bash
 rm -r results/PXD040621 work
@@ -68,3 +68,10 @@ store after the analysis is done.
 docker images # see all images
 docker image prune -a
 ```
+
+## Run a different analysis
+
+- feel free to run the project `PXD041301` in quantms if you want an exercise
+
+> [!WARNING]
+> not tested in codespace and probably too big for the codespace storage

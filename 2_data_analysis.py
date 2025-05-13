@@ -1,6 +1,30 @@
+# ---
+# jupyter:
+#   jupytext:
+#     cell_metadata_filter: tags,-all
+#     formats: ipynb,py:percent
+#     text_representation:
+#       extension: .py
+#       format_name: percent
+#       format_version: '1.3'
+#       jupytext_version: 1.16.4
+#   kernelspec:
+#     display_name: Python 3 (ipykernel)
+#     language: python
+#     name: python3
+# ---
+
 # %% [markdown]
-# # Read Peptide Output
-# Formatted for input into MsStats
+# # Data Analysis PXD040621
+#
+# Plan
+# - read data and log2 transform intensity values
+# - aggregate peptide intensities to protein intensities
+# - format data from long to wide format
+# - remove contaminant proteins
+# - check for missing values
+# - differential analysis (Volcano Plots)
+# - check for maltose update pathway (Fig. 3 in paper)
 
 # %%
 from pathlib import Path
@@ -173,7 +197,7 @@ diff_reg.sort_values("pvalue")
 # %%
 diff_reg.plot(x="log2FC", y="-log10 pvalue", kind="scatter", title=group)
 
-# %%  [markdown]
+# %% [markdown]
 # ## Interactive Volcano Plot
 
 # %%
@@ -203,6 +227,8 @@ fig
 
 # %% [markdown]
 # Save result to subsection folder
+
+# %%
 fig.write_json(
     out_dir_subsection / "0_volcano_plot.json",
     pretty=False,

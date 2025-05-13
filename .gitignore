@@ -17,6 +17,17 @@
 # local results folder
 results/
 
+# vuegenerated files
+streamlit_report/
+quarto_report/
+logs/
+lib/
+
 # local nextflow cache folder
 .nextflow/
 work/
+
+
+# ipynb checkpoints
+.ipynb_checkpoints
+
