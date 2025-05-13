@@ -173,7 +173,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analysis</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="instructions_statistics_PXD04621.html">Data Analysis Hands-On for PXD04621</a></li>
-<li class="toctree-l1"><a class="reference internal" href="2_data_analysis.html">Read Peptide Output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_data_analysis.html">Data Analysis PXD040621</a></li>
 </ul>
 
     </div>
@@ -344,6 +344,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-files-for-further-analysis">Copy files for further analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up-unused-docker-images">Clean up unused docker images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-a-different-analysis">Run a different analysis</a></li>
 </ul>
             </nav>
         </div>
@@ -405,7 +406,7 @@ nextflow<span class="w"> </span>run<span class="w"> </span>bigbio/quantms<span c
 cp<span class="w"> </span>-aL<span class="w"> </span>results/PXD040621/pipeline_info/.<span class="w"> </span>data/PXD040621/processed/pipeline_info/
 </pre></div>
 </div>
-<p>Now it is safe to delete the results/PXD040621 folder.</p>
+<p>Now it is safe to delete the <code class="docutils literal notranslate"><span class="pre">results/PXD040621</span></code> and <code class="docutils literal notranslate"><span class="pre">work</span></code> folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-r<span class="w"> </span>results/PXD040621<span class="w"> </span>work
 </pre></div>
 </div>
@@ -419,6 +420,16 @@ store after the analysis is done.</p>
 docker<span class="w"> </span>image<span class="w"> </span>prune<span class="w"> </span>-a
 </pre></div>
 </div>
+</section>
+<section id="run-a-different-analysis">
+<h2>Run a different analysis<a class="headerlink" href="#run-a-different-analysis" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>feel free to run the project <code class="docutils literal notranslate"><span class="pre">PXD041301</span></code> in quantms if you want an exercise</p></li>
+</ul>
+<blockquote>
+<div><p>[!WARNING]
+not tested in codespace and probably too big for the codespace storage</p>
+</div></blockquote>
 </section>
 </section>
 
@@ -474,6 +485,7 @@ docker<span class="w"> </span>image<span class="w"> </span>prune<span class="w">
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-files-for-further-analysis">Copy files for further analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up-unused-docker-images">Clean up unused docker images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-a-different-analysis">Run a different analysis</a></li>
 </ul>
   </nav></div>
 
