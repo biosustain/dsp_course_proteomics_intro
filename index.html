@@ -176,6 +176,15 @@
 <li class="toctree-l1"><a class="reference internal" href="instructions_statistics_PXD04621.html">Data Analysis Hands-On for PXD04621</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_data_analysis.html">Data Analysis PXD040621</a></li>
 
+
+
+
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -347,13 +356,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-nextflow">Run nextflow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantms-help">QuantMS help</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help-commands">help commands</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#free-up-some-more-space">Free up some more space</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantms-help">QuantMS help</a><ul class="nav section-nav flex-column">
 </ul>
 </li>
 </ul>
@@ -433,24 +436,6 @@ developed at biosustain and other Python libraries)</p></li>
 </section>
 </section>
 </section>
-<section id="run-nextflow">
-<h2>Run nextflow<a class="headerlink" href="#run-nextflow" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextflow<span class="w"> </span>run<span class="w"> </span>bigbio/quantms<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-revision<span class="w"> </span><span class="m">1</span>.3.0<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-params-file<span class="w"> </span>PXD040621_w_contaminants-params.yaml<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-profile<span class="w"> </span>docker<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-resume
-</pre></div>
-</div>
-<p>running newer version of quantms</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextflow<span class="w"> </span>run<span class="w"> </span>bigbio/quantms<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-revision<span class="w"> </span><span class="m">1</span>.4.0<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-params-file<span class="w"> </span>PXD040621_w_contaminants-params.yaml<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-profile<span class="w"> </span>docker,arm,gitpod<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-resume
-</pre></div>
-</div>
-</section>
 <section id="quantms-help">
 <h2>QuantMS help<a class="headerlink" href="#quantms-help" title="Link to this heading">#</a></h2>
 <ul class="simple">
@@ -458,35 +443,6 @@ developed at biosustain and other Python libraries)</p></li>
 <li><p>ask question on the nf-core slack channel <code class="docutils literal notranslate"><span class="pre">quantms</span></code>: <a class="reference external" href="https://nf-co.re/join/slack" rel="noreferrer" target="_blank">https://nf-co.re/join/slack</a></p></li>
 <li><p>submit an issue on the <a class="reference external" href="https://github.com/bigbio/quantms/issues" rel="noreferrer" target="_blank">GitHub repository</a></p></li>
 </ul>
-</section>
-<section id="help-commands">
-<h2>help commands<a class="headerlink" href="#help-commands" title="Link to this heading">#</a></h2>
-<p>Check the local storage usage (you have maximum of 32GB in a GitHub codespace)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>du<span class="w"> </span>-hd<span class="w"> </span><span class="m">1</span>
-</pre></div>
-</div>
-<p>See the downloaded docker images</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>images
-</pre></div>
-</div>
-<section id="free-up-some-more-space">
-<h3>Free up some more space<a class="headerlink" href="#free-up-some-more-space" title="Link to this heading">#</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># some cache files</span>
-rm<span class="w"> </span>-r<span class="w">  </span>/.codespaces/bin/cache/bin/linux-x64/
-ls<span class="w"> </span>/vscode/extensionsCache/
-ls<span class="w"> </span>/vscode/serverCache/
-</pre></div>
-</div>
-</section>
-</section>
-<section id="tools">
-<h2>Tools<a class="headerlink" href="#tools" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/wkentaro/gdown" rel="noreferrer" target="_blank">gdown</a> to download files from Google Drive</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">gdown</span>
-</pre></div>
-</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -538,13 +494,7 @@ ls<span class="w"> </span>/vscode/serverCache/
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-nextflow">Run nextflow</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantms-help">QuantMS help</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#help-commands">help commands</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#free-up-some-more-space">Free up some more space</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantms-help">QuantMS help</a><ul class="nav section-nav flex-column">
 </ul>
 </li>
 </ul>

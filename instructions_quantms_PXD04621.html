@@ -175,6 +175,15 @@
 <li class="toctree-l1"><a class="reference internal" href="instructions_statistics_PXD04621.html">Data Analysis Hands-On for PXD04621</a></li>
 <li class="toctree-l1"><a class="reference internal" href="2_data_analysis.html">Data Analysis PXD040621</a></li>
 
+
+
+
+
+
+
+
+
+
 </ul>
 
     </div>
@@ -344,7 +353,11 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-files-for-further-analysis">Copy files for further analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up-unused-docker-images">Clean up unused docker images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up-unused-docker-images">Clean up unused docker images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#free-up-some-more-space">Free up some more space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-used-disk-space">Check used disk space</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-a-different-analysis">Run a different analysis</a></li>
 </ul>
             </nav>
@@ -363,7 +376,7 @@ document.write(`
 <h2>Download the data<a class="headerlink" href="#download-the-data" title="Link to this heading">#</a></h2>
 <p>Currently the data is stored on a
 <a class="reference external" href="https://drive.google.com/drive/folders/1gxUh9nMx9icFLrI0vn3zAB9dDjZf-1Nh" rel="noreferrer" target="_blank">Google Drive folder</a>.
-A more persistent location would be great - probably on <a class="reference external" href="https://zenodo.org/" rel="noreferrer" target="_blank">Zenodo</a>.</p>
+We use <a class="reference external" href="https://github.com/wkentaro/gdown" rel="noreferrer" target="_blank">gdown</a> to download these files from Google Drive.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>base
 pip<span class="w"> </span>install<span class="w"> </span>gdown
 python<span class="w"> </span>download_PXD040621_data.py
@@ -421,6 +434,26 @@ store after the analysis is done.</p>
 docker<span class="w"> </span>image<span class="w"> </span>prune<span class="w"> </span>-a
 </pre></div>
 </div>
+<section id="free-up-some-more-space">
+<h3>Free up some more space<a class="headerlink" href="#free-up-some-more-space" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Should not be necessary</p>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># some cache files</span>
+rm<span class="w"> </span>-r<span class="w">  </span>/.codespaces/bin/cache/bin/linux-x64/
+ls<span class="w"> </span>/vscode/extensionsCache/
+ls<span class="w"> </span>/vscode/serverCache/
+</pre></div>
+</div>
+</section>
+<section id="check-used-disk-space">
+<h3>Check used disk space<a class="headerlink" href="#check-used-disk-space" title="Link to this heading">#</a></h3>
+<p>Check the local storage usage (you have maximum of 32GB in a GitHub codespace)
+in the root folder with the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>du<span class="w"> </span>-hd<span class="w"> </span><span class="m">1</span><span class="w"> </span>/
+</pre></div>
+</div>
+</section>
 </section>
 <section id="run-a-different-analysis">
 <h2>Run a different analysis<a class="headerlink" href="#run-a-different-analysis" title="Link to this heading">#</a></h2>
@@ -485,7 +518,11 @@ not tested in codespace and probably too big for the codespace storage</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-files-for-further-analysis">Copy files for further analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up-unused-docker-images">Clean up unused docker images</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up-unused-docker-images">Clean up unused docker images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#free-up-some-more-space">Free up some more space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-used-disk-space">Check used disk space</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-a-different-analysis">Run a different analysis</a></li>
 </ul>
   </nav></div>
