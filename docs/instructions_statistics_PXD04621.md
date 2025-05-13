@@ -20,7 +20,7 @@ python 1_download_PXD040621_results.py
 ## Install the required packages
 
 ```bash
-pip install acore 'numpy<2.1.0'
+pip install acore 'numpy<2.1.0' vuecore
 ```
 
 ## Open and run the notebook
