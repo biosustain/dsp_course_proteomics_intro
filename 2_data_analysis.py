@@ -30,9 +30,13 @@
 from pathlib import Path
 
 import acore.differential_regulation
+import acore.normalization
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import seaborn as sns
+import vuecore
 
 # %% [markdown]
 # ## Read in the data
@@ -173,6 +177,95 @@ ax.get_figure().savefig(
 
 # %%
 proteins.to_csv(out_dir_subsection / "proteins.csv")
+
+
+# %% [markdown]
+# ## Hierarchical Clustering of data
+# - using completely observed data only
+# Find correlations in data
+
+# %%
+out_dir_subsection = out_dir / "1_data" / "clustermap"
+
+# %%
+_group_labels = ['control', '10 µm sulforaphane']
+_groups = [0, 1]
+lut = dict(zip(_groups, [f"C{i}" for i in range(len(_groups))]))
+row_colors = label_suf.map(lut).rename("group color")
+row_colors
+
+# %%
+vuecore.set_font_sizes(7)
+cg = sns.clustermap(
+    proteins.dropna(how="any", axis=1),
+    method="ward",
+    row_colors=row_colors,
+    figsize=(11, 6),
+    robust=True,
+    xticklabels=True,
+    yticklabels=True,
+)
+fig = cg.figure
+cg.ax_heatmap.set_xlabel("Proteins")
+cg.ax_heatmap.set_ylabel("Sample ID")
+vuecore.select_xticks(cg.ax_heatmap)
+handles = [
+    plt.Line2D([0], [0], marker="o", color="w", markerfacecolor=lut[name], markersize=8)
+    for name in lut
+]
+cg.ax_cbar.legend(
+    handles, _group_labels, title="Groups", loc="lower left", bbox_to_anchor=(2, 0.5)
+)
+fname = out_dir_subsection / "clustermap_ward.png"
+# vuecore.savefig(fig, fname, pdf=True, dpi=600, tight_layout=False)
+fig.savefig(
+    out_dir_subsection / "clustermap_ward.png",
+    bbox_inches="tight",
+    dpi=300,
+)
+
+# %% [markdown]
+# ### Hierarchical Clustering of normalized data
+# - using completely observed data only
+# Checkout the [recipe on normalization methods](https://analytics-core.readthedocs.io/latest/api_examples/normalization_analysis.html).
+
+# %%
+normalization_method = "median"
+X = acore.normalization.normalize_data(proteins.dropna(how="any", axis=1), normalization_method)
+X
+
+# %%
+X.median(axis='columns')
+
+# %%
+vuecore.set_font_sizes(7)
+cg = sns.clustermap(
+    X,
+    method="ward",
+    row_colors=row_colors,
+    figsize=(11, 6),
+    robust=True,
+    xticklabels=True,
+    yticklabels=True,
+)
+fig = cg.figure
+cg.ax_heatmap.set_xlabel("Proteins")
+cg.ax_heatmap.set_ylabel("Sample ID")
+vuecore.select_xticks(cg.ax_heatmap)
+handles = [
+    plt.Line2D([0], [0], marker="o", color="w", markerfacecolor=lut[name], markersize=8)
+    for name in lut
+]
+cg.ax_cbar.legend(
+    handles, _group_labels, title="Groups", loc="lower left", bbox_to_anchor=(2, 0.5)
+)
+fname = out_dir_subsection / "clustermap_ward.png"
+# vuecore.savefig(fig, fname, pdf=True, dpi=600, tight_layout=False)
+fig.savefig(
+    out_dir_subsection / f"clustermap_ward_{normalization_method}.png",
+    bbox_inches="tight",
+    dpi=300,
+)
 
 # %% [markdown]
 # ## Differential Regulation
