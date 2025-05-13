@@ -1,4 +1,4 @@
-# Massspectrometry-based Proteomcis introduction
+# Massspectrometry-based Proteomics introduction
 
 The course will introduce MS-based proteomics data, it's basic processing and
 the downstream analysis. The course will be a mix of lectures and hands-on session

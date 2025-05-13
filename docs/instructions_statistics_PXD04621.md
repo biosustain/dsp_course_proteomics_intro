@@ -54,3 +54,7 @@ Create and start the streamlit app with the following command:
 vuegen -dir data/PXD040621/report -st_autorun
 ```
 
+### VueGen GUI (app)
+
+We also ship a GUI for VueGen. Check out our 
+[tutorials on youtube](https://www.youtube.com/playlist?list=PLTbkQyef1c2S3qGzzva_JLlgdwsXjHCHH).
