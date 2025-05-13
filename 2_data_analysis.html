@@ -1,0 +1,2501 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Read Peptide Output &#8212; Massspectrometry-based Proteomcis introduction  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_data_analysis';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Data Analysis Hands-On for PXD04621" href="instructions_statistics_PXD04621.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Massspectrometry-based Proteomcis introduction  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/biosustain/" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">QuantMS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="instructions_quantms_PXD04621.html">QuantMS Hands-On for PXD04621</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quantms_input_files.html">QuantMS Input Files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="instructions_statistics_PXD04621.html">Data Analysis Hands-On for PXD04621</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Read Peptide Output</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/biosustain/dsp_nextflow_training/blob/master/2_data_analysis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/biosustain/dsp_nextflow_training" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2_data_analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Read Peptide Output</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-the-data">Read in the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log2-transform-the-intensity-values">Log2 transform the intensity values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-the-peptide-intensities-to-protein-intensities">Aggregate the peptide intensities to protein intensities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-contaminant-proteins">Remove contaminant proteins</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-data-completeness-for-each-protein">Plot the data completeness for each protein.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-regulation">Differential Regulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-volcano-plot">Interactive Volcano Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-maltose-uptake">Check for Maltose Uptake</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="read-peptide-output">
+<h1>Read Peptide Output<a class="headerlink" href="#read-peptide-output" title="Link to this heading">#</a></h1>
+<p>Formatted for input into MsStats</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">acore.differential_regulation</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="read-in-the-data">
+<h2>Read in the data<a class="headerlink" href="#read-in-the-data" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">file_in</span></code>: input file with the quantified peptide data in MSstats format as provided by quantms</p></li>
+</ul>
+<p>The file can be downloaded from <a class="reference external" href="https://drive.google.com/drive/folders/1Nm5Ha-tCvjU-B323BLhna1GwHdNpK_lU?usp=drive_link" rel="noreferrer" target="_blank">Google Drive</a></p>
+<div class="cell tag_parameters docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_in</span> <span class="o">=</span> <span class="s2">&quot;data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_in</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># .set_index([])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ProteinName</th>
+      <th>PeptideSequence</th>
+      <th>PrecursorCharge</th>
+      <th>FragmentIon</th>
+      <th>ProductCharge</th>
+      <th>IsotopeLabelType</th>
+      <th>Condition</th>
+      <th>BioReplicate</th>
+      <th>Run</th>
+      <th>Intensity</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sp|P00959|SYM_ECOLI</td>
+      <td>AAAAPVTGPLADDPIQETITFDDFAK</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>L</td>
+      <td>Control</td>
+      <td>1</td>
+      <td>1</td>
+      <td>201,065,600.000</td>
+      <td>20220830_JL-4884_Forster_Ecoli_DMSO_rep1_EG-1....</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sp|P00959|SYM_ECOLI</td>
+      <td>AAAAPVTGPLADDPIQETITFDDFAK</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>L</td>
+      <td>Control</td>
+      <td>2</td>
+      <td>2</td>
+      <td>74,844,780.000</td>
+      <td>20220830_JL-4884_Forster_Ecoli_DMSO_rep2_EG-2....</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sp|P00959|SYM_ECOLI</td>
+      <td>AAAAPVTGPLADDPIQETITFDDFAK</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>L</td>
+      <td>Control</td>
+      <td>3</td>
+      <td>3</td>
+      <td>67,591,410.000</td>
+      <td>20220830_JL-4884_Forster_Ecoli_DMSO_rep3_EG-3....</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sp|P00959|SYM_ECOLI</td>
+      <td>AAAAPVTGPLADDPIQETITFDDFAK</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>L</td>
+      <td>Control</td>
+      <td>4</td>
+      <td>4</td>
+      <td>76,388,800.000</td>
+      <td>20220830_JL-4884_Forster_Ecoli_DMSO_rep4_EG-4....</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sp|P00959|SYM_ECOLI</td>
+      <td>AAAAPVTGPLADDPIQETITFDDFAK</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>L</td>
+      <td>Sulforaphane</td>
+      <td>5</td>
+      <td>5</td>
+      <td>116,247,100.000</td>
+      <td>20220830_JL-4884_Forster_Ecoli_Suf_rep1_EG-5.mzML</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>define the output folder for our VueGen report which we will create later</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="s2">&quot;data/PXD040621/report/&quot;</span>
+<span class="n">out_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
+<span class="n">out_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have the following columns in the data:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;ProteinName&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;PeptideSequence&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;PrecursorCharge&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;FragmentIon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ProductCharge&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;IsotopeLabelType&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Condition&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;BioReplicate&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Run&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Intensity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Reference&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="log2-transform-the-intensity-values">
+<h2>Log2 transform the intensity values<a class="headerlink" href="#log2-transform-the-intensity-values" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>log2 transformations are common for lognormal distributed data</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Intensity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Intensity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="aggregate-the-peptide-intensities-to-protein-intensities">
+<h2>Aggregate the peptide intensities to protein intensities<a class="headerlink" href="#aggregate-the-peptide-intensities-to-protein-intensities" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>we use the median of the peptide intensities for each protein</p></li>
+</ul>
+<p>There are more sophisticated ways to do this, e.g. using MaxLFQ, iBAQ, FlashLFQ, DirectLFQ, etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proteins</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;ProteinName&quot;</span><span class="p">,</span> <span class="s2">&quot;Reference&quot;</span><span class="p">])[</span><span class="s2">&quot;Intensity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">proteins</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ProteinName</th>
+      <th>CON_A2AB72</th>
+      <th>CON_O76013</th>
+      <th>CON_P00761</th>
+      <th>CON_P01966</th>
+      <th>CON_P02070</th>
+      <th>CON_P02533</th>
+      <th>CON_P02538</th>
+      <th>CON_P02662</th>
+      <th>CON_P02663</th>
+      <th>CON_P02666</th>
+      <th>...</th>
+      <th>sp|Q47319|TAPT_ECOLI</th>
+      <th>sp|Q47536|YAIP_ECOLI</th>
+      <th>sp|Q47622|SAPA_ECOLI</th>
+      <th>sp|Q47679|YAFV_ECOLI</th>
+      <th>sp|Q47710|YQJK_ECOLI</th>
+      <th>sp|Q57261|TRUD_ECOLI</th>
+      <th>sp|Q59385-2|COPA_ECOLI</th>
+      <th>sp|Q59385|COPA_ECOLI</th>
+      <th>sp|Q7DFV3|YMGG_ECOLI</th>
+      <th>sp|Q93K97|ADPP_ECOLI</th>
+    </tr>
+    <tr>
+      <th>Reference</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_DMSO_rep1_EG-1.mzML</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>31.056</td>
+      <td>NaN</td>
+      <td>26.929</td>
+      <td>28.336</td>
+      <td>25.828</td>
+      <td>NaN</td>
+      <td>26.804</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.638</td>
+      <td>NaN</td>
+      <td>27.038</td>
+      <td>28.411</td>
+      <td>23.555</td>
+      <td>27.640</td>
+      <td>28.513</td>
+      <td>27.223</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_DMSO_rep2_EG-2.mzML</th>
+      <td>23.997</td>
+      <td>25.647</td>
+      <td>29.515</td>
+      <td>25.711</td>
+      <td>NaN</td>
+      <td>25.595</td>
+      <td>26.210</td>
+      <td>NaN</td>
+      <td>27.593</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.841</td>
+      <td>27.941</td>
+      <td>25.240</td>
+      <td>27.244</td>
+      <td>27.621</td>
+      <td>25.331</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_DMSO_rep3_EG-3.mzML</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>33.670</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.992</td>
+      <td>25.441</td>
+      <td>28.129</td>
+      <td>28.895</td>
+      <td>27.111</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>24.576</td>
+      <td>NaN</td>
+      <td>26.609</td>
+      <td>27.070</td>
+      <td>NaN</td>
+      <td>27.525</td>
+      <td>27.679</td>
+      <td>24.399</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_DMSO_rep4_EG-4.mzML</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>34.139</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>27.205</td>
+      <td>26.093</td>
+      <td>NaN</td>
+      <td>27.764</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.945</td>
+      <td>23.902</td>
+      <td>27.164</td>
+      <td>26.680</td>
+      <td>22.524</td>
+      <td>27.404</td>
+      <td>27.256</td>
+      <td>25.767</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_Suf_rep1_EG-5.mzML</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>34.541</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>24.442</td>
+      <td>NaN</td>
+      <td>25.938</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.836</td>
+      <td>NaN</td>
+      <td>26.819</td>
+      <td>27.995</td>
+      <td>NaN</td>
+      <td>27.499</td>
+      <td>28.090</td>
+      <td>25.956</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_Suf_rep2_EG-6.mzML</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>33.175</td>
+      <td>NaN</td>
+      <td>26.571</td>
+      <td>26.495</td>
+      <td>25.070</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>24.253</td>
+      <td>27.268</td>
+      <td>27.055</td>
+      <td>NaN</td>
+      <td>27.667</td>
+      <td>27.526</td>
+      <td>25.231</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_Suf_rep3_EG-7.mzML</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>31.799</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.249</td>
+      <td>28.169</td>
+      <td>23.067</td>
+      <td>26.466</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>25.463</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.022</td>
+      <td>27.313</td>
+      <td>NaN</td>
+      <td>27.760</td>
+      <td>27.814</td>
+      <td>26.223</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_Suf_rep4_EG-8.mzML</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>33.857</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>27.208</td>
+      <td>24.690</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>24.468</td>
+      <td>24.757</td>
+      <td>NaN</td>
+      <td>27.071</td>
+      <td>26.670</td>
+      <td>NaN</td>
+      <td>27.848</td>
+      <td>27.605</td>
+      <td>26.178</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 2295 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="remove-contaminant-proteins">
+<h2>Remove contaminant proteins<a class="headerlink" href="#remove-contaminant-proteins" title="Link to this heading">#</a></h2>
+<p>Remove the contaminant proteins which were added to the fasta file used in the data processing.
+Contaminant proteins are e.g. creation which gets into the sample from the human skin or hair
+when the sample is prepared.</p>
+<p>These are filtered out as they are most of the time not relevant, but a contamination.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decoy_proteins</span> <span class="o">=</span> <span class="n">proteins</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">like</span><span class="o">=</span><span class="s2">&quot;CON_&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">proteins</span> <span class="o">=</span> <span class="n">proteins</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">decoy_proteins</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">proteins</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ProteinName</th>
+      <th>sp|A5A613|YCIY_ECOLI</th>
+      <th>sp|P00350|6PGD_ECOLI</th>
+      <th>sp|P00363|FRDA_ECOLI</th>
+      <th>sp|P00370|DHE4_ECOLI</th>
+      <th>sp|P00393|NDH_ECOLI</th>
+      <th>sp|P00448|SODM_ECOLI</th>
+      <th>sp|P00452|RIR1_ECOLI</th>
+      <th>sp|P00490|PHSM_ECOLI</th>
+      <th>sp|P00509|AAT_ECOLI</th>
+      <th>sp|P00547|KHSE_ECOLI</th>
+      <th>...</th>
+      <th>sp|Q47319|TAPT_ECOLI</th>
+      <th>sp|Q47536|YAIP_ECOLI</th>
+      <th>sp|Q47622|SAPA_ECOLI</th>
+      <th>sp|Q47679|YAFV_ECOLI</th>
+      <th>sp|Q47710|YQJK_ECOLI</th>
+      <th>sp|Q57261|TRUD_ECOLI</th>
+      <th>sp|Q59385-2|COPA_ECOLI</th>
+      <th>sp|Q59385|COPA_ECOLI</th>
+      <th>sp|Q7DFV3|YMGG_ECOLI</th>
+      <th>sp|Q93K97|ADPP_ECOLI</th>
+    </tr>
+    <tr>
+      <th>Reference</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_DMSO_rep1_EG-1.mzML</th>
+      <td>27.180</td>
+      <td>28.193</td>
+      <td>30.247</td>
+      <td>27.459</td>
+      <td>26.864</td>
+      <td>28.493</td>
+      <td>NaN</td>
+      <td>27.863</td>
+      <td>29.979</td>
+      <td>26.065</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.638</td>
+      <td>NaN</td>
+      <td>27.038</td>
+      <td>28.411</td>
+      <td>23.555</td>
+      <td>27.640</td>
+      <td>28.513</td>
+      <td>27.223</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_DMSO_rep2_EG-2.mzML</th>
+      <td>NaN</td>
+      <td>27.926</td>
+      <td>29.995</td>
+      <td>26.873</td>
+      <td>25.613</td>
+      <td>24.901</td>
+      <td>NaN</td>
+      <td>26.439</td>
+      <td>29.048</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.841</td>
+      <td>27.941</td>
+      <td>25.240</td>
+      <td>27.244</td>
+      <td>27.621</td>
+      <td>25.331</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_DMSO_rep3_EG-3.mzML</th>
+      <td>NaN</td>
+      <td>27.329</td>
+      <td>29.983</td>
+      <td>26.499</td>
+      <td>26.012</td>
+      <td>25.054</td>
+      <td>27.172</td>
+      <td>26.382</td>
+      <td>28.777</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>24.576</td>
+      <td>NaN</td>
+      <td>26.609</td>
+      <td>27.070</td>
+      <td>NaN</td>
+      <td>27.525</td>
+      <td>27.679</td>
+      <td>24.399</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_DMSO_rep4_EG-4.mzML</th>
+      <td>NaN</td>
+      <td>27.152</td>
+      <td>29.907</td>
+      <td>26.435</td>
+      <td>25.799</td>
+      <td>24.825</td>
+      <td>NaN</td>
+      <td>26.791</td>
+      <td>29.485</td>
+      <td>25.524</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.945</td>
+      <td>23.902</td>
+      <td>27.164</td>
+      <td>26.680</td>
+      <td>22.524</td>
+      <td>27.404</td>
+      <td>27.256</td>
+      <td>25.767</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_Suf_rep1_EG-5.mzML</th>
+      <td>NaN</td>
+      <td>27.442</td>
+      <td>30.183</td>
+      <td>27.400</td>
+      <td>26.671</td>
+      <td>25.564</td>
+      <td>NaN</td>
+      <td>27.657</td>
+      <td>29.295</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.836</td>
+      <td>NaN</td>
+      <td>26.819</td>
+      <td>27.995</td>
+      <td>NaN</td>
+      <td>27.499</td>
+      <td>28.090</td>
+      <td>25.956</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_Suf_rep2_EG-6.mzML</th>
+      <td>NaN</td>
+      <td>27.032</td>
+      <td>30.086</td>
+      <td>27.283</td>
+      <td>26.886</td>
+      <td>25.378</td>
+      <td>27.364</td>
+      <td>27.468</td>
+      <td>29.079</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>24.253</td>
+      <td>27.268</td>
+      <td>27.055</td>
+      <td>NaN</td>
+      <td>27.667</td>
+      <td>27.526</td>
+      <td>25.231</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_Suf_rep3_EG-7.mzML</th>
+      <td>NaN</td>
+      <td>27.815</td>
+      <td>29.904</td>
+      <td>27.114</td>
+      <td>26.750</td>
+      <td>25.398</td>
+      <td>26.062</td>
+      <td>27.541</td>
+      <td>29.234</td>
+      <td>26.265</td>
+      <td>...</td>
+      <td>25.463</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.022</td>
+      <td>27.313</td>
+      <td>NaN</td>
+      <td>27.760</td>
+      <td>27.814</td>
+      <td>26.223</td>
+    </tr>
+    <tr>
+      <th>20220830_JL-4884_Forster_Ecoli_Suf_rep4_EG-8.mzML</th>
+      <td>NaN</td>
+      <td>27.404</td>
+      <td>29.575</td>
+      <td>27.224</td>
+      <td>26.343</td>
+      <td>25.360</td>
+      <td>24.924</td>
+      <td>27.705</td>
+      <td>29.334</td>
+      <td>26.427</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>24.468</td>
+      <td>24.757</td>
+      <td>NaN</td>
+      <td>27.071</td>
+      <td>26.670</td>
+      <td>NaN</td>
+      <td>27.848</td>
+      <td>27.605</td>
+      <td>26.178</td>
+    </tr>
+  </tbody>
+</table>
+<p>8 rows × 2256 columns</p>
+</div></div></div>
+</div>
+<p>Create a label for each sample based on the metadata.</p>
+<ul class="simple">
+<li><p>we will use a string in the sample name, but you can see how the metadata is organized</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Condition&quot;</span><span class="p">,</span> <span class="s2">&quot;BioReplicate&quot;</span><span class="p">,</span> <span class="s2">&quot;Run&quot;</span><span class="p">,</span> <span class="s2">&quot;Reference&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">meta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Condition</th>
+      <th>BioReplicate</th>
+      <th>Run</th>
+      <th>Reference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Control</td>
+      <td>1</td>
+      <td>1</td>
+      <td>20220830_JL-4884_Forster_Ecoli_DMSO_rep1_EG-1....</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Control</td>
+      <td>2</td>
+      <td>2</td>
+      <td>20220830_JL-4884_Forster_Ecoli_DMSO_rep2_EG-2....</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Control</td>
+      <td>3</td>
+      <td>3</td>
+      <td>20220830_JL-4884_Forster_Ecoli_DMSO_rep3_EG-3....</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Control</td>
+      <td>4</td>
+      <td>4</td>
+      <td>20220830_JL-4884_Forster_Ecoli_DMSO_rep4_EG-4....</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sulforaphane</td>
+      <td>5</td>
+      <td>5</td>
+      <td>20220830_JL-4884_Forster_Ecoli_Suf_rep1_EG-5.mzML</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sulforaphane</td>
+      <td>6</td>
+      <td>6</td>
+      <td>20220830_JL-4884_Forster_Ecoli_Suf_rep2_EG-6.mzML</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Sulforaphane</td>
+      <td>7</td>
+      <td>7</td>
+      <td>20220830_JL-4884_Forster_Ecoli_Suf_rep3_EG-7.mzML</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Sulforaphane</td>
+      <td>8</td>
+      <td>8</td>
+      <td>20220830_JL-4884_Forster_Ecoli_Suf_rep4_EG-8.mzML</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_suf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="n">proteins</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;_Suf_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">proteins</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;label_suf&quot;</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">label_suf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reference
+20220830_JL-4884_Forster_Ecoli_DMSO_rep1_EG-1.mzML   0
+20220830_JL-4884_Forster_Ecoli_DMSO_rep2_EG-2.mzML   0
+20220830_JL-4884_Forster_Ecoli_DMSO_rep3_EG-3.mzML   0
+20220830_JL-4884_Forster_Ecoli_DMSO_rep4_EG-4.mzML   0
+20220830_JL-4884_Forster_Ecoli_Suf_rep1_EG-5.mzML    1
+20220830_JL-4884_Forster_Ecoli_Suf_rep2_EG-6.mzML    1
+20220830_JL-4884_Forster_Ecoli_Suf_rep3_EG-7.mzML    1
+20220830_JL-4884_Forster_Ecoli_Suf_rep4_EG-8.mzML    1
+Name: label_suf, dtype: int8
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-data-completeness-for-each-protein">
+<h2>Plot the data completeness for each protein.<a class="headerlink" href="#plot-the-data-completeness-for-each-protein" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view_name</span> <span class="o">=</span> <span class="s2">&quot;Protein&quot;</span>
+<span class="n">out_dir_subsection</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="s2">&quot;1_data&quot;</span> <span class="o">/</span> <span class="s2">&quot;completeness&quot;</span>
+<span class="n">out_dir_subsection</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view_name</span> <span class="o">=</span> <span class="s2">&quot;Protein&quot;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">proteins</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">rot</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span>
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Number of Samples </span><span class="si">{</span><span class="n">view_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2"> was observed in&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+    <span class="n">out_dir_subsection</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;data_completeness_step_plot.png&quot;</span><span class="p">,</span>
+    <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
+    <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4e0d227e07c8a5f454e74dfe4954e1aef76f79f50596c7e6b89d3c34d2183549.png" src="_images/4e0d227e07c8a5f454e74dfe4954e1aef76f79f50596c7e6b89d3c34d2183549.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view_name</span> <span class="o">=</span> <span class="s2">&quot;Protein&quot;</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">proteins</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Data Completeness per </span><span class="si">{</span><span class="n">view_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Number of Samples </span><span class="si">{</span><span class="n">view_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2"> was observed in&quot;</span><span class="p">,</span>
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Number of </span><span class="si">{</span><span class="n">view_name</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="s2">&quot;steelblue&quot;</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">get_figure</span><span class="p">()</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span>
+    <span class="n">out_dir_subsection</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;data_completeness_bar_plot.png&quot;</span><span class="p">,</span>
+    <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">,</span>
+    <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ffca853892fb8d8aabad396a3f69a3450ff17f9f818cb66724642a92b51b7c4b.png" src="_images/ffca853892fb8d8aabad396a3f69a3450ff17f9f818cb66724642a92b51b7c4b.png" />
+</div>
+</div>
+<p>And let’s save a table with the data for inspection</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proteins</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">out_dir_subsection</span> <span class="o">/</span> <span class="s2">&quot;proteins.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="differential-regulation">
+<h2>Differential Regulation<a class="headerlink" href="#differential-regulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir_subsection</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="s2">&quot;2_differential_regulation&quot;</span>
+<span class="n">out_dir_subsection</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">proteins</span>
+<span class="n">group</span> <span class="o">=</span> <span class="s2">&quot;label_suf&quot;</span>
+<span class="n">diff_reg</span> <span class="o">=</span> <span class="n">acore</span><span class="o">.</span><span class="n">differential_regulation</span><span class="o">.</span><span class="n">run_anova</span><span class="p">(</span>
+    <span class="n">view</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">label_suf</span><span class="p">),</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.15</span><span class="p">,</span>
+    <span class="n">drop_cols</span><span class="o">=</span><span class="p">[],</span>
+    <span class="n">subject</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;pvalue&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">diff_reg</span><span class="p">[</span><span class="s2">&quot;rejected&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diff_reg</span><span class="p">[</span><span class="s2">&quot;rejected&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">diff_reg</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;pvalue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>identifier</th>
+      <th>T-statistics</th>
+      <th>pvalue</th>
+      <th>mean_group1</th>
+      <th>mean_group2</th>
+      <th>std(group1)</th>
+      <th>std(group2)</th>
+      <th>log2FC</th>
+      <th>test</th>
+      <th>correction</th>
+      <th>padj</th>
+      <th>rejected</th>
+      <th>group1</th>
+      <th>group2</th>
+      <th>FC</th>
+      <th>-log10 pvalue</th>
+      <th>Method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1,415</th>
+      <td>sp|Q46835|YGHG_ECOLI</td>
+      <td>-8.146</td>
+      <td>0.000</td>
+      <td>26.723</td>
+      <td>27.677</td>
+      <td>0.194</td>
+      <td>0.058</td>
+      <td>-0.954</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.122</td>
+      <td>True</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.516</td>
+      <td>3.735</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>sp|P08200|IDH_ECOLI</td>
+      <td>-7.568</td>
+      <td>0.000</td>
+      <td>28.755</td>
+      <td>29.455</td>
+      <td>0.069</td>
+      <td>0.145</td>
+      <td>-0.701</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.122</td>
+      <td>True</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.615</td>
+      <td>3.558</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,308</th>
+      <td>sp|P75726|CILA_ECOLI</td>
+      <td>7.460</td>
+      <td>0.000</td>
+      <td>28.082</td>
+      <td>26.852</td>
+      <td>0.222</td>
+      <td>0.180</td>
+      <td>1.230</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.122</td>
+      <td>True</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.345</td>
+      <td>3.524</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>sp|P02943|LAMB_ECOLI</td>
+      <td>-7.006</td>
+      <td>0.000</td>
+      <td>26.117</td>
+      <td>27.920</td>
+      <td>0.428</td>
+      <td>0.124</td>
+      <td>-1.802</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.122</td>
+      <td>True</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.287</td>
+      <td>3.375</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>957</th>
+      <td>sp|P25539|RIBD_ECOLI</td>
+      <td>-6.995</td>
+      <td>0.000</td>
+      <td>26.877</td>
+      <td>27.188</td>
+      <td>0.064</td>
+      <td>0.044</td>
+      <td>-0.311</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.122</td>
+      <td>True</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.806</td>
+      <td>3.371</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>492</th>
+      <td>sp|P0ABB0|ATPA_ECOLI</td>
+      <td>-0.003</td>
+      <td>0.998</td>
+      <td>31.305</td>
+      <td>31.305</td>
+      <td>0.319</td>
+      <td>0.051</td>
+      <td>-0.001</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.999</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.000</td>
+      <td>0.001</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>359</th>
+      <td>sp|P0A910|OMPA_ECOLI</td>
+      <td>0.003</td>
+      <td>0.998</td>
+      <td>31.854</td>
+      <td>31.850</td>
+      <td>1.709</td>
+      <td>1.471</td>
+      <td>0.003</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.999</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.002</td>
+      <td>0.001</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>sp|P00961|SYGB_ECOLI</td>
+      <td>-0.002</td>
+      <td>0.998</td>
+      <td>28.958</td>
+      <td>28.959</td>
+      <td>0.426</td>
+      <td>0.262</td>
+      <td>-0.001</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.999</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.000</td>
+      <td>0.001</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>405</th>
+      <td>sp|P0A9L3|FKBB_ECOLI</td>
+      <td>-0.002</td>
+      <td>0.998</td>
+      <td>30.452</td>
+      <td>30.453</td>
+      <td>0.433</td>
+      <td>0.106</td>
+      <td>-0.001</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.999</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.000</td>
+      <td>0.001</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>sp|P06986|HIS8_ECOLI</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>25.755</td>
+      <td>25.754</td>
+      <td>1.050</td>
+      <td>1.253</td>
+      <td>0.000</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>1.000</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.000</td>
+      <td>0.000</td>
+      <td>Unpaired t-test</td>
+    </tr>
+  </tbody>
+</table>
+<p>1431 rows × 17 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff_reg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;log2FC&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;-log10 pvalue&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;scatter&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">group</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;label_suf&#39;}, xlabel=&#39;log2FC&#39;, ylabel=&#39;-log10 pvalue&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/28fdfa3a0d984d45d4b645e91b64e7f1242fb6f381672b7179e6ff92a0938572.png" src="_images/28fdfa3a0d984d45d4b645e91b64e7f1242fb6f381672b7179e6ff92a0938572.png" />
+</div>
+</div>
+</section>
+<section id="interactive-volcano-plot">
+<h2>Interactive Volcano Plot<a class="headerlink" href="#interactive-volcano-plot" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">str_cols</span> <span class="o">=</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">dtypes</span><span class="p">[</span><span class="n">diff_reg</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">==</span> <span class="s2">&quot;object&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">hover_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;rejected&quot;</span><span class="p">:</span> <span class="s2">&quot;:.0f&quot;</span><span class="p">,</span>
+    <span class="o">**</span><span class="p">{</span>
+        <span class="n">c</span><span class="p">:</span> <span class="s2">&quot;:.4f&quot;</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;padj&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;FC&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="o">**</span><span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="kc">True</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">str_cols</span><span class="p">},</span>
+<span class="p">}</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">diff_reg</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;log2FC&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;-log10 pvalue&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;rejected&quot;</span><span class="p">,</span>
+    <span class="n">hover_data</span><span class="o">=</span><span class="n">hover_data</span><span class="p">,</span>
+    <span class="n">width</span><span class="o">=</span><span class="mi">1200</span><span class="p">,</span>
+    <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Volcano plot for </span><span class="si">{</span><span class="n">view_name</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/heweb/miniforge3/envs/phospho/lib/python3.12/site-packages/plotly/express/_core.py:1992: FutureWarning: When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+  sf: grouped.get_group(s if len(s) &gt; 1 else s[0])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Save result to subsection folder
+fig.write_json(
+out_dir_subsection / “0_volcano_plot.json”,
+pretty=False,
+)
+diff_reg.to_csv(out_dir_subsection / “1_differential_regulation.csv”)</p>
+</section>
+<section id="check-for-maltose-uptake">
+<h2>Check for Maltose Uptake<a class="headerlink" href="#check-for-maltose-uptake" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir_subsection</span> <span class="o">=</span> <span class="n">out_dir</span> <span class="o">/</span> <span class="s2">&quot;3_maltose_uptake&quot;</span>
+<span class="n">out_dir_subsection</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>apply filtering of ‘differentially abundant proteins’ as described in the paper</p>
+<blockquote>
+<div><p>Differentially abundant proteins were determined as those with log2 fold-change</p>
+<blockquote>
+<div><p>1 and &lt; -1, and p &lt; 0.05
+This means not multiple testing correction was applied.</p>
+</div></blockquote>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;pvalue &lt; 0.05 and FC &gt; 1&quot;</span><span class="p">)</span>  <span class="c1"># .shape[0]</span>
+<span class="n">view</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="n">out_dir_subsection</span> <span class="o">/</span> <span class="s2">&quot;1_differently_regulated_as_in_paper.csv&quot;</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">view</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>identifier</th>
+      <th>T-statistics</th>
+      <th>pvalue</th>
+      <th>mean_group1</th>
+      <th>mean_group2</th>
+      <th>std(group1)</th>
+      <th>std(group2)</th>
+      <th>log2FC</th>
+      <th>test</th>
+      <th>correction</th>
+      <th>padj</th>
+      <th>rejected</th>
+      <th>group1</th>
+      <th>group2</th>
+      <th>FC</th>
+      <th>-log10 pvalue</th>
+      <th>Method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1,308</th>
+      <td>sp|P75726|CILA_ECOLI</td>
+      <td>7.460</td>
+      <td>0.000</td>
+      <td>28.082</td>
+      <td>26.852</td>
+      <td>0.222</td>
+      <td>0.180</td>
+      <td>1.230</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.122</td>
+      <td>True</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.345</td>
+      <td>3.524</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>509</th>
+      <td>sp|P0ABK9|NRFA_ECOLI</td>
+      <td>5.844</td>
+      <td>0.001</td>
+      <td>26.482</td>
+      <td>25.637</td>
+      <td>0.166</td>
+      <td>0.187</td>
+      <td>0.845</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.170</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.796</td>
+      <td>2.956</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,083</th>
+      <td>sp|P36943|EAEH_ECOLI</td>
+      <td>5.298</td>
+      <td>0.002</td>
+      <td>28.845</td>
+      <td>28.375</td>
+      <td>0.077</td>
+      <td>0.133</td>
+      <td>0.470</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.219</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.386</td>
+      <td>2.737</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>829</th>
+      <td>sp|P11349|NARH_ECOLI</td>
+      <td>4.853</td>
+      <td>0.003</td>
+      <td>27.360</td>
+      <td>26.919</td>
+      <td>0.142</td>
+      <td>0.068</td>
+      <td>0.441</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.291</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.357</td>
+      <td>2.546</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,123</th>
+      <td>sp|P37773|MPL_ECOLI</td>
+      <td>4.073</td>
+      <td>0.007</td>
+      <td>27.739</td>
+      <td>26.922</td>
+      <td>0.117</td>
+      <td>0.327</td>
+      <td>0.817</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.383</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.762</td>
+      <td>2.184</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,316</th>
+      <td>sp|P75825|HCP_ECOLI</td>
+      <td>4.041</td>
+      <td>0.007</td>
+      <td>26.998</td>
+      <td>25.384</td>
+      <td>0.455</td>
+      <td>0.521</td>
+      <td>1.614</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.383</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3.060</td>
+      <td>2.168</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,139</th>
+      <td>sp|P39285|MSCM_ECOLI</td>
+      <td>3.816</td>
+      <td>0.009</td>
+      <td>24.661</td>
+      <td>24.173</td>
+      <td>0.045</td>
+      <td>0.217</td>
+      <td>0.488</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.383</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.402</td>
+      <td>2.055</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,029</th>
+      <td>sp|P31572|CAIB_ECOLI</td>
+      <td>3.809</td>
+      <td>0.009</td>
+      <td>25.399</td>
+      <td>24.967</td>
+      <td>0.119</td>
+      <td>0.156</td>
+      <td>0.431</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.383</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.349</td>
+      <td>2.052</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,097</th>
+      <td>sp|P37349|DHAM_ECOLI</td>
+      <td>3.801</td>
+      <td>0.009</td>
+      <td>25.935</td>
+      <td>25.259</td>
+      <td>0.296</td>
+      <td>0.085</td>
+      <td>0.675</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.383</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.597</td>
+      <td>2.048</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,360</th>
+      <td>sp|P76440|PRET_ECOLI</td>
+      <td>3.796</td>
+      <td>0.009</td>
+      <td>27.182</td>
+      <td>26.639</td>
+      <td>0.233</td>
+      <td>0.084</td>
+      <td>0.543</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.383</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.457</td>
+      <td>2.045</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,379</th>
+      <td>sp|P77252|YKGE_ECOLI</td>
+      <td>3.691</td>
+      <td>0.010</td>
+      <td>26.517</td>
+      <td>26.012</td>
+      <td>0.099</td>
+      <td>0.215</td>
+      <td>0.505</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.404</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.419</td>
+      <td>1.992</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>sp|P09152|NARG_ECOLI</td>
+      <td>3.536</td>
+      <td>0.012</td>
+      <td>26.841</td>
+      <td>26.290</td>
+      <td>0.222</td>
+      <td>0.153</td>
+      <td>0.552</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.434</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.466</td>
+      <td>1.911</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,318</th>
+      <td>sp|P75829|YBJX_ECOLI</td>
+      <td>3.332</td>
+      <td>0.016</td>
+      <td>27.617</td>
+      <td>27.180</td>
+      <td>0.137</td>
+      <td>0.181</td>
+      <td>0.437</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.460</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.354</td>
+      <td>1.802</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>397</th>
+      <td>sp|P0A9I1|CITE_ECOLI</td>
+      <td>3.145</td>
+      <td>0.020</td>
+      <td>28.211</td>
+      <td>27.029</td>
+      <td>0.528</td>
+      <td>0.381</td>
+      <td>1.183</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.493</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.270</td>
+      <td>1.700</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>sp|P04079|GUAA_ECOLI</td>
+      <td>2.947</td>
+      <td>0.026</td>
+      <td>29.046</td>
+      <td>28.735</td>
+      <td>0.119</td>
+      <td>0.138</td>
+      <td>0.311</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.508</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.240</td>
+      <td>1.590</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,152</th>
+      <td>sp|P39406|RSMC_ECOLI</td>
+      <td>2.912</td>
+      <td>0.027</td>
+      <td>27.385</td>
+      <td>26.076</td>
+      <td>0.276</td>
+      <td>0.728</td>
+      <td>1.309</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.516</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.477</td>
+      <td>1.570</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>sp|P05020|PYRC_ECOLI</td>
+      <td>2.900</td>
+      <td>0.027</td>
+      <td>27.923</td>
+      <td>27.493</td>
+      <td>0.138</td>
+      <td>0.216</td>
+      <td>0.430</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.516</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.347</td>
+      <td>1.563</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>sp|P05637|APAH_ECOLI</td>
+      <td>2.872</td>
+      <td>0.028</td>
+      <td>26.621</td>
+      <td>26.051</td>
+      <td>0.262</td>
+      <td>0.223</td>
+      <td>0.570</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.519</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.484</td>
+      <td>1.548</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>948</th>
+      <td>sp|P25397|TEHB_ECOLI</td>
+      <td>2.855</td>
+      <td>0.029</td>
+      <td>27.676</td>
+      <td>26.964</td>
+      <td>0.221</td>
+      <td>0.371</td>
+      <td>0.712</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.519</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.638</td>
+      <td>1.538</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>944</th>
+      <td>sp|P24232|HMP_ECOLI</td>
+      <td>2.826</td>
+      <td>0.030</td>
+      <td>27.157</td>
+      <td>26.255</td>
+      <td>0.536</td>
+      <td>0.137</td>
+      <td>0.903</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.519</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.869</td>
+      <td>1.521</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>sp|P08178|PUR5_ECOLI</td>
+      <td>2.585</td>
+      <td>0.041</td>
+      <td>26.889</td>
+      <td>26.369</td>
+      <td>0.198</td>
+      <td>0.286</td>
+      <td>0.519</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.565</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.433</td>
+      <td>1.382</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1,303</th>
+      <td>sp|P69829|PTSN_ECOLI</td>
+      <td>2.534</td>
+      <td>0.044</td>
+      <td>26.936</td>
+      <td>26.231</td>
+      <td>0.083</td>
+      <td>0.475</td>
+      <td>0.705</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.565</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.630</td>
+      <td>1.352</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>626</th>
+      <td>sp|P0ADS9|YGGN_ECOLI</td>
+      <td>2.493</td>
+      <td>0.047</td>
+      <td>27.321</td>
+      <td>27.032</td>
+      <td>0.101</td>
+      <td>0.173</td>
+      <td>0.288</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.580</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.221</td>
+      <td>1.328</td>
+      <td>Unpaired t-test</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s find the proteins highlighted in the volcano plot in Figure 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">highlighted_proteins</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;LamB&quot;</span><span class="p">,</span> <span class="s2">&quot;MalE&quot;</span><span class="p">,</span> <span class="s2">&quot;Malk&quot;</span><span class="p">,</span> <span class="s2">&quot;CitF&quot;</span><span class="p">,</span> <span class="s2">&quot;CitT&quot;</span><span class="p">,</span> <span class="s2">&quot;CitE&quot;</span><span class="p">,</span> <span class="s2">&quot;Frd&quot;</span><span class="p">]</span>
+<span class="n">highlighted_proteins</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">highlighted_proteins</span><span class="p">])</span>
+
+<span class="n">view</span>  <span class="o">=</span> <span class="n">diff_reg</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;`identifier`.str.contains(&#39;</span><span class="si">{</span><span class="n">highlighted_proteins</span><span class="si">}</span><span class="s2">&#39;)&quot;</span><span class="p">)</span>
+<span class="n">view</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
+    <span class="n">out_dir_subsection</span> <span class="o">/</span> <span class="s2">&quot;2_highlighted_proteins_in_figure3.csv&quot;</span><span class="p">,</span>
+    <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">view</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>identifier</th>
+      <th>T-statistics</th>
+      <th>pvalue</th>
+      <th>mean_group1</th>
+      <th>mean_group2</th>
+      <th>std(group1)</th>
+      <th>std(group2)</th>
+      <th>log2FC</th>
+      <th>test</th>
+      <th>correction</th>
+      <th>padj</th>
+      <th>rejected</th>
+      <th>group1</th>
+      <th>group2</th>
+      <th>FC</th>
+      <th>-log10 pvalue</th>
+      <th>Method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>36</th>
+      <td>sp|P02943|LAMB_ECOLI</td>
+      <td>-7.006</td>
+      <td>0.000</td>
+      <td>26.117</td>
+      <td>27.920</td>
+      <td>0.428</td>
+      <td>0.124</td>
+      <td>-1.802</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.122</td>
+      <td>True</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.287</td>
+      <td>3.375</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>700</th>
+      <td>sp|P0AEX9|MALE_ECOLI</td>
+      <td>-4.137</td>
+      <td>0.006</td>
+      <td>27.007</td>
+      <td>27.411</td>
+      <td>0.092</td>
+      <td>0.142</td>
+      <td>-0.403</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.383</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.756</td>
+      <td>2.215</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>397</th>
+      <td>sp|P0A9I1|CITE_ECOLI</td>
+      <td>3.145</td>
+      <td>0.020</td>
+      <td>28.211</td>
+      <td>27.029</td>
+      <td>0.528</td>
+      <td>0.381</td>
+      <td>1.183</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.493</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2.270</td>
+      <td>1.700</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>655</th>
+      <td>sp|P0AE74|CITT_ECOLI</td>
+      <td>1.983</td>
+      <td>0.095</td>
+      <td>26.452</td>
+      <td>25.520</td>
+      <td>0.802</td>
+      <td>0.141</td>
+      <td>0.932</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.662</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.908</td>
+      <td>1.024</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>337</th>
+      <td>sp|P0A8Q0|FRDC_ECOLI</td>
+      <td>1.609</td>
+      <td>0.159</td>
+      <td>29.707</td>
+      <td>28.892</td>
+      <td>0.762</td>
+      <td>0.436</td>
+      <td>0.815</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.705</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.760</td>
+      <td>0.799</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sp|P00363|FRDA_ECOLI</td>
+      <td>0.629</td>
+      <td>0.552</td>
+      <td>30.033</td>
+      <td>29.937</td>
+      <td>0.128</td>
+      <td>0.232</td>
+      <td>0.096</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.925</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.069</td>
+      <td>0.258</td>
+      <td>Unpaired t-test</td>
+    </tr>
+    <tr>
+      <th>536</th>
+      <td>sp|P0AC47|FRDB_ECOLI</td>
+      <td>0.257</td>
+      <td>0.806</td>
+      <td>30.912</td>
+      <td>30.849</td>
+      <td>0.206</td>
+      <td>0.372</td>
+      <td>0.063</td>
+      <td>t-Test</td>
+      <td>FDR correction BH</td>
+      <td>0.965</td>
+      <td>False</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.045</td>
+      <td>0.094</td>
+      <td>Unpaired t-test</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>How to explain the differences?</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="instructions_statistics_PXD04621.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Analysis Hands-On for PXD04621</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-the-data">Read in the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log2-transform-the-intensity-values">Log2 transform the intensity values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregate-the-peptide-intensities-to-protein-intensities">Aggregate the peptide intensities to protein intensities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-contaminant-proteins">Remove contaminant proteins</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-data-completeness-for-each-protein">Plot the data completeness for each protein.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-regulation">Differential Regulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-volcano-plot">Interactive Volcano Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-for-maltose-uptake">Check for Maltose Uptake</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Henry Webel, Alberto Santos, Marco Reverenna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, DTU Biosustain, Informatics Platform, DSP.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
