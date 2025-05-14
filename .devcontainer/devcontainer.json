@@ -5,7 +5,7 @@
 //
 {
   "name": "nextflow-training",
-  "image": "ghcr.io/nextflow-io/training:latest",
+  "image": "ghcr.io/nextflow-io/training:2.1.7",
   "workspaceFolder": "/workspaces/dsp_course_proteomics_intro",
   "remoteUser": "root",
   "remoteEnv": {
