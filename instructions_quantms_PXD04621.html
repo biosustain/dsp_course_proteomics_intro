@@ -379,7 +379,7 @@ document.write(`
 We use <a class="reference external" href="https://github.com/wkentaro/gdown" rel="noreferrer" target="_blank">gdown</a> to download these files from Google Drive.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>base
 pip<span class="w"> </span>install<span class="w"> </span>gdown
-python<span class="w"> </span>download_PXD040621_data.py
+python<span class="w"> </span>0_download_PXD040621_data.py
 </pre></div>
 </div>
 </section>
@@ -389,7 +389,7 @@ python<span class="w"> </span>download_PXD040621_data.py
 nextflow<span class="w"> </span>run<span class="w"> </span>bigbio/quantms<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-revision<span class="w"> </span><span class="m">1</span>.4.0<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-params-file<span class="w"> </span>PXD040621_w_contaminants-params.yaml<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-profile<span class="w"> </span>docker,gitpod<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>-profile<span class="w"> </span>docker<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-resume
 </pre></div>
 </div>
@@ -398,7 +398,7 @@ nextflow<span class="w"> </span>run<span class="w"> </span>bigbio/quantms<span c
 nextflow<span class="w"> </span>run<span class="w"> </span>bigbio/quantms<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-revision<span class="w"> </span><span class="m">1</span>.4.0<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-params-file<span class="w"> </span>PXD040621_w_contaminants-params.yaml<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-profile<span class="w"> </span>docker,arm,gitpod<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>-profile<span class="w"> </span>docker,arm<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-resume
 </pre></div>
 </div>
