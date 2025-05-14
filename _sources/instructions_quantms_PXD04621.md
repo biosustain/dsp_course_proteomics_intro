@@ -1,5 +1,7 @@
 # QuantMS Hands-On for PXD04621
 
+- [slides](slides/quantms_and_data_analysis.pdf)
+
 ## Download the data
 
 Currently the data is stored on a
