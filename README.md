@@ -19,11 +19,11 @@ for the downstream analysis.
 
 ### Some details to the agenda points
 
-#### 8.30-10.00 - details - introduction
+#### 8.30-10.00 - introduction
 
 See the slides for introduction [here](docs/slides/introduction.pdf).
 
-#### 10.30-12.00 - details - data processing and hands-on quantms
+#### 10.30-12.00 - data processing and hands-on quantms
 
 Find the instruction [here](docs/instructions_quantms_PXD04621.md) and the slides [here](docs/slides/quantms_and_data_analysis.pdf)
 
@@ -33,7 +33,11 @@ Steps in data processing (using [quantms](https://docs.quantms.org/en/latest/))
 - Spectrum files from Mass-spectrometer
 - Running quantms to process spectra to identified and quantified peptide sequences
 
-#### 15.00 - 16.30 - details - hands-on statistical analysis
+### 13.00 - 14.30 - statistical analysis lecture
+
+See the slides for the statistical analysis [here](docs/slides/downstream_analysis.pdf).
+
+#### 15.00 - 16.30 - hands-on statistical analysis
 
 Find the instruction [here](docs/instructions_statistics_PXD04621.md) and the slides [here](docs/slides/quantms_and_data_analysis.pdf)
 
