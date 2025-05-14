@@ -21,7 +21,7 @@ for the downstream analysis.
 
 #### 10.30-12.00 - details - data processing and hands-on quantms
 
-Find the instruction [here](docs/instructions_quantms_PXD04621.md)
+Find the instruction [here](docs/instructions_quantms_PXD04621.md) and the slides [here](docs/slides/quantms_and_data_analysis.pdf)
 
 Steps in data processing (using [quantms](https://docs.quantms.org/en/latest/))
 
@@ -31,7 +31,7 @@ Steps in data processing (using [quantms](https://docs.quantms.org/en/latest/))
 
 #### 15.00 - 16.30 - details - hands-on statistical analysis
 
-Find the instruction [here](docs/instructions_statistics_PXD04621.md)
+Find the instruction [here](docs/instructions_statistics_PXD04621.md) and the slides [here](docs/slides/quantms_and_data_analysis.pdf)
 
 Basic statistical analysis of a two-group experiment with one timepoint (option 1) or four timepoints (option 2)
 
