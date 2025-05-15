@@ -2,6 +2,15 @@
 
 - [slides](slides/quantms_and_data_analysis.pdf)
 
+## Open GitHub codespace
+
+Use the following link to open a GitHub codespace with most of the required software installed:
+
+> [!WARNING]
+> if you do it manually, make sure to select the bigger machine with 4 cores and 16GB RAM
+
+[![Open in Codespace deeplink](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=949944579&skip_quickstart=true&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&geo=EuropeWest)
+
 ## Download the data
 
 Currently the data is stored on a
@@ -25,7 +34,7 @@ nextflow run bigbio/quantms \
          -resume
 ```
 
-If you run locally on a Mac with Apple Silicion (M-ships), you need to addtionally the `arm` profile:
+If you run **locally on a Mac with Apple Silicion (M-ships)**, you need to addtionally the `arm` profile:
 
 ```bash
 # export NXF_VER=24.10.6
@@ -33,16 +42,6 @@ nextflow run bigbio/quantms \
          -revision 1.4.0 \
          -params-file PXD040621_w_contaminants-params.yaml \
          -profile docker,arm \
-         -resume
-```
-
-### Run quantms 1.3.0
-
-```bash
-nextflow run bigbio/quantms \
-         -revision 1.3.0 \
-         -params-file PXD040621_w_contaminants-params.yaml \
-         -profile docker \
          -resume
 ```
 
