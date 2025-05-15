@@ -6,8 +6,8 @@
 
 Use the following link to open a GitHub codespace with most of the required software installed:
 
-> [!WARNING]
-> if you do it manually, make sure to select the bigger machine with 4 cores and 16GB RAM
+> ⚠️
+> If you do it manually, make sure to select the bigger machine with 4 cores and 16GB RAM
 
 [![Open in Codespace deeplink](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=949944579&skip_quickstart=true&machine=standardLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&geo=EuropeWest)
 
@@ -94,5 +94,5 @@ du -hd 1 /
 
 - feel free to run the project `PXD041301` in quantms if you want an exercise
 
-> [!WARNING]
+> ⚠️
 > not tested in codespace and probably too big for the codespace storage
