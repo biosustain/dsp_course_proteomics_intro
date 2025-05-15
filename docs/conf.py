@@ -5,6 +5,7 @@ author = "Henry Webel, Alberto Santos, Marco Reverenna"
 extensions = [
     "myst_nb",
     "sphinx_new_tab_link",
+    "sphinx_copybutton",
 ]
 
 templates_path = ["_templates"]
