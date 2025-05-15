@@ -7,9 +7,9 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.17.1
+#       jupytext_version: 1.16.4
 #   kernelspec:
-#     display_name: base
+#     display_name: Python 3 (ipykernel)
 #     language: python
 #     name: python3
 # ---
@@ -38,6 +38,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import scipy.stats
 import seaborn as sns
 import vuecore
 from acore.io.uniprot import fetch_annotations, process_annotations
@@ -87,17 +88,35 @@ out_dir.mkdir(parents=True, exist_ok=True)
 
 # %%
 df["Intensity"] = np.log2(df["Intensity"].astype(float))
+df.head()
+
+# %% [markdown]
+# # Exploratory and Data Quality Plots (peptide level)
+# df["BioReplicate"] = df["BioReplicate"].replace({5: 1, 6: 2, 7: 3, 8: 4})
+# fg = sns.displot(
+#     data=df.rename(columns={"BioReplicate": "Rep", "Condition": "C."}),
+#     x="Intensity",
+#     col="C.",
+#     row="Rep",
+#     # hue="Reactor_ID",
+#     kind="kde",
+#     height=2,
+#     aspect=1.1,
+# )
 
 # %% [markdown]
 # # Aggregate the peptide intensities to protein intensities
 # - we use the median of the peptide intensities for each protein
 #
 # There are more sophisticated ways to do this, e.g. using MaxLFQ, iBAQ, FlashLFQ, DirectLFQ, etc.
+#
+# - shorten sample name for readability
 
 # %%
 proteins = (
     df.groupby(["ProteinName", "Reference"])["Intensity"].median().unstack(level=0)
 )
+proteins.index = proteins.index.str.split("_").str[4:6].str.join("_")
 proteins
 
 # %% [markdown]
@@ -124,7 +143,7 @@ meta
 # %%
 label_encoding = {0: "control", 1: "10 µm sulforaphane"}
 label_suf = pd.Series(
-    proteins.index.str.contains("_Suf_").astype(int),
+    proteins.index.str.contains("Suf_").astype(int),
     index=proteins.index,
     name="label_suf",
     dtype=np.int8,
@@ -192,12 +211,12 @@ proteins_meta.index = proteins.columns
 proteins_meta.index.name = "identifier"
 proteins_meta
 
-
 # %% [markdown]
-# For later convenience let's replace the identifier with the UNIPROT ID
+# For later in the enrichment analysis let's replace the protein identifier from the Fasta
+# file with the UNIPROT ID
 
 # %%
-proteins.columns = proteins_meta["ProteinName"]
+proteins.columns = proteins_meta["ProteinName"].rename("UniprotID")
 proteins
 
 # %% [markdown]
@@ -206,7 +225,6 @@ proteins
 # %%
 proteins_meta.to_csv(out_dir_subsection / "proteins_identifiers.csv")
 proteins.to_csv(out_dir_subsection / "proteins.csv")
-
 
 # %% [markdown]
 # # Hierarchical Clustering of data
@@ -252,6 +270,53 @@ fig.savefig(
     bbox_inches="tight",
     dpi=300,
 )
+
+# %% [markdown]
+# ## Analytical Plots
+# - data distribution (e.g. histogram)
+# - coefficient of variation (CV)
+# - number of identified proteins per sample
+
+# %%
+# ToDo: bin width functionaity: bins should match between all plots (see pimms)
+ax = proteins.T.hist(layout=(2, 4), bins=20, sharex=True, sharey=True, figsize=(8, 4))
+
+# %% [markdown]
+# # Coefficient of Variation (CV)
+# - CV = standard deviation / mean
+# - per group
+
+# %%
+df_cvs = (
+    proteins.groupby(label_suf)  # .join(metadata[grouping])
+    # .agg(scipy.stats.variation)
+    .agg([scipy.stats.variation, "mean"])  # .rename_axis(["feat", "stat"], axis=1)
+)
+df_cvs
+
+# %%
+df_cvs = df_cvs.stack(0, future_stack=True).reset_index().dropna()
+df_cvs
+
+# %%
+default_args = dict(
+    facet_col="label_suf",
+    # facet_row="Time",
+    labels={
+        "label_suf": "group",
+        "variation": "CV",
+    },
+)
+fig = px.scatter(
+    data_frame=df_cvs,
+    x="variation",
+    y="mean",
+    trendline="ols",
+    **default_args,
+)
+fname = "cv_vs_mean"
+# ? save
+fig
 
 # %% [markdown]
 # ## Hierarchical Clustering of normalized data
@@ -305,11 +370,31 @@ fig.savefig(
 out_dir_subsection = out_dir / "2_differential_regulation"
 out_dir_subsection.mkdir(parents=True, exist_ok=True)
 
+# %% [markdown]
+# ## Retain all proteins with at least 3 observations in each group
+# - this is a requirement for a standard t-test
+# - you could look into imputation methods to fill in missing values)
+#   - protein in at least two samples per group?
+#   - missing all in one condition?
+#
+# Let's not impute, but filter for proteins with at least 3 observations in each group
+
 # %%
-view = proteins
+group_counts = proteins.groupby(label_suf).count()
+group_counts
+
+# %% [markdown]
+# Then we can filter the proteins to only those with at least 3 observations in each grou
+
+# %%
+mask = group_counts.groupby("label_suf").transform(lambda x: x >= 3).all(axis=0)
+mask
+
+# %%
+view = proteins.loc[:, mask].join(label_suf)
 group = "label_suf"
 diff_reg = acore.differential_regulation.run_anova(
-    view.dropna(how="any", axis=1).join(label_suf),
+    view,
     alpha=0.15,
     drop_cols=[],
     subject=None,
@@ -370,7 +455,7 @@ out_dir_subsection = out_dir / "uniprot_annotations"
 out_dir_subsection.mkdir(parents=True, exist_ok=True)
 
 # %% [markdown]
-# Fetch the annotations from UniProt API.
+# ## Fetch the annotations from UniProt API.
 
 # %%
 fname_annotations = out_dir_subsection / "annotations.csv"
@@ -388,12 +473,23 @@ except FileNotFoundError:
 
 annotations
 
+# %% [markdown]
+# ## Run the enrichment analysis
+# - background is the set of identified proteins in the experiment (not the whole proteome
+#   of the organisim, here E. coli)
+# - The enrichment is performed separately for the up- and down-regulated proteins ('rejected'),
+#   which are few in our example where we had to set the adjusted p-value to 0.15.
+#
+# In the enrichment we set the cutoff for the adjusted p-value to 0.2, which is
+# a bit arbitrary to see some results.
+
 # %%
 enriched = acore.enrichment_analysis.run_up_down_regulation_enrichment(
     regulation_data=diff_reg,
     annotation=annotations,
     min_detected_in_set=1,
     lfc_cutoff=1,
+    pval_col='padj', # toggle if it does not work
     correction_alpha=0.2,  # adjust the p-value to see more or less results
 )
 enriched
@@ -410,7 +506,6 @@ fig.write_json(
     pretty=True,
 )
 fig
-
 
 # %% [markdown]
 # # Check for Maltose Uptake
@@ -447,11 +542,40 @@ highlighted_genes
 # %%
 highlighted_proteins = "|".join([p.upper() for p in highlighted_genes["ProteinName"]])
 view = diff_reg.query(f"`identifier`.str.contains('{highlighted_proteins}')")
+view = view.set_index("identifier").join(proteins_meta.set_index("ProteinName"))
 view.to_csv(
     out_dir_subsection / "2_highlighted_proteins_in_figure3.csv",
     index=False,
 )
-view
+sel_cols = [
+    "identifier",
+    "GeneName",
+    "log2FC",
+    "pvalue",
+    "padj",
+    "rejected",
+    "group1",
+    "group2",
+    "Method",
+]
+view.reset_index()[sel_cols].sort_values("log2FC", ascending=False)
+
+# %% [markdown]
+# Let's see their original data
+
+# %%
+view_proteins = (
+    proteins[highlighted_genes["ProteinName"].to_list()].T.join(
+        proteins_meta.set_index("ProteinName")["GeneName"]
+    )
+).set_index(
+    "GeneName", append=True
+).T  # to check]
+view_proteins.to_csv(
+    out_dir_subsection / "3_highlighted_proteins_in_figure3_intensities.csv",
+    index=True,
+)
+view_proteins
 
 # %% [markdown]
 # How to explain the differences?
