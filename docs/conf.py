@@ -5,6 +5,7 @@ author = "Henry Webel, Alberto Santos, Marco Reverenna"
 extensions = [
     "myst_nb",
     "sphinx_new_tab_link",
+    "sphinx_copybutton",
 ]
 
 templates_path = ["_templates"]
@@ -27,7 +28,7 @@ nb_execution_mode = "off"
 
 myst_enable_extensions = ["dollarmath", "amsmath"]
 
-# Plolty support through require javascript library
+# Plotly support through require javascript library
 # https://myst-nb.readthedocs.io/en/latest/render/interactive.html#plotly
 html_js_files = [
     "https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"
@@ -57,8 +58,8 @@ html_theme = "sphinx_book_theme"
 # html_logo = "_static/logo-wide.svg"
 # html_favicon = "_static/logo-square.svg"
 html_theme_options = {
-    "github_url": "https://github.com/biosustain/dsp_nextflow_training",
-    "repository_url": "https://github.com/biosustain/dsp_nextflow_training",
+    "github_url": "https://github.com/biosustain/dsp_course_proteomics_intro",
+    "repository_url": "https://github.com/biosustain/dsp_course_proteomics_intro",
     # "repository_branch": "main",
     # "home_page_in_toc": True,
     # "path_to_docs": "docs",
