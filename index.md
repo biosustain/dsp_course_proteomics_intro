@@ -1,7 +1,5 @@
 ```{include} ../README.md
 :start-line: 0
-:relative-docs: docs
-:relative-images:
 ```
 
 ```{toctree}
