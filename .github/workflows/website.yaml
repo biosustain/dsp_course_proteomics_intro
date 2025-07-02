@@ -17,11 +17,10 @@ jobs:
       - uses: actions/setup-python@v5
       - name: Install dependencies
         run: |
-          pip install -r docs/requirements.txt
+          pip install -r requirements.txt -r requirements_docs.txt
 
       - name: Build the site
         run: |
-          cd docs
           sphinx-build -nW --keep-going -b html .  _build
 
       # If we've pushed to main, push the book's HTML to github-pages
@@ -30,5 +29,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs/_build
+          publish_dir: ./_build
           # cname: website.com
