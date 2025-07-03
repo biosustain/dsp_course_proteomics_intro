@@ -21,11 +21,11 @@ for the downstream analysis.
 
 #### 8.30-10.00 - introduction
 
-See the slides for introduction [here](docs/slides/introduction.pdf).
+See the slides for introduction [here](material/slides/introduction.pdf).
 
 #### 10.30-12.00 - data processing and hands-on quantms
 
-Find the instruction [here](docs/instructions_quantms_PXD04621.md) and the slides [here](docs/slides/quantms_and_data_analysis.pdf)
+Find the instruction [here](material/instructions_quantms_PXD04621.md) and the slides [here](material/slides/quantms_and_data_analysis.pdf)
 
 Steps in data processing (using [quantms](https://docs.quantms.org/en/latest/))
 
@@ -35,11 +35,11 @@ Steps in data processing (using [quantms](https://docs.quantms.org/en/latest/))
 
 ### 13.00 - 14.30 - statistical analysis lecture
 
-See the slides for the statistical analysis [here](docs/slides/downstream_analysis.pdf).
+See the slides for the statistical analysis [here](material/slides/downstream_analysis.pdf).
 
 #### 15.00 - 16.30 - hands-on statistical analysis
 
-Find the instruction [here](docs/instructions_statistics_PXD04621.md) and the slides [here](docs/slides/quantms_and_data_analysis.pdf)
+Find the instruction [here](material/instructions_statistics_PXD04621.md) and the slides [here](material/slides/quantms_and_data_analysis.pdf)
 
 Basic statistical analysis of a two-group experiment with one timepoint (option 1) or four timepoints (option 2)
 
@@ -53,9 +53,3 @@ Basic statistical analysis of a two-group experiment with one timepoint (option 
 - see the documentation for an overview: [docs.quantms.org](https://docs.quantms.org)
 - ask question on the nf-core slack channel `quantms`: [https://nf-co.re/join/slack](https://nf-co.re/join/slack)
 - submit an issue on the [GitHub repository](https://github.com/bigbio/quantms/issues)
-
-
-
-
-
-
