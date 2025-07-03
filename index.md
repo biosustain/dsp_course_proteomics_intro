@@ -1,4 +1,4 @@
-```{include} ../README.md
+```{include} ./README.md
 :start-line: 0
 ```
 
