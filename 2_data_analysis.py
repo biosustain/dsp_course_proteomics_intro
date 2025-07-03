@@ -28,6 +28,9 @@
 # - Enrichment Analysis
 # - check for maltose update pathway (Fig. 3 in paper)
 
+# %% tags=["hide-output"]
+# %pip install acore vuecore
+
 # %%
 from pathlib import Path
 
@@ -46,12 +49,18 @@ from vuecore.viz import get_enrichment_plots
 
 # %% [markdown]
 # # Read in the data
-# - `file_in`: input file with the quantified peptide data in MSstats format as provided by quantms
+# - `file_in`: input file with the quantified peptide data in MSstats format
+#    as provided by quantms
 #
-# The file can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1Nm5Ha-tCvjU-B323BLhna1GwHdNpK_lU?usp=drive_link)
+# The file will be loaded from the repository if it is not present.
 
 # %% tags=["parameters"]
-file_in = "data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv"
+file_in = Path("data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv")
+if not file_in.exists():
+    file_in = (
+        "https://raw.githubusercontent.com/biosustain/dsp_course_proteomics_intro/HEAD"
+        "/data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv"
+    )
 df = pd.read_csv(file_in, sep=",", header=0)  # .set_index([])
 df.head()
 
