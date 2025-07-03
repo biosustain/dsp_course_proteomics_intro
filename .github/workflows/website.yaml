@@ -6,6 +6,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "0 6 * * 2"
   workflow_dispatch:
 
 # This job installs dependencies, builds the website and pushes it to `gh-pages`
