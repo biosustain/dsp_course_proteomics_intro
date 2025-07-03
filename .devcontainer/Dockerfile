@@ -1,3 +1,4 @@
+# only for reference, we do not use this file directly
 FROM mcr.microsoft.com/devcontainers/universal:linux
 
 USER root
