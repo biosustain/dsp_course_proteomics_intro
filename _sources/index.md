@@ -1,7 +1,5 @@
-```{include} ../README.md
+```{include} ./README.md
 :start-line: 0
-:relative-docs: docs
-:relative-images:
 ```
 
 ```{toctree}
@@ -9,8 +7,9 @@
 :caption: QuantMS
 :hidden:
 
-instructions_quantms_PXD04621
-quantms_input_files
+material/instructions_quantms_PXD04621
+material/quantms_input_files
+data/README.md
 ```
 
 ```{toctree}
@@ -18,7 +17,24 @@ quantms_input_files
 :caption: Data Analysis
 :hidden:
 
-instructions_statistics_PXD04621
+material/instructions_statistics_PXD04621
 2_data_analysis
 ```
 
+```{toctree}
+:maxdepth: 2
+:caption: Datasets
+:hidden:
+data/fasta/README.md
+data/PXD040621/README.md
+data/PXD040621/mzML/README.md
+data/PXD040621/processed/README.md
+```
+
+```{toctree}
+:maxdepth: 2
+:caption: Codespace
+:hidden:
+
+.devcontainer/README.md
+```
