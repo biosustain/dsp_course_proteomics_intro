@@ -15,7 +15,11 @@ Use the following link to open a GitHub codespace with most of the required soft
 
 Currently the data is stored on a
 [Google Drive folder](https://drive.google.com/drive/folders/1gxUh9nMx9icFLrI0vn3zAB9dDjZf-1Nh).
-We use [gdown](https://github.com/wkentaro/gdown) to download these files from Google Drive.
+It should be downloaded when you run the tutorial in a GitHub codespace automatically.
+
+In case you do not see the `mzML` files in the `data/PXD040621/mzML/` folder,
+you can manually use [gdown](https://github.com/wkentaro/gdown) to download
+these files from Google Drive:
 
 ```bash
 conda activate base
@@ -69,6 +73,7 @@ store after the analysis is done.
 docker images # see all images
 docker image prune -a
 ```
+
 ### Free up some more space
 
 > Should not be necessary
@@ -88,7 +93,6 @@ in the root folder with the following command:
 ```bash
 du -hd 1 /
 ```
-
 
 ## Run a different analysis
 

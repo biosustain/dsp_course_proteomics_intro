@@ -364,8 +364,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-required-packages">Install the required packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-data-from-quantms">Results data from QuantMS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-packages">Required packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-and-run-the-notebook">Open and run the notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vuegen-report">VueGen Report</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vuegen-gui-app">VueGen GUI (app)</a></li>
@@ -389,22 +389,22 @@ with the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>base
 </pre></div>
 </div>
-<section id="download-the-data">
-<h2>Download the data<a class="headerlink" href="#download-the-data" title="Link to this heading">#</a></h2>
-<blockquote>
-<div><p>If you copied it from the quantms results before, you can skip this step.</p>
-</div></blockquote>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install gdown (if not already installed)</span>
-python<span class="w"> </span>1_download_PXD040621_results.py
-</pre></div>
-</div>
+<section id="results-data-from-quantms">
+<h2>Results data from QuantMS<a class="headerlink" href="#results-data-from-quantms" title="Link to this heading">#</a></h2>
+<p>Are stored in this repository in the
+<a class="reference external" href="https://github.com/biosustain/dsp_course_proteomics_intro/tree/main/data/PXD040621/processed" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">data/PXD04621/processed/</span></code></a>
+folder.</p>
 </section>
-<section id="install-the-required-packages">
-<h2>Install the required packages<a class="headerlink" href="#install-the-required-packages" title="Link to this heading">#</a></h2>
+<section id="required-packages">
+<h2>Required packages<a class="headerlink" href="#required-packages" title="Link to this heading">#</a></h2>
+<p>are mainly:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://analytics-core.readthedocs.io" rel="noreferrer" target="_blank">acore</a> for some analytical functions (developed by DSP and MoNA at DTU)</p></li>
 <li><p><a class="reference external" href="https://vuegen.readthedocs.io" rel="noreferrer" target="_blank">vuegen</a> for the report generation (developed by DSP and MoNA at DTU)</p></li>
+<li><p><a class="reference external" href="https://vuecore.readthedocs.io" rel="noreferrer" target="_blank">vuecore</a> for the visualization (developed by DSP and MoNA at DTU)</p></li>
 </ul>
+<p>The packages should have been installed automatically in the GitHub codespace. In case you need to manually
+install them, you can use the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>acore<span class="w"> </span><span class="s1">&#39;numpy&lt;2.1.0&#39;</span><span class="w"> </span>nbformat<span class="w"> </span>vuecore<span class="w"> </span>vuegen
 </pre></div>
 </div>
@@ -486,8 +486,8 @@ availble for the command line tool vuegen with the following command:</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-the-required-packages">Install the required packages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-data-from-quantms">Results data from QuantMS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-packages">Required packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-and-run-the-notebook">Open and run the notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vuegen-report">VueGen Report</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vuegen-gui-app">VueGen GUI (app)</a></li>

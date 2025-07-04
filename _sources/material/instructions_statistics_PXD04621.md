@@ -7,19 +7,22 @@ with the following command:
 conda activate base
 ```
 
-## Download the data
+## Results data from QuantMS
 
-> If you copied it from the quantms results before, you can skip this step.
+Are stored in this repository in the
+[`data/PXD04621/processed/`](https://github.com/biosustain/dsp_course_proteomics_intro/tree/main/data/PXD040621/processed)
+folder.
 
-```bash
-# pip install gdown (if not already installed)
-python 1_download_PXD040621_results.py
-```
+## Required packages
 
-## Install the required packages
+are mainly:
 
 - [acore](https://analytics-core.readthedocs.io) for some analytical functions (developed by DSP and MoNA at DTU)
 - [vuegen](https://vuegen.readthedocs.io) for the report generation (developed by DSP and MoNA at DTU)
+- [vuecore](https://vuecore.readthedocs.io) for the visualization (developed by DSP and MoNA at DTU)
+
+The packages should have been installed automatically in the GitHub codespace. In case you need to manually
+install them, you can use the following command:
 
 ```bash
 pip install acore 'numpy<2.1.0' nbformat vuecore vuegen
