@@ -9,7 +9,9 @@ conda activate base
 
 ## Results data from QuantMS
 
-Are stored in this repository in the [`data/PXD04621/processed/`](data/PXD04621/processed/) folder.
+Are stored in this repository in the
+[`data/PXD04621/processed/`](https://github.com/biosustain/dsp_course_proteomics_intro/tree/main/data/PXD040621/processed)
+folder.
 
 ## Required packages
 
