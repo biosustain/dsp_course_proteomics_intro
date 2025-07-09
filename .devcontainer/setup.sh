@@ -10,6 +10,7 @@ nextflow -version
 
 cat /usr/local/etc/vscode-dev-containers/first-run-notice.txt
 
+conda init
 conda activate base
 pip install gdown
 python 0_download_PXD040621_data.py

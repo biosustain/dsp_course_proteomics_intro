@@ -32,7 +32,7 @@ python 0_download_PXD040621_data.py
 ```bash
 # export NXF_VER=24.10.6
 nextflow run bigbio/quantms \
-         -revision 1.4.0 \
+         -revision 1.5.0 \
          -params-file PXD040621_w_contaminants-params.yaml \
          -profile docker \
          -resume
@@ -43,7 +43,7 @@ If you run **locally on a Mac with Apple Silicion (M-ships)**, you need to addti
 ```bash
 # export NXF_VER=24.10.6
 nextflow run bigbio/quantms \
-         -revision 1.4.0 \
+         -revision 1.5.0 \
          -params-file PXD040621_w_contaminants-params.yaml \
          -profile docker,arm \
          -resume

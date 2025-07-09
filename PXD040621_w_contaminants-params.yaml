@@ -1,11 +1,6 @@
 database: data/fasta/merged_ecoli_with_contaminants.fasta
 input: data/PXD040621/PXD040621.sdrf.tsv
 outdir: results/PXD040621
-# max_memory: 16 GB # ! set to local maximum
-# max_cpus: 10 # ! set to local maximum
-# small github codespace:
-# max_memory: 7 GB
-# max_cpus: 2
 # 'large' github codespace:
 max_memory: 15 GB
 max_cpus: 4
@@ -17,8 +12,8 @@ root_folder: /workspaces/dsp_course_proteomics_intro/data/PXD040621/mzML/
 # see options for publishing results
 # !!! copy is preferred as it is saver
 # "enum": ["symlink", "rellink", "link", "copy", "copyNoFollow", "move"]
-# publish_dir_mode: copy
-publish_dir_mode: symlink
+publish_dir_mode: copy
+# publish_dir_mode: symlink
 # running msstats: Only two pdfs which we do not use.
 skip_post_msstats: true
 #
