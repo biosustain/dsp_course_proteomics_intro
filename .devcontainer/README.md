@@ -34,6 +34,11 @@ That the devcontainer is working is not yet automatically checked, but means man
 
 ## How to update
 
-- check for changes in `nextflow-io/training` repo and
-  then set a new image tag in `.devcontainer.json` file
-- update the `setup.sh` script if needed, e.g. to install new software or new data sources
+- check for changes in
+  [`nextflow-io/training`](https://github.com/nextflow-io/training/tree/master/.devcontainer)
+  repo and then set a new image tag in
+  [`.devcontainer.json`](https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/.devcontainer.json)
+  file
+- update the
+  [`setup.sh` script](https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/setup.sh)
+  script if needed, e.g. to install new software or new data sources
