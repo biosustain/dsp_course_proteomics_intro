@@ -9,7 +9,7 @@ one in this project, so if things break, have a look there.
 The devcontainer uses the
 [`nextflow-io/training` container](https://github.com/nextflow-io/training/pkgs/container/training)
 from GitHub Container Registry, as provided by the nextflow team. I copied the
-[Dockerfile](https://github.com/biosustain/dsp_course_proteomics_intro/blob/add_pkg_to_devcontainer/.devcontainer/Dockerfile)
+[Dockerfile](https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/Dockerfile)
 which was used to build the container image `2.1.7` for reference of what the container contains.
 
 > ⚠️ Dockerfile is to be verified
@@ -17,7 +17,7 @@ which was used to build the container image `2.1.7` for reference of what the co
 ## Additional software
 
 Using an
-[`setup.sh` script](https://github.com/biosustain/dsp_course_proteomics_intro/blob/add_pkg_to_devcontainer/.devcontainer/setup.sh)
+[`setup.sh` script](https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/setup.sh)
 which is linked to the `.devcontainer.json` file,
 additional software is installed in the container. This includes:
 
