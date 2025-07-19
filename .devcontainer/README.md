@@ -12,7 +12,9 @@ from GitHub Container Registry, as provided by the nextflow team. I copied the
 [Dockerfile](https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/Dockerfile)
 which was used to build the container image `2.1.7` for reference of what the container contains.
 
-> ⚠️ Dockerfile is to be verified
+The Dockerimage is published based on a devcontainer configuration file in the nextflow training repo,
+[`.devcontainer/codespaces-dev/devcontainer.json`](https://github.com/nextflow-io/training/blob/master/.devcontainer/codespaces-dev/devcontainer.json)
+and then published to the GitHub Container Registry using an action.
 
 ## Additional software
 
