@@ -7,7 +7,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.16.4
+#       jupytext_version: 1.17.2
 #   kernelspec:
 #     display_name: Python 3 (ipykernel)
 #     language: python
@@ -28,6 +28,9 @@
 # - Enrichment Analysis
 # - check for maltose update pathway (Fig. 3 in paper)
 
+# %% tags=["hide-output"]
+# %pip install acore vuecore
+
 # %%
 from pathlib import Path
 
@@ -46,12 +49,18 @@ from vuecore.viz import get_enrichment_plots
 
 # %% [markdown]
 # # Read in the data
-# - `file_in`: input file with the quantified peptide data in MSstats format as provided by quantms
+# - `file_in`: input file with the quantified peptide data in MSstats format
+#    as provided by quantms
 #
-# The file can be downloaded from [Google Drive](https://drive.google.com/drive/folders/1Nm5Ha-tCvjU-B323BLhna1GwHdNpK_lU?usp=drive_link)
+# The file will be loaded from the repository if it is not present.
 
 # %% tags=["parameters"]
-file_in = "data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv"
+file_in = Path("data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv")
+if not file_in.exists():
+    file_in = (
+        "https://raw.githubusercontent.com/biosustain/dsp_course_proteomics_intro/HEAD"
+        "/data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv"
+    )
 df = pd.read_csv(file_in, sep=",", header=0)  # .set_index([])
 df.head()
 
@@ -315,7 +324,7 @@ fig = px.scatter(
     **default_args,
 )
 fname = "cv_vs_mean"
-# ? save
+# # ? save
 fig
 
 # %% [markdown]
@@ -489,7 +498,7 @@ enriched = acore.enrichment_analysis.run_up_down_regulation_enrichment(
     annotation=annotations,
     min_detected_in_set=1,
     lfc_cutoff=1,
-    pval_col='padj', # toggle if it does not work
+    pval_col="padj",  # toggle if it does not work
     correction_alpha=0.2,  # adjust the p-value to see more or less results
 )
 enriched
@@ -565,12 +574,14 @@ view.reset_index()[sel_cols].sort_values("log2FC", ascending=False)
 
 # %%
 view_proteins = (
-    proteins[highlighted_genes["ProteinName"].to_list()].T.join(
-        proteins_meta.set_index("ProteinName")["GeneName"]
+    (
+        proteins[highlighted_genes["ProteinName"].to_list()].T.join(
+            proteins_meta.set_index("ProteinName")["GeneName"]
+        )
     )
-).set_index(
-    "GeneName", append=True
-).T  # to check]
+    .set_index("GeneName", append=True)
+    .T
+)  # to check]
 view_proteins.to_csv(
     out_dir_subsection / "3_highlighted_proteins_in_figure3_intensities.csv",
     index=True,

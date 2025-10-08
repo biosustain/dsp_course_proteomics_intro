@@ -1,0 +1,4 @@
+jupyter
+acore
+vuecore
+vuegen

@@ -19,12 +19,15 @@ exclude_patterns = [
     "**/.ipynb_checkpoints/*",
     "jupyter_execute",
     "conf.py",
+    "*.py",
+    ".pytest_cache",
+    "data/PXD041301/*",  # leave it out for now
 ]
 
 html_theme = "pydata_sphinx_theme"
 
 #  https://myst-nb.readthedocs.io/en/latest/computation/execute.html
-nb_execution_mode = "off"
+nb_execution_mode = "auto"
 
 myst_enable_extensions = ["dollarmath", "amsmath"]
 
@@ -41,7 +44,7 @@ nb_execution_raise_on_error = True
 nb_merge_streams = True
 
 # https://myst-nb.readthedocs.io/en/latest/authoring/custom-formats.html#write-custom-formats
-nb_custom_formats = {".py": ["jupytext.reads", {"fmt": "py:percent"}]}
+# nb_custom_formats = {".py": ["jupytext.reads", {"fmt": "py:percent"}]}
 
 # https://myst-nb.readthedocs.io/en/latest/configuration.html#warning-suppression
 suppress_warnings = ["mystnb.unknown_mime_type"]

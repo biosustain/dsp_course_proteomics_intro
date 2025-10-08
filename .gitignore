@@ -31,3 +31,7 @@ work/
 # ipynb checkpoints
 .ipynb_checkpoints
 
+# Sphinx build files
+_build
+jupyter_execute
+
