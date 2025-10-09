@@ -24,8 +24,6 @@ exclude_patterns = [
     "data/PXD041301/*",  # leave it out for now
 ]
 
-html_theme = "pydata_sphinx_theme"
-
 #  https://myst-nb.readthedocs.io/en/latest/computation/execute.html
 nb_execution_mode = "auto"
 

@@ -29,6 +29,7 @@ data/fasta/README.md
 data/PXD040621/README.md
 data/PXD040621/mzML/README.md
 data/PXD040621/processed/README.md
+data/PXD040621/proteins/README.md
 ```
 
 ```{toctree}
