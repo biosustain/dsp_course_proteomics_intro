@@ -51,8 +51,6 @@ workflow NFCORE_PROTEOMICSANALYSIS {
     //
     PROTEOMICSANALYSIS (
     )
-    emit:
-    multiqc_report = PROTEOMICSANALYSIS.out.multiqc_report // channel: /path/to/multiqc_report.html
 }
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,7 +89,7 @@ workflow {
         params.outdir,
         params.monochrome_logs,
         params.hook_url,
-        NFCORE_PROTEOMICSANALYSIS.out.multiqc_report
+    //     NFCORE_PROTEOMICSANALYSIS.out.multiqc_report
     )
 }
 
