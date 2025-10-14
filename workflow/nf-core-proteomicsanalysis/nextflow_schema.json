@@ -19,6 +19,11 @@
                     "description": "Path to folder with results to be added to the report.",
                     "fa_icon": "fas fa-folder-open"
                 },
+                "report_type": {
+                    "type": "string",
+                    "description": "Which report type to generate",
+                    "default": "html"
+                },
                 "outdir": {
                     "type": "string",
                     "format": "directory-path",

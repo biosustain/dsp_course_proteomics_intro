@@ -39,7 +39,7 @@ workflow PROTEOMICSANALYSIS {
     // Collate and save software versions
     //
     report_type_ch = Channel.value(params.report_type)
-    input_directory_ch = Channel.value(params.input_directory)
+    input_directory_ch = Channel.value(params.input)
     input_type_ch = Channel.value('directory')
     VUEGEN(
         input_type_ch,    
