@@ -25,7 +25,7 @@ workflow PROTEOMICSANALYSIS {
     main:
 
     ch_versions = Channel.empty()
-    // ch_multiqc_files = Channel.empty()
+    ch_multiqc_files = Channel.empty()
     
     // MODULE: Run FastQC
     

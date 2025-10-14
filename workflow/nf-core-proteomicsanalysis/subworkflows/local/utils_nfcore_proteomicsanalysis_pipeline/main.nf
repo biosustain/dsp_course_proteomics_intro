@@ -31,7 +31,7 @@ workflow PIPELINE_INITIALISATION {
     monochrome_logs   // boolean: Do not use coloured log outputs
     nextflow_cli_args //   array: List of positional nextflow CLI args
     outdir            //  string: The output directory where the results will be saved
-    input             //  string: Path to input samplesheet
+    input             //  string: Path to input directory
 
     main:
 
@@ -73,27 +73,28 @@ workflow PIPELINE_INITIALISATION {
     //
 
     Channel
-        .fromList(samplesheetToList(params.input, "${projectDir}/assets/schema_input.json"))
-        .map {
-            meta, fastq_1, fastq_2 ->
-                if (!fastq_2) {
-                    return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
-                } else {
-                    return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
-                }
-        }
-        .groupTuple()
-        .map { samplesheet ->
-            validateInputSamplesheet(samplesheet)
-        }
-        .map {
-            meta, fastqs ->
-                return [ meta, fastqs.flatten() ]
-        }
-        .set { ch_samplesheet }
+        // .fromList(samplesheetToList(params.input, "${projectDir}/assets/schema_input.json"))
+        // .map {
+        //     meta, fastq_1, fastq_2 ->
+        //         if (!fastq_2) {
+        //             return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
+        //         } else {
+        //             return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
+        //         }
+        // }
+        // .groupTuple()
+        // .map { samplesheet ->
+        //     validateInputSamplesheet(samplesheet)
+        // }
+        // .map {
+        //     meta, fastqs ->
+        //         return [ meta, fastqs.flatten() ]
+        // }
+        .value(params.input)
+        .set { dir_input }
 
     emit:
-    samplesheet = ch_samplesheet
+    dir_input = dir_input
     versions    = ch_versions
 }
 
@@ -154,7 +155,7 @@ workflow PIPELINE_COMPLETION {
 // Check and validate pipeline parameters
 //
 def validateInputParameters() {
-    genomeExistsError()
+    // genomeExistsError()
 }
 
 //
@@ -174,28 +175,28 @@ def validateInputSamplesheet(input) {
 //
 // Get attribute from genome config file e.g. fasta
 //
-def getGenomeAttribute(attribute) {
-    if (params.genomes && params.genome && params.genomes.containsKey(params.genome)) {
-        if (params.genomes[ params.genome ].containsKey(attribute)) {
-            return params.genomes[ params.genome ][ attribute ]
-        }
-    }
-    return null
-}
+// def getGenomeAttribute(attribute) {
+//     if (params.genomes && params.genome && params.genomes.containsKey(params.genome)) {
+//         if (params.genomes[ params.genome ].containsKey(attribute)) {
+//             return params.genomes[ params.genome ][ attribute ]
+//         }
+//     }
+//     return null
+// }
 
 //
 // Exit pipeline if incorrect --genome key provided
 //
-def genomeExistsError() {
-    if (params.genomes && params.genome && !params.genomes.containsKey(params.genome)) {
-        def error_string = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
-            "  Genome '${params.genome}' not found in any config files provided to the pipeline.\n" +
-            "  Currently, the available genome keys are:\n" +
-            "  ${params.genomes.keySet().join(", ")}\n" +
-            "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-        error(error_string)
-    }
-}
+// def genomeExistsError() {
+//     if (params.genomes && params.genome && !params.genomes.containsKey(params.genome)) {
+//         def error_string = "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" +
+//             "  Genome '${params.genome}' not found in any config files provided to the pipeline.\n" +
+//             "  Currently, the available genome keys are:\n" +
+//             "  ${params.genomes.keySet().join(", ")}\n" +
+//             "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+//         error(error_string)
+//     }
+// }
 //
 // Generate methods description for MultiQC
 //

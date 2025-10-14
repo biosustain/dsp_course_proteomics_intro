@@ -18,7 +18,7 @@
 include { PROTEOMICSANALYSIS  } from './workflows/proteomicsanalysis'
 include { PIPELINE_INITIALISATION } from './subworkflows/local/utils_nfcore_proteomicsanalysis_pipeline'
 include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_proteomicsanalysis_pipeline'
-include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_proteomicsanalysis_pipeline'
+// include { getGenomeAttribute      } from './subworkflows/local/utils_nfcore_proteomicsanalysis_pipeline'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -79,7 +79,7 @@ workflow {
     // WORKFLOW: Run main workflow
     //
     NFCORE_PROTEOMICSANALYSIS (
-        PIPELINE_INITIALISATION.out.samplesheet
+        // PIPELINE_INITIALISATION.out.dir_input
     )
     //
     // SUBWORKFLOW: Run completion tasks
