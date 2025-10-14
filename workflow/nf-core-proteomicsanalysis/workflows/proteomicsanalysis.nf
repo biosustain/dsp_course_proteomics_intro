@@ -11,6 +11,7 @@ include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pi
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_proteomicsanalysis_pipeline'
 
 include { VUEGEN } from '../modules/nf-core/vuegen/main'   
+include { ACORE } from '../modules/local/acore/main'
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     RUN MAIN WORKFLOW
@@ -26,25 +27,33 @@ workflow PROTEOMICSANALYSIS {
 
     ch_versions = Channel.empty()
     
-    // MODULE: Run FastQC
+    // MODULE: Run Analysis notebook to generate result folder
     
     // FASTQC (
     //     ch_samplesheet
     // )
     // ch_multiqc_files = ch_multiqc_files.mix(FASTQC.out.zip.collect{it[1]})
     // ch_versions = ch_versions.mix(FASTQC.out.versions.first())
+    input_csv_ch = Channel.value(params.input_csv)
+    nb_ch = Channel.value(params.nb)
 
-    //
-    // Collate and save software versions
-    //
+    ACORE(
+        input_csv_ch,
+        nb_ch
+    )
+
     report_type_ch = Channel.value(params.report_type)
     input_directory_ch = Channel.value(params.input)
     input_type_ch = Channel.value('directory')
+
     VUEGEN(
         input_type_ch,    
         input_directory_ch,
         report_type_ch,
     )
+    //
+    // Collate and save software versions
+    //
     ch_versions = ch_versions.mix(VUEGEN.out.versions.first())
     softwareVersionsToYAML(ch_versions)
         .collectFile(
