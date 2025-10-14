@@ -1,0 +1,106 @@
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##     nf-core/proteomicsanalysis 1.0.0dev
+## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+##     This is an example parameter file to pass to the `-params-file` option
+##     of nextflow run with the nf-core/proteomicsanalysis pipeline.
+##      
+##     Uncomment lines with a single '#' if you want to pass the parameter to
+##     the pipeline.
+## -----------------------------------------------------------------------------
+
+## =============================================================================
+## Input/output options
+## =============================================================================
+## Define where the pipeline should find input data and save output data.
+
+## -----------------------------------------------------------------------------
+## input
+## -----------------------------------------------------------------------------
+##     Path to comma-separated file containing information about the samples
+##     in the experiment.
+##     Type: string
+##     Required
+## -----------------------------------------------------------------------------
+# input: null
+
+## -----------------------------------------------------------------------------
+## outdir
+## -----------------------------------------------------------------------------
+##     The output directory where the results will be saved. You have to use
+##     absolute paths to storage on Cloud infrastructure.
+##     Type: string
+##     Required
+## -----------------------------------------------------------------------------
+# outdir: null
+
+## -----------------------------------------------------------------------------
+## email
+## -----------------------------------------------------------------------------
+##     Email address for completion summary.
+##     Type: string
+## -----------------------------------------------------------------------------
+# email: null
+
+## -----------------------------------------------------------------------------
+## multiqc_title
+## -----------------------------------------------------------------------------
+##     MultiQC report title. Printed as page header, used for filename if not
+##     otherwise specified.
+##     Type: string
+## -----------------------------------------------------------------------------
+# multiqc_title: null
+
+
+## =============================================================================
+## Reference genome options
+## =============================================================================
+## Reference genome related files and options required for the workflow.
+
+## (2 hidden parameters are not shown)
+
+
+## -----------------------------------------------------------------------------
+## genome
+## -----------------------------------------------------------------------------
+##     Name of iGenomes reference.
+##     Type: string
+## -----------------------------------------------------------------------------
+# genome: null
+
+## -----------------------------------------------------------------------------
+## fasta
+## -----------------------------------------------------------------------------
+##     Path to FASTA genome file.
+##     Type: string
+## -----------------------------------------------------------------------------
+# fasta: null
+
+
+## =============================================================================
+## Institutional config options
+## =============================================================================
+## Parameters used to describe centralised config profiles. These should not
+## be edited.
+
+## (6 hidden parameters are not shown)
+
+
+
+## =============================================================================
+## Generic options
+## =============================================================================
+## Less common options for the pipeline, typically set in a config file.
+
+## (12 hidden parameters are not shown)
+
+
+## -----------------------------------------------------------------------------
+## multiqc_methods_description
+## -----------------------------------------------------------------------------
+##     Custom MultiQC yaml file containing HTML including a methods
+##     description.
+##     Type: string
+## -----------------------------------------------------------------------------
+# multiqc_methods_description: null
+
+
