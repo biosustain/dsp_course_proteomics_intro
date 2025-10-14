@@ -7,4 +7,13 @@ dependencies:
   # TODO nf-core: List required Conda package(s).
   #               Software MUST be pinned to channel (i.e. "bioconda"), version (i.e. "1.10").
   #               For Conda, the build (i.e. "h9402c20_2") must be EXCLUDED to support installation on different operating systems.
-  - "bioconda::vuegen=0.5.1"
+  # - "bioconda::vuegen=0.5.1"
+  - pandas=2.3.3
+  - seaborn=0.13.2
+  - numpy<2.1.0
+  - matplotlib=3.10.6
+  - papermill=2.6.0
+  - ipykernel=7.0.0
+  - pip:
+      - acore==0.2.0
+      - vuecore==0.1.1
