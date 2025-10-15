@@ -43,12 +43,11 @@ workflow PROTEOMICSANALYSIS {
     )
 
     report_type_ch = Channel.value(params.report_type)
-    input_directory_ch = Channel.value(params.input)
-    input_type_ch = Channel.value('directory')
+    input_type_ch = Channel.value(params.input_type) // 'directory', 'config', etc.
 
     VUEGEN(
         input_type_ch,    
-        input_directory_ch,
+        ACORE.out.report_files, // Use the results folder created by Acore module
         report_type_ch,
     )
     //

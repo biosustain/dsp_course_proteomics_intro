@@ -10,15 +10,8 @@
             "type": "object",
             "fa_icon": "fas fa-terminal",
             "description": "Define where the pipeline should find input data and save output data.",
-            "required": ["input", "outdir"],
+            "required": ["outdir", "input_csv"],
             "properties": {
-                "input": {
-                    "type": "string",
-                    "format": "directory-path",
-                    "exists": true,
-                    "description": "Path to folder with results to be added to the report.",
-                    "fa_icon": "fas fa-folder-open"
-                },
                 "report_type": {
                     "type": "string",
                     "description": "Which report type to generate",
@@ -41,6 +34,24 @@
                     "type": "string",
                     "description": "MultiQC report title. Printed as page header, used for filename if not otherwise specified.",
                     "fa_icon": "fas fa-file-signature"
+                },
+                "input_csv": {
+                    "type": "string",
+                    "description": "The output csv of quantified peptides from quantms",
+                    "pattern": "^\\S+\\.csv$",
+                    "format": "file-path",
+                    "mimetype": "text/csv"
+                },
+                "nb": {
+                    "type": "string",
+                    "default": "assets/2_data_analysis.ipynb",
+                    "description": "The Analysis notebook (as script to generate report files using in VueGen)"
+                },
+                "input_type": {
+                    "type": "string",
+                    "default": "directory",
+                    "description": "Vuegen can use directory of configfiles. Here it is fixed to directory for now",
+                    "hidden": true
                 }
             }
         },
