@@ -7,7 +7,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.17.2
+#       jupytext_version: 1.17.3
 #   kernelspec:
 #     display_name: Python 3 (ipykernel)
 #     language: python
@@ -55,7 +55,9 @@ from vuecore.viz import get_enrichment_plots
 # The file will be loaded from the repository if it is not present.
 
 # %% tags=["parameters"]
-file_in = Path("data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv")
+file_in: str = Path("data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv")
+
+# %%
 if not file_in.exists():
     file_in = (
         "https://raw.githubusercontent.com/biosustain/dsp_course_proteomics_intro/HEAD"
@@ -150,6 +152,7 @@ meta = df[["Condition", "BioReplicate", "Run", "Reference"]].drop_duplicates()
 meta
 
 # %%
+# ToDO make more generic
 label_encoding = {0: "control", 1: "10 µm sulforaphane"}
 label_suf = pd.Series(
     proteins.index.str.contains("Suf_").astype(int),
