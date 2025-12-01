@@ -364,6 +364,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-software">Additional software</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-checks">Regular checks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-update">How to update</a></li>
 </ul>
             </nav>
@@ -378,17 +380,48 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="container-info">
 <h1>Container info<a class="headerlink" href="#container-info" title="Link to this heading">#</a></h1>
-<p>Copy of the
+<p>The devcontainer used in this project is based on the one used for nf-core training on
+nextflow, which you can find in the
 <a class="reference external" href="https://github.com/nextflow-io/training/tree/master/.devcontainer" rel="noreferrer" target="_blank">Nextflow training</a>
-<code class="docutils literal notranslate"><span class="pre">.devcontainer</span></code> directory.</p>
-<p>Uses the
+<code class="docutils literal notranslate"><span class="pre">.devcontainer</span></code> directory. Their latest version can be different from the currently used
+one in this project, so if things break, have a look there.</p>
+<p>The devcontainer uses the
 <a class="reference external" href="https://github.com/nextflow-io/training/pkgs/container/training" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">nextflow-io/training</span></code> container</a>
-from GitHub Container Registry.</p>
+from GitHub Container Registry, as provided by the nextflow team. I copied the
+<a class="reference external" href="https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/Dockerfile" rel="noreferrer" target="_blank">Dockerfile</a>
+which was used to build the container image <code class="docutils literal notranslate"><span class="pre">2.1.7</span></code> for reference of what the container contains.</p>
+<p>The Dockerimage is published based on a devcontainer configuration file in the nextflow training repo,
+<a class="reference external" href="https://github.com/nextflow-io/training/blob/master/.devcontainer/codespaces-dev/devcontainer.json" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">.devcontainer/codespaces-dev/devcontainer.json</span></code></a>
+and then published to the GitHub Container Registry using an action.</p>
+<section id="additional-software">
+<h2>Additional software<a class="headerlink" href="#additional-software" title="Link to this heading">#</a></h2>
+<p>Using an
+<a class="reference external" href="https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/setup.sh" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">setup.sh</span></code> script</a>
+which is linked to the <code class="docutils literal notranslate"><span class="pre">.devcontainer.json</span></code> file,
+additional software is installed in the container. This includes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">gdown</span></code> for downloading on devcontainer startup the relevant <code class="docutils literal notranslate"><span class="pre">mzML</span></code> files from a private Google Drive folder (:warning: to be changed!)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">acore</span></code> and <code class="docutils literal notranslate"><span class="pre">vuecore</span></code> to run the analysis notebook for the downstream data analysis</p></li>
+<li><p>set’s up conda so the notebook kernel is recognized by VSCode</p></li>
+</ul>
+</section>
+<section id="regular-checks">
+<h2>Regular checks<a class="headerlink" href="#regular-checks" title="Link to this heading">#</a></h2>
+<p>Once a month I check that the website builds, including execution of the downstream analysis notebook
+<a class="reference internal" href="../2_data_analysis.html"><span class="std std-doc">2_data_analysis.ipynb</span></a>.</p>
+<p>That the devcontainer is working is not yet automatically checked, but means manually running one.</p>
+</section>
 <section id="how-to-update">
 <h2>How to update<a class="headerlink" href="#how-to-update" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>check for changes in <code class="docutils literal notranslate"><span class="pre">nextflow-io/training</span></code> repo and
-then set a new image tag in <code class="docutils literal notranslate"><span class="pre">.devcontainer.json</span></code> file</p></li>
+<li><p>check for changes in
+<a class="reference external" href="https://github.com/nextflow-io/training/tree/master/.devcontainer" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">nextflow-io/training</span></code></a>
+repo and then set a new image tag in
+<a class="reference external" href="https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/devcontainer.json" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">.devcontainer.json</span></code></a>
+file</p></li>
+<li><p>update the
+<a class="reference external" href="https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/setup.sh" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">setup.sh</span></code> script</a>
+script if needed, e.g. to install new software or new data sources</p></li>
 </ul>
 </section>
 </section>
@@ -429,6 +462,8 @@ then set a new image tag in <code class="docutils literal notranslate"><span cla
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-software">Additional software</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-checks">Regular checks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-update">How to update</a></li>
 </ul>
   </nav></div>
