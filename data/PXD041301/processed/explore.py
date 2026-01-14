@@ -2,6 +2,7 @@
 # # Explore processed data for PXD041301
 
 import matplotlib.pyplot as plt
+
 # %%
 import pandas as pd
 
@@ -30,18 +31,20 @@ cols = [
 ]
 
 # %%
-df['Condition'].unique()
+df["Condition"].unique()
 
 # %%
-proteins = df.groupby(["ProteinName", "Condition", "BioReplicate"])["Intensity"].median().unstack(
-    level=0
+proteins = (
+    df.groupby(["ProteinName", "Condition", "BioReplicate"])["Intensity"]
+    .median()
+    .unstack(level=0)
 )
 proteins
 
 # %%
 proteins.columns = proteins.columns.str.split("_").str[0].str.split("|").str[-1]
-proteins['BioRep'] = proteins.groupby("Condition").cumcount() + 1
-proteins = proteins.reset_index(level=1,drop=True).set_index('BioRep', append=True)
+proteins["BioRep"] = proteins.groupby("Condition").cumcount() + 1
+proteins = proteins.reset_index(level=1, drop=True).set_index("BioRep", append=True)
 proteins
 
 # %%
