@@ -7,7 +7,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.17.2
+#       jupytext_version: 1.18.1
 #   kernelspec:
 #     display_name: Python 3 (ipykernel)
 #     language: python
@@ -55,7 +55,11 @@ from vuecore.viz import get_enrichment_plots
 # The file will be loaded from the repository if it is not present.
 
 # %% tags=["parameters"]
-file_in = Path("data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv")
+file_in: str = Path(
+    "data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv"
+)
+
+# %%
 if not file_in.exists():
     file_in = (
         "https://raw.githubusercontent.com/biosustain/dsp_course_proteomics_intro/HEAD"
@@ -101,17 +105,19 @@ df.head()
 
 # %% [markdown]
 # # Exploratory and Data Quality Plots (peptide level)
-# df["BioReplicate"] = df["BioReplicate"].replace({5: 1, 6: 2, 7: 3, 8: 4})
-# fg = sns.displot(
-#     data=df.rename(columns={"BioReplicate": "Rep", "Condition": "C."}),
-#     x="Intensity",
-#     col="C.",
-#     row="Rep",
-#     # hue="Reactor_ID",
-#     kind="kde",
-#     height=2,
-#     aspect=1.1,
-# )
+
+# %%
+df["BioReplicate"] = df["BioReplicate"].replace({5: 1, 6: 2, 7: 3, 8: 4})
+fg = sns.displot(
+    data=df.rename(columns={"BioReplicate": "Rep", "Condition": "C."}),
+    x="Intensity",
+    col="C.",
+    row="Rep",
+    # hue="Reactor_ID",
+    kind="kde",
+    height=2,
+    aspect=1.1,
+)
 
 # %% [markdown]
 # # Aggregate the peptide intensities to protein intensities
@@ -150,6 +156,7 @@ meta = df[["Condition", "BioReplicate", "Run", "Reference"]].drop_duplicates()
 meta
 
 # %%
+# ToDO make more generic
 label_encoding = {0: "control", 1: "10 µm sulforaphane"}
 label_suf = pd.Series(
     proteins.index.str.contains("Suf_").astype(int),
@@ -281,7 +288,7 @@ fig.savefig(
 )
 
 # %% [markdown]
-# ## Analytical Plots
+# # Analytical Plots
 # - data distribution (e.g. histogram)
 # - coefficient of variation (CV)
 # - number of identified proteins per sample
@@ -328,7 +335,7 @@ fname = "cv_vs_mean"
 fig
 
 # %% [markdown]
-# ## Hierarchical Clustering of normalized data
+# # Hierarchical Clustering of normalized data
 # - using completely observed data only
 # Checkout the [recipe on normalization methods](https://analytics-core.readthedocs.io/latest/api_examples/normalization_analysis.html).
 
@@ -380,7 +387,7 @@ out_dir_subsection = out_dir / "2_differential_regulation"
 out_dir_subsection.mkdir(parents=True, exist_ok=True)
 
 # %% [markdown]
-# ## Retain all proteins with at least 3 observations in each group
+# Retain all proteins with at least 3 observations in each group
 # - this is a requirement for a standard t-test
 # - you could look into imputation methods to fill in missing values)
 #   - protein in at least two samples per group?
@@ -524,10 +531,10 @@ out_dir_subsection = out_dir / "3_maltose_uptake"
 out_dir_subsection.mkdir(parents=True, exist_ok=True)
 
 # %% [markdown]
-# apply filtering of 'differentially abundant proteins' as described in the paper
+# Apply filtering of 'differentially abundant proteins' as described in the paper
 # > Differentially abundant proteins were determined as those with log2 fold-change
 # > > 1 and < -1, and p < 0.05
-# This means not multiple testing correction was applied.
+# This means no multiple testing correction was applied.
 
 # %%
 view = diff_reg.query("pvalue < 0.05 and FC > 1")  # .shape[0]
