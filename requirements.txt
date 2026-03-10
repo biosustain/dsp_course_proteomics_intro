@@ -3,3 +3,4 @@ acore
 vuecore
 vuegen
 directlfq
+pingouin<0.6.0
