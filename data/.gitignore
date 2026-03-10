@@ -1,3 +1,5 @@
 *.json
 *.txt
 *.html
+*.png
+report/

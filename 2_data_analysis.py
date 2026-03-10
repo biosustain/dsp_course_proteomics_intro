@@ -29,7 +29,7 @@
 # - check for maltose update pathway (Fig. 3 in paper)
 
 # %% tags=["hide-output"]
-# %pip install acore vuecore
+# %pip install acore vuecore "pingouin<0.6.0"
 
 # %%
 from pathlib import Path
