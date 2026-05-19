@@ -11,11 +11,15 @@ for the downstream analysis.
 
 | Time          | Topic                                                 | lecturer        |
 | ------------- | ----------------------------------------------------- | --------------- |
-| 8.30 - 10.00  | Introduction with overview of all the components      | Marco Reverenna |
-| 10.30 - 12.00 | Steps in data processing and running quantms hands-on | Henry Webel     |
-| 12.00 - 13.00 | Lunch (sandwiches are provided)                       | -               |
+| 09.00 - 11.00 | Introduction with overview of all the components      | Marco Reverenna |
+| 11.00 - 11.15 | break                                                 | -               |
+| 11.15 - 12.15 | Steps in data processing and running quantms hands-on | Henry Webel     |
+| 12.15 - 13.00 | Lunch (sandwiches are provided)                       | -               |
 | 13.00 - 14.30 | Steps in statistical analysis (lecture )              | Alberto Santos  |
+| 14.30 - 15.00 | break                                                 | -               |
 | 15.00 - 16.30 | Steps in statistical analysis (Hands-On)              | Henry Webel     |
+
+> Each 90mins session will have a small break of 5mins inbetween.
 
 ### Some details to the agenda points
 
