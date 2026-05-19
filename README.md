@@ -23,11 +23,11 @@ for the downstream analysis.
 
 ### Some details to the agenda points
 
-#### 8.30-10.00 - introduction
+#### 09.00 - 11.00 - Introduction
 
 See the slides for introduction [here](material/slides/introduction.pdf).
 
-#### 10.30-12.00 - data processing and hands-on quantms
+#### 11.15 - 12.15 - data processing and hands-on quantms
 
 Find the instruction [here](material/instructions_quantms_PXD04621.md) and the slides [here](material/slides/quantms_and_data_analysis.pdf)
 
