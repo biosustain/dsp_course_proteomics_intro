@@ -7,11 +7,16 @@ where we will perform the basic processing steps using
 [acore, short for analytical core](https://analytics-core.readthedocs.io/latest/)
 for the downstream analysis.
 
+## Location
+
+Room `011/ALC2` in building `208` at DTU.
+
 ## Agenda
 
 | Time          | Topic                                                 | lecturer        |
 | ------------- | ----------------------------------------------------- | --------------- |
-| 09.00 - 11.00 | Introduction with overview of all the components      | Marco Reverenna |
+| 09.00 - 09:10 | Welcome, coffee, and setup                            | -               |
+| 09:10 - 11.00 | Introduction with overview of all the components      | Marco Reverenna |
 | 11.00 - 11.15 | break                                                 | -               |
 | 11.15 - 12.15 | Steps in data processing and running quantms hands-on | Henry Webel     |
 | 12.15 - 13.00 | Lunch (sandwiches are provided)                       | -               |
@@ -23,7 +28,7 @@ for the downstream analysis.
 
 ### Some details to the agenda points
 
-#### 09.00 - 11.00 - Introduction
+#### 09.10 - 11.00 - Introduction
 
 See the slides for introduction [here](material/slides/introduction.pdf).
 
