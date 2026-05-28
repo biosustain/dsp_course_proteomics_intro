@@ -4,7 +4,8 @@ FROM ghcr.io/nextflow-io/training:3.5
 # Default shell for following RUN steps
 SHELL ["/bin/bash", "-lc"]
 
-RUN conda init
+RUN conda init bash
 
-RUN conda activate base && \
+RUN source /opt/conda/etc/profile.d/conda.sh && \
+    conda activate base && \
     pip install --no-cache-dir -r requirements.txt
