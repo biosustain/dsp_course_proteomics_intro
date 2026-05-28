@@ -30,9 +30,9 @@ python 0_download_PXD040621_data.py
 ## Run the analysis
 
 ```bash
-# export NXF_VER=24.10.6
+# export NXF_VER=25.10.4
 nextflow run bigbio/quantms \
-         -revision 1.5.0 \
+         -revision 1.7.0 \
          -params-file PXD040621_w_contaminants-params.yaml \
          -profile docker \
          -resume
@@ -41,9 +41,9 @@ nextflow run bigbio/quantms \
 If you run **locally on a Mac with Apple Silicion (M-ships)**, you need to addtionally the `arm` profile:
 
 ```bash
-# export NXF_VER=24.10.6
+# export NXF_VER=25.10.4
 nextflow run bigbio/quantms \
-         -revision 1.5.0 \
+         -revision 1.7.0 \
          -params-file PXD040621_w_contaminants-params.yaml \
          -profile docker,arm \
          -resume
