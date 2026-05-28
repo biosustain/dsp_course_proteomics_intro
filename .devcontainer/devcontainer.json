@@ -1,7 +1,8 @@
 //
-// MAIN PRODUCTION DEVCONTAINER CONFIG
+// MAIN PRODUCTION DEVCONTAINER CONFIG for Seqera trainings
 // Uses image that is pre-built and pushed to GitHub
 // See .github/.devcontainer/devcontainer.json for build
+// Augmented using Dockerfile.
 //
 {
   "name": "nextflow-training",
@@ -12,10 +13,11 @@
     // Nextflow installation version
     "NXF_HOME": "/workspaces/.nextflow",
     "NXF_EDGE": "0",
-    "NXF_VER": "24.10.6",
+    "NXF_VER": "25.10.4",
+    // "NXF_SYNTAX_PARSER": "v2",
     // Other env vars
     "HOST_PROJECT_PATH": "/workspaces/dsp_course_proteomics_intro",
-    "SHELL": "/bin/bash" // Ush bash
+    "SHELL": "/bin/bash" // Use bash
   },
   "onCreateCommand": "bash .devcontainer/setup.sh",
   "customizations": {
