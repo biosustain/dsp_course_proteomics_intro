@@ -8,6 +8,8 @@ COPY requirements.txt requirements_docs.txt /tmp/
 
 RUN conda init bash
 
+RUN apt update && apt install -y azcopy
+
 RUN source /opt/conda/etc/profile.d/conda.sh && \
     conda activate base && \
     pip install --no-cache-dir -r /tmp/requirements.txt
