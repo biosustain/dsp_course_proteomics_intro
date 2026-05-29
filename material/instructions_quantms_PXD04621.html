@@ -354,7 +354,12 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-github-codespace">Open GitHub codespace</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-open-in-codespace">Option 1: Open in Codespace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-git-lfs">Option 2: Git LFS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-onedrive-options">Option 3: OneDrive Options</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-analysis">Run the analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-files-for-further-analysis">Copy files for further analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up-unused-docker-images">Clean up unused docker images</a><ul class="nav section-nav flex-column">
@@ -390,6 +395,26 @@ If you do it manually, make sure to select the bigger machine with 4 cores and 1
 </section>
 <section id="download-the-data">
 <h2>Download the data<a class="headerlink" href="#download-the-data" title="Link to this heading">#</a></h2>
+<section id="option-1-open-in-codespace">
+<h3>Option 1: Open in Codespace<a class="headerlink" href="#option-1-open-in-codespace" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Will only work during the course. You do not to do anything.</p>
+</div></blockquote>
+<p>We are using a setup script in <code class="docutils literal notranslate"><span class="pre">.devcontainer/setup.sh</span></code> to download the data from
+Azure Blob Storage using <a class="reference external" href="https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10" rel="noreferrer" target="_blank">azcopy</a>.
+Access to the data is restricted during the time of the course only.</p>
+</section>
+<section id="option-2-git-lfs">
+<h3>Option 2: Git LFS<a class="headerlink" href="#option-2-git-lfs" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>Could be added to git LFS storage via GitHub, but the billing is uncertain.</p>
+</div></blockquote>
+</section>
+<section id="option-3-onedrive-options">
+<h3>Option 3: OneDrive Options<a class="headerlink" href="#option-3-onedrive-options" title="Link to this heading">#</a></h3>
+<blockquote>
+<div><p>If you want to run it outside of the setting of this course</p>
+</div></blockquote>
 <p>Currently the data is stored on a
 <a class="reference external" href="https://drive.google.com/drive/folders/1gxUh9nMx9icFLrI0vn3zAB9dDjZf-1Nh" rel="noreferrer" target="_blank">Google Drive folder</a>.
 It should be downloaded when you run the tutorial in a GitHub codespace automatically.</p>
@@ -402,20 +427,21 @@ python<span class="w"> </span>0_download_PXD040621_data.py
 </pre></div>
 </div>
 </section>
+</section>
 <section id="run-the-analysis">
 <h2>Run the analysis<a class="headerlink" href="#run-the-analysis" title="Link to this heading">#</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># export NXF_VER=24.10.6</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># export NXF_VER=25.10.4</span>
 nextflow<span class="w"> </span>run<span class="w"> </span>bigbio/quantms<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-revision<span class="w"> </span><span class="m">1</span>.5.0<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>-revision<span class="w"> </span><span class="m">1</span>.7.0<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-params-file<span class="w"> </span>PXD040621_w_contaminants-params.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-profile<span class="w"> </span>docker<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-resume
 </pre></div>
 </div>
 <p>If you run <strong>locally on a Mac with Apple Silicion (M-ships)</strong>, you need to addtionally the <code class="docutils literal notranslate"><span class="pre">arm</span></code> profile:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># export NXF_VER=24.10.6</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># export NXF_VER=25.10.4</span>
 nextflow<span class="w"> </span>run<span class="w"> </span>bigbio/quantms<span class="w"> </span><span class="se">\</span>
-<span class="w">         </span>-revision<span class="w"> </span><span class="m">1</span>.5.0<span class="w"> </span><span class="se">\</span>
+<span class="w">         </span>-revision<span class="w"> </span><span class="m">1</span>.7.0<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-params-file<span class="w"> </span>PXD040621_w_contaminants-params.yaml<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-profile<span class="w"> </span>docker,arm<span class="w"> </span><span class="se">\</span>
 <span class="w">         </span>-resume
@@ -524,7 +550,12 @@ not tested in codespace and probably too big for the codespace storage</p>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-github-codespace">Open GitHub codespace</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-the-data">Download the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-1-open-in-codespace">Option 1: Open in Codespace</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-2-git-lfs">Option 2: Git LFS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-3-onedrive-options">Option 3: OneDrive Options</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-the-analysis">Run the analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#copy-files-for-further-analysis">Copy files for further analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-up-unused-docker-images">Clean up unused docker images</a><ul class="nav section-nav flex-column">
