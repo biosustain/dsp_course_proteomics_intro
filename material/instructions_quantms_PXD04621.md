@@ -65,6 +65,63 @@ nextflow run bigbio/quantms \
          -resume
 ```
 
+After 25 to 35mins you should see the following steps to be executed in the terminal:
+
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- This file was created with the aha Ansi HTML Adapter. https://github.com/theZiz/aha -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xml+xhtml; charset=UTF-8"/>
+<title>stdin</title>
+</head>
+<body>
+<pre>
+
+ N E X T F L O W   ~  version 25.10.4
+
+Launching `https://github.com/bigbio/quantms` [sleepy_celsius] DSL2 - revision: e719f43a9f [1.7.0]
+
+[97/ee0b14] BIGBIO_QUANTMS:QUANTMS:INPUT_CHECK:SAMPLESHEET_CHECK (PXD040621.sdrf.tsv)                                  [100%] 1 of 1 ✔
+[fb/4dfc8c] BIGBIO_QUANTMS:QUANTMS:CREATE_INPUT_CHANNEL:SDRF_PARSING (PXD040621.sdrf.tsv)                              [100%] 1 of 1 ✔
+[-        ] BIGBIO_QUANTMS:QUANTMS:FILE_PREPARATION:DECOMPRESS                                                         -
+[15/199cc7] BIGBIO_QUANTMS:QUANTMS:FILE_PREPARATION:MZML_INDEXING (20220830_JL-4884_Forster_Ecoli_Suf_rep3_EG-7)       [100%] 8 of 8 ✔
+[-        ] BIGBIO_QUANTMS:QUANTMS:FILE_PREPARATION:THERMORAWFILEPARSER                                                -
+[2f/7c857b] BIGBIO_QUANTMS:QUANTMS:FILE_PREPARATION:MZML_STATISTICS (20220830_JL-4884_Forster_Ecoli_Suf_rep3_EG-7)     [100%] 8 of 8 ✔
+[22/cdd7b8] BIGBIO_QUANTMS:QUANTMS:GENERATE_DECOY_DATABASE (1)                                                         [100%] 1 of 1 ✔
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:ID:PEPTIDE_DATABASE_SEARCH:COMET                                                -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:ID:PSM_RESCORING:PERCOLATOR                                                     -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:ID:PSM_FDR_CONTROL:ID_FILTER                                                    -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:FEATURE_MAPPER:ISOBARIC_ANALYZER                                                -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:FEATURE_MAPPER:ID_MAPPER                                                        -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:FILE_MERGE                                                                      -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:PROTEIN_INFERENCE:PROTEIN_INFERENCE_GENERIC                                     -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:PROTEIN_INFERENCE:ID_FILTER                                                     -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:PROTEIN_QUANT:ID_CONFLICT_RESOLVER                                              -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:PROTEIN_QUANT:PROTEIN_QUANTIFIER                                                -
+[-        ] BIGBIO_QUANTMS:QUANTMS:TMT:PROTEIN_QUANT:MSSTATS_CONVERTER                                                 -
+[ee/ed8ddd] BIGBIO_QUANTMS:QUANTMS:LFQ:ID:PEPTIDE_DATABASE_SEARCH:COMET (20220830_JL-4884_Forster_Ecoli_Suf_rep2_EG-6) [100%] 8 of 8 ✔
+[a8/33e8de] BIGBIO_QUANTMS:QUANTMS:LFQ:ID:PSM_RESCORING:PERCOLATOR (20220830_JL-4884_Forster_Ecoli_Suf_rep4_EG-8)      [100%] 8 of 8 ✔
+[12/197e9e] BIGBIO_QUANTMS:QUANTMS:LFQ:ID:PSM_FDR_CONTROL:ID_FILTER (20220830_JL-4884_Forster_Ecoli_Suf_rep2_EG-6)     [100%] 8 of 8 ✔
+[71/513331] BIGBIO_QUANTMS:QUANTMS:LFQ:PROTEOMICSLFQ (PXD040621.sdrf_openms_design)                                    [100%] 1 of 1 ✔
+[3b/44e4b4] BIGBIO_QUANTMS:QUANTMS:SUMMARY_PIPELINE                                                                    [100%] 1 of 1 ✔
+Plus 7 more processes waiting for tasks…
+-[bigbio/quantms] Pipeline completed successfully-
+
+
+Completed at: 01-Jun-2026 12:47:20
+Duration    : 1m 56s
+CPU hours   : 1.9 (93.9% cached)
+Succeeded   : 1
+Cached      : 44
+
+
+</pre>
+</body>
+</html>
+
+
 ## Quality control of the analysis
 
 You can inspect the generated QC report (using pMulitQC which is an extension of MultiQC)
