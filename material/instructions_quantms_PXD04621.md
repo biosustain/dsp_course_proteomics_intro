@@ -17,7 +17,7 @@ Use the following link to open a GitHub codespace with most of the required soft
 
 > Will only work during the course. You do not to do anything.
 
-We are using a setup script in `.devcontainer/setup.sh` to download the data from 
+We are using a setup script in `.devcontainer/setup.sh` to download the data from
 Azure Blob Storage using [azcopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
 Access to the data is restricted during the time of the course only.
 
@@ -64,6 +64,15 @@ nextflow run bigbio/quantms \
          -profile docker,arm \
          -resume
 ```
+
+## Quality control of the analysis
+
+You can inspect the generated QC report (using pMulitQC which is an extension of MultiQC)
+in the `results/PXD040621/pmultiqc/` folder.
+
+Download a pre-created report and open it in your browser:
+
+- [pMultiQC report for quantms analysis of PXD04621 (v1.7.0)](./pmultiqc_report/multiqc_report_pmultiqc.html)
 
 ## Copy files for further analysis
 
