@@ -7,7 +7,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.18.1
+#       jupytext_version: 1.19.1
 #   kernelspec:
 #     display_name: Python 3 (ipykernel)
 #     language: python
@@ -294,8 +294,19 @@ fig.savefig(
 # - number of identified proteins per sample
 
 # %%
-# ToDo: bin width functionaity: bins should match between all plots (see pimms)
-ax = proteins.T.hist(layout=(2, 4), bins=20, sharex=True, sharey=True, figsize=(8, 4))
+min_int, max_int = int(proteins.min().min()), int(proteins.max().max())
+bins = range(min_int, max_int+1, 1)
+ax = proteins.T.hist(layout=(2, 4), bins=bins, sharex=True, sharey=True, figsize=(8, 4))
+
+# %%
+fig, ax = plt.subplots(figsize=(8, 4))
+proteins.T.boxplot(ax=ax)
+ax.set_xlabel("Sample ID")
+ax.set_ylabel("log2 intensity")
+ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
+fname = out_dir_subsection / "boxplot_log2_unnormalized.png"
+vuecore.savefig(fig, fname, pdf=True, dpi=600, tight_layout=False)
+print(f"Saved boxplot to {fname}")
 
 # %% [markdown]
 # # Coefficient of Variation (CV)
@@ -378,6 +389,11 @@ fig.savefig(
     bbox_inches="tight",
     dpi=300,
 )
+
+# %% [markdown]
+# Exercise: 
+# 1. Try out different normalization methods and see how the clustering changes.
+# 2. Maybe you want to combine a sample based with a protein based normalization method.
 
 # %% [markdown]
 # # Differential Regulation
@@ -465,6 +481,9 @@ diff_reg.to_csv(out_dir_subsection / "1_differential_regulation.csv")
 
 # %% [markdown]
 # # Enrichment Analysis
+#
+# - You can reload the annotations, but for latency, I added a cached version
+#   to the repository
 
 # %%
 out_dir_subsection = out_dir / "uniprot_annotations"
