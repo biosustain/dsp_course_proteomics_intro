@@ -315,19 +315,21 @@ fig.savefig(
 )
 
 # %% [markdown]
-# # Analytical Plots
-# - data distribution (e.g. histogram)
+# # Quality Control Plots (protein level)
+# - data distribution (histogram and boxplot) to identify drift
 # - coefficient of variation (CV)
 # - number of identified proteins per sample
 
-# %%
-_min_int, _max_int = proteins.min().min(), proteins.max().max()
-bins = range(int(_min_int), int(_max_int) + 1, 1)
-ax = proteins.T.hist(layout=(2, 4), bins=bins, sharex=True, sharey=True, figsize=(8, 4))
+# %% [markdown]
+# ## Data distribution (histogram)
 
+# %%
 min_int, max_int = int(proteins.min().min()), int(proteins.max().max())
 bins = range(min_int, max_int+1, 1)
 ax = proteins.T.hist(layout=(2, 4), bins=bins, sharex=True, sharey=True, figsize=(8, 4))
+
+# %% [markdown]
+# ## Data distribution (boxplot)
 
 # %%
 fig, ax = plt.subplots(figsize=(8, 4))
@@ -340,7 +342,7 @@ vuecore.savefig(fig, fname, pdf=True, dpi=600, tight_layout=False)
 print(f"Saved boxplot to {fname}")
 
 # %% [markdown]
-# # Coefficient of Variation (CV)
+# ## Coefficient of Variation (CV)
 # - CV = standard deviation / mean
 #   $$ CV = \frac{\sigma}{\mu} $$
 # - per group
@@ -396,7 +398,10 @@ fig
 # %% [markdown]
 # # Hierarchical Clustering of normalized data
 # - using completely observed data only
-# Checkout the [recipe on normalization methods](https://analytics-core.readthedocs.io/latest/api_examples/normalization_analysis.html).
+# Checkout the 
+# [recipe on normalization methods](https://analytics-core.readthedocs.io/latest/api_examples/normalization_analysis.html).
+#
+# Let's see the effect of normalization on the clustering.
 
 # %%
 normalization_method = "median"
@@ -617,7 +622,7 @@ enriched = acore.enrichment_analysis.run_up_down_regulation_enrichment(
     pval_col="padj",  # toggle if it does not work
     correction_alpha=0.2,  # adjust the p-value to see more or less results
 )
-enriched
+enriched.set_index('identifiers')
 
 # %% [markdown]
 # Plot the enrichment scores for the up- and down-regulated proteins separately.
@@ -657,7 +662,9 @@ view.to_csv(
     out_dir_subsection / "1_differently_regulated_as_in_paper.csv",
     index=False,
 )
-view
+view.set_index("identifier")[['pvalue', 'log2FC', 'padj', 'rejected', 'mean(group1)', 'mean(group2)',
+       'std(group1)', 'std(group2)',  'test', 'correction', 
+       'group1', 'group2', 'FC', '-log10 pvalue', 'Method']]
 
 # %% [markdown]
 # Let's find the proteins highlighted in the volcano plot in Figure 3 in the
@@ -678,10 +685,9 @@ view = diff_reg.query(f"`identifier`.str.contains('{highlighted_proteins}')")
 view = view.set_index("identifier").join(proteins_meta.set_index("ProteinName"))
 view.to_csv(
     out_dir_subsection / "2_highlighted_proteins_in_figure3.csv",
-    index=False,
+    index=True,
 )
 sel_cols = [
-    "identifier",
     "GeneName",
     "log2FC",
     "pvalue",
@@ -691,7 +697,7 @@ sel_cols = [
     "group2",
     "Method",
 ]
-view.reset_index()[sel_cols].sort_values("log2FC", ascending=False)
+view[sel_cols].sort_values("log2FC", ascending=False)
 
 # %% [markdown]
 # - See normalized data.
