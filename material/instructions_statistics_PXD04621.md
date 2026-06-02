@@ -69,7 +69,7 @@ A deployed version of the report can be accessed online at the following link:
 
 ### Download the VueGen HTML report
 
-- [html report](pmultiqc_report/multiqc_report_pmultiqc.html)
+- [html report](./streamlit_report/quarto_report_PXD04621.html)
 
 See instructions on [biosustain/dsp_course_proteomics_intro_report](https://github.com/biosustain/dsp_course_proteomics_intro_report).
 
