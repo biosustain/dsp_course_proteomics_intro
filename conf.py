@@ -22,6 +22,7 @@ exclude_patterns = [
     "*.py",
     ".pytest_cache",
     "data/PXD041301/*",  # leave it out for now
+    "material/streamlit_report/README.md"
 ]
 
 #  https://myst-nb.readthedocs.io/en/latest/computation/execute.html
