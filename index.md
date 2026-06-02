@@ -9,7 +9,7 @@
 
 material/instructions_quantms_PXD04621
 material/quantms_input_files
-data/README.md
+data/PXD040621/mzML/README.md
 ```
 
 ```{toctree}
@@ -19,17 +19,17 @@ data/README.md
 
 material/instructions_statistics_PXD04621
 2_data_analysis
+3_data_analysis_PXD070899.ipynb
 ```
 
 ```{toctree}
 :maxdepth: 2
 :caption: Datasets
 :hidden:
-data/fasta/README.md
+data/README.md
 data/PXD040621/README.md
-data/PXD040621/mzML/README.md
-data/PXD040621/processed/README.md
-data/PXD040621/proteins/README.md
+data/PXD041301/README.md
+data/PXD070899/README.md
 ```
 
 ```{toctree}

@@ -15,7 +15,7 @@
 # ---
 
 # %% [markdown]
-# # Data Analysis PXD070899
+# # Exercise: Data Analysis PXD070899
 #
 # Plan
 # - read data and log2 transform intensity values
@@ -128,7 +128,7 @@ label_suf = pd.Series(
 )
 label_suf
 # %% [markdown]
-# ## Homework
+# # Homework
 # Repeat the analysis based on the tutorial from the course.
 #
 # > Small adjustments are needed.

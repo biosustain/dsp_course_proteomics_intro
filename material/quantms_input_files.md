@@ -21,8 +21,10 @@ Example from PXD04621: [merged_ecoli_with_contaminants.fasta](../data/fasta/merg
 - contains the spectra which are compared to the protein sequences in the fasta file to
   identify the proteins (actually peptides) in the sample
 
-Example from PXD04621, see download instructions on the page
+For the example from PXD04621, see download instructions on the page
 ['QuantMS Hands-On for PXD04621'](instructions_quantms_PXD04621.md)
+
+An overview is provided in [mzML Readme](../data/PXD040621/mzML/README.md)
 
 ## QuantMS Parameters file
 
