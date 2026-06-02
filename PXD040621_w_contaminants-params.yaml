@@ -20,8 +20,20 @@ skip_post_msstats: true
 custom_config_base: https://raw.githubusercontent.com/nf-core/configs/master
 # minimum length of peptides
 min_peptide_length: 6
+# search engines
+search_engines: comet # comet,msgf,sage
+# protein quantification and aggregation settings
+protein_quant: unique_peptides
+min_peptides_per_protein: 1
+targeted_only: true
 alignment_order: star
 fdr_level: psm_level_fdrs
+lfq_seeding_algorithm: multiplex
+# pmultiqc settings
+enable_pmultiqc: true
+pmultiqc_idxml_skip: true
+skip_table_plots: false
+#
 msstatslfq_removeFewMeasurements: true
 plaintext_email: false
 luciphor_debug: 0
@@ -40,24 +52,20 @@ min_reporter_intensity: 0
 normalize: false
 skip_preliminary_analysis: false
 description_correct_features: 0
-decoy_string: DECOY_ 
+decoy_string: DECOY_
 variable_mods: Oxidation (M)
 fragment_mass_tolerance: 0.03
 msstatslfq_quant_summary_method: TMP
 skip_factor_validation: true
 psm_level_fdr_cutoff: 0.01
-skip_table_plots: false
 scan_window_automatic: true
 corr_diff: 1
-pmultiqc_idxml_skip: true
 version: false
 openms_peakpicking: false
 feature_without_id_min_score: 0.75
 msstatsiso_remove_norm_channel: true
 min_precursor_charge: 2
 consensusid_algorithm: best
-protein_quant: unique_peptides
-min_peptides_per_protein: 1
 validationSchemaIgnoreParams: genomes,igenomes_base
 precursor_isotope_deviation: 10
 num_hits: 1
@@ -90,7 +98,6 @@ run_fdr_cutoff: 0.1
 lfq_intensity_threshold: 1000
 protein_inference_debug: 0
 quantification_method: feature_intensity
-enable_pmultiqc: true
 use_shared_peptides: true
 sage_processes: 1
 help: false
@@ -100,7 +107,6 @@ train_FDR: 0.05
 skip_ms_validation: false
 export_mztab: true
 klammer: false
-search_engines: comet
 idfilter_debug: 0
 msstats_threshold: 0.05
 monochrome_logs: false
@@ -113,7 +119,6 @@ protocol: automatic
 skip_experimental_design_validation: false
 posterior_probabilities: percolator
 add_triqler_output: false
-targeted_only: true
 max_multiqc_email_size: 25.MB
 msstatsiso_useunique_peptide: true
 max_time: 10d
@@ -153,7 +158,7 @@ rescore_range: independent_run
 random_preanalysis_seed: 42
 calibration_set_size: 0.15
 quantify_decoys: false
-reference_channel: '126'
+reference_channel: "126"
 contrasts: pairwise
 idmapper_debug: 0
 ratios: false
