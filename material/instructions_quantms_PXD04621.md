@@ -17,7 +17,7 @@ Use the following link to open a GitHub codespace with most of the required soft
 
 > Will only work during the course. You do not to do anything.
 
-We are using a setup script in `.devcontainer/setup.sh` to download the data from 
+We are using a setup script in `.devcontainer/setup.sh` to download the data from
 Azure Blob Storage using [azcopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
 Access to the data is restricted during the time of the course only.
 
@@ -73,10 +73,16 @@ cp -aL results/PXD040621/proteomicslfq/. data/PXD040621/processed/
 cp -aL results/PXD040621/pipeline_info/. data/PXD040621/processed/pipeline_info/
 ```
 
-Now it is safe to delete the `results/PXD040621` and `work` folder.
+Now it is safe to delete the `work` folder.
 
 ```bash
 rm -r results/PXD040621 work
+```
+
+You could also delete the results folder in case you need some more storage
+
+```
+rm -r results/PXD040621
 ```
 
 ## Clean up unused docker images
@@ -97,8 +103,8 @@ docker image prune -a
 ```bash
 # some cache files
 rm -r  /.codespaces/bin/cache/bin/linux-x64/
-ls /vscode/extensionsCache/
-ls /vscode/serverCache/
+rm -r /vscode/extensionsCache/
+rm -r /vscode/serverCache/
 ```
 
 ### Check used disk space

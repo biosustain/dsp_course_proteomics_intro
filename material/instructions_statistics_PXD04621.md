@@ -1,7 +1,7 @@
 # Data Analysis Hands-On for PXD04621
 
 In the GitHub workspace, we will use the base conda environment which you can activate
-with the following command:
+with the following command (it should be active by default when you open the codespace):
 
 ```bash
 conda activate base
@@ -17,12 +17,15 @@ folder.
 
 are mainly:
 
-- [acore](https://analytics-core.readthedocs.io) for some analytical functions (developed by DSP and MoNA at DTU)
-- [vuegen](https://vuegen.readthedocs.io) for the report generation (developed by DSP and MoNA at DTU)
-- [vuecore](https://vuecore.readthedocs.io) for the visualization (developed by DSP and MoNA at DTU)
+- [acore](https://analytics-core.readthedocs.io) for some analytical functions (developed
+  by DSP and MoNA at DTU)
+- [vuegen](https://vuegen.readthedocs.io) for the report generation (developed by DSP and
+  MoNA at DTU)
+- [vuecore](https://vuecore.readthedocs.io) for the visualization (developed by DSP and
+  MoNA at DTU)
 
-The packages should have been installed automatically in the GitHub codespace. In case you need to manually
-install them, you can use the following command:
+The packages should have been installed automatically in the GitHub codespace. In case you
+need to manually install them, you can use the following command (for local use):
 
 ```bash
 pip install acore 'numpy<2.1.0' nbformat vuecore vuegen
