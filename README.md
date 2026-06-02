@@ -54,8 +54,8 @@ Basic statistical analysis of a two-group experiment with one timepoint (option 
 
 - Peptide to protein (group) aggregation
 - Downstream data analysis of proteins (using [analytical core library](https://analytics-core.readthedocs.io/latest/)
-  developed at biosustain and other Python libraries)
-- Building a report with [vuegen](https://vuegen.readthedocs.io/en/latest/) reports (developed at biosustain)
+  developed at Biosustain/BRIGHT and other Python libraries)
+- Building a report with [vuegen](https://vuegen.readthedocs.io/en/latest/) reports (developed at biosustain/BRIGHT)
 
 ## QuantMS help
 

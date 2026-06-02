@@ -7,9 +7,9 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.18.1
+#       jupytext_version: 1.19.3
 #   kernelspec:
-#     display_name: Python 3 (ipykernel)
+#     display_name: base
 #     language: python
 #     name: python3
 # ---
@@ -48,34 +48,20 @@ from acore.io.uniprot import fetch_annotations, process_annotations
 from vuecore.viz import get_enrichment_plots
 
 # %% [markdown]
-# # Read in the data
+# # Paramters
 # - `file_in`: input file with the quantified peptide data in MSstats format
 #    as provided by quantms
+# - `out_dir`: output directory for the results of the data analysis, 
+#    which will be used later for the report generation with VueGen.
 #
-# The file will be loaded from the repository if it is not present.
+# The file will be loaded from the online repository if it is not present.
 
 # %% tags=["parameters"]
 file_in: str = Path(
     "data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv"
-)
-
-# %%
-if not file_in.exists():
-    file_in = (
-        "https://raw.githubusercontent.com/biosustain/dsp_course_proteomics_intro/HEAD"
-        "/data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv"
-    )
-df = pd.read_csv(file_in, sep=",", header=0)  # .set_index([])
-df.head()
-
-
-# %% [markdown]
-# define the output folder for our VueGen report which we will create later
-
-# %%
-out_dir = "data/PXD040621/report/"
-out_dir = Path(out_dir)
-out_dir.mkdir(parents=True, exist_ok=True)
+) # input file with the quantified peptide data in MSstats format as provided by quantms
+out_dir = "data/PXD040621/report/" # output directory for the results of the data analysis, which will be used later for the report generation with VueGen.
+min_obs_per_group: int = 3 # minimum number of observations per group for a protein to be included in the differential regulation analysis
 
 # %% [markdown]
 # We have the following columns in the data:
@@ -95,6 +81,27 @@ out_dir.mkdir(parents=True, exist_ok=True)
 #     "Reference",
 # ]
 
+
+# %%
+if not file_in.exists():
+    file_in = (
+        "https://raw.githubusercontent.com/biosustain/dsp_course_proteomics_intro/HEAD"
+        "/data/PXD040621/processed/PXD040621.sdrf_openms_design_msstats_in.csv"
+    )
+df = pd.read_csv(file_in, sep=",", header=0)  # .set_index([])
+df.head()
+
+
+# %% [markdown]
+# # VueGen report output folder
+# define the output folder for our `VueGen` report which we will create later
+
+# %%
+out_dir = "data/PXD040621/report/"
+out_dir = Path(out_dir)
+out_dir.mkdir(parents=True, exist_ok=True)
+
+
 # %% [markdown]
 # # Log2 transform the intensity values
 # - log2 transformations are common for lognormal distributed data
@@ -105,6 +112,7 @@ df.head()
 
 # %% [markdown]
 # # Exploratory and Data Quality Plots (peptide level)
+# Shows the overal distribution of the log2-normal intensities per sample
 
 # %%
 df["BioReplicate"] = df["BioReplicate"].replace({5: 1, 6: 2, 7: 3, 8: 4})
@@ -123,7 +131,8 @@ fg = sns.displot(
 # # Aggregate the peptide intensities to protein intensities
 # - we use the median of the peptide intensities for each protein
 #
-# There are more sophisticated ways to do this, e.g. using MaxLFQ, iBAQ, FlashLFQ, DirectLFQ, etc.
+# There are more sophisticated ways to do this, e.g. using MaxLFQ, iBAQ, FlashLFQ, 
+# DirectLFQ, etc.
 #
 # - shorten sample name for readability
 
@@ -136,9 +145,9 @@ proteins
 
 # %% [markdown]
 # # Remove contaminant proteins
-# Remove the contaminant proteins which were added to the fasta file used in the data processing.
-# Contaminant proteins are e.g. creation which gets into the sample from the human skin or hair
-# when the sample is prepared.
+# Remove the contaminant proteins which were added to the fasta file used in the data
+# processing. Contaminant proteins are e.g. creation which gets into the sample from the
+# human skin or hair when the sample is prepared.
 #
 # These are filtered out as they are most of the time not relevant, but a contamination.
 
@@ -148,15 +157,17 @@ proteins = proteins.drop(decoy_proteins.columns, axis=1)
 proteins
 
 # %% [markdown]
+# # Factor variable
 # Create a label for each sample based on the metadata.
 # - we will use a string in the sample name, but you can see how the metadata is organized
+#
+# > This could be provided in a separate metadata file.
 
 # %%
 meta = df[["Condition", "BioReplicate", "Run", "Reference"]].drop_duplicates()
 meta
 
 # %%
-# ToDO make more generic
 label_encoding = {0: "control", 1: "10 µm sulforaphane"}
 label_suf = pd.Series(
     proteins.index.str.contains("Suf_").astype(int),
@@ -168,13 +179,22 @@ label_suf
 
 # %% [markdown]
 # # Plot the data completeness for each protein.
+# - see the how many proteins are observed across how many samples.
+#
+# > We create a subfolder in our results folder to keep it organized for the 
+#   report generation later.
 
-# %%
+# %% tags=["hide-input"]
 view_name = "Protein"
 out_dir_subsection = out_dir / "1_data" / "completeness"
 out_dir_subsection.mkdir(parents=True, exist_ok=True)
 
-# %%
+
+# %% [markdown]
+# From the line plot (in staircase shape) you can see that over half of the proteins
+# are observed in all 8 samples.
+
+# %% tags=["hide-input"]
 view_name = "Protein"
 ax = (
     proteins.notna()
@@ -191,7 +211,11 @@ ax.get_figure().savefig(
     dpi=300,
 )
 
-# %%
+# %% [markdown]
+# The bar plot shows the same information, but it is easier to see the exact number of
+# proteins observed in how many samples.
+
+# %% tags=["hide-input"]
 view_name = "Protein"
 ax = (
     proteins.notna()
@@ -213,7 +237,11 @@ ax.get_figure().savefig(
     dpi=300,
 )
 
-# %%
+# %% [markdown]
+# # Protein identifiers metadata
+# Keep the protein identifiers metadata. Will be used to query `UNIProt`.
+
+# %% tags=["hide-input"]
 # Explode column names to examine split by '|'
 proteins_meta = (
     proteins.columns.str.split("|", expand=True)
@@ -244,8 +272,7 @@ proteins.to_csv(out_dir_subsection / "proteins.csv")
 
 # %% [markdown]
 # # Hierarchical Clustering of data
-# - using completely observed data only
-# Find correlations in data
+# - using completely observed data only find correlations in data
 
 # %%
 out_dir_subsection = out_dir / "1_data" / "clustermap"
@@ -294,13 +321,33 @@ fig.savefig(
 # - number of identified proteins per sample
 
 # %%
-# ToDo: bin width functionaity: bins should match between all plots (see pimms)
-ax = proteins.T.hist(layout=(2, 4), bins=20, sharex=True, sharey=True, figsize=(8, 4))
+_min_int, _max_int = proteins.min().min(), proteins.max().max()
+bins = range(int(_min_int), int(_max_int) + 1, 1)
+ax = proteins.T.hist(layout=(2, 4), bins=bins, sharex=True, sharey=True, figsize=(8, 4))
+
+min_int, max_int = int(proteins.min().min()), int(proteins.max().max())
+bins = range(min_int, max_int+1, 1)
+ax = proteins.T.hist(layout=(2, 4), bins=bins, sharex=True, sharey=True, figsize=(8, 4))
+
+# %%
+fig, ax = plt.subplots(figsize=(8, 4))
+proteins.T.boxplot(ax=ax)
+ax.set_xlabel("Sample ID")
+ax.set_ylabel("log2 intensity")
+ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
+fname = out_dir_subsection / "boxplot_log2_unnormalized.png"
+vuecore.savefig(fig, fname, pdf=True, dpi=600, tight_layout=False)
+print(f"Saved boxplot to {fname}")
 
 # %% [markdown]
 # # Coefficient of Variation (CV)
 # - CV = standard deviation / mean
+#   $$ CV = \frac{\sigma}{\mu} $$
 # - per group
+#
+# Use
+# [`scipy.stats.variation`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.variation.html)
+# to calculate the CV.
 
 # %%
 df_cvs = (
@@ -314,7 +361,15 @@ df_cvs
 df_cvs = df_cvs.stack(0, future_stack=True).reset_index().dropna()
 df_cvs
 
-# %%
+# %% [markdown]
+# Visualize the relationship between the coefficient of variation (CV) and
+# the mean intensity per group: x-axis: CV ('variation'), y-axis: mean intensity.
+#
+# > Here no further filtering is needed, but many researchers filter for proteins with a
+# > mean intensity above a certain threshold (aroung 0.3). This is best done on quality
+# > control samples, e.g. a pooled sample, for large datasets.
+
+# %% tags=["hide-input"]
 default_args = dict(
     facet_col="label_suf",
     # facet_row="Time",
@@ -328,10 +383,14 @@ fig = px.scatter(
     x="variation",
     y="mean",
     trendline="ols",
+    hover_data={"UniprotID": True, "mean": True},  # hide the index in the hover
     **default_args,
 )
 fname = "cv_vs_mean"
-# # ? save
+fig.write_json(
+    out_dir_subsection / f"{fname}.json",
+    pretty=True,
+)
 fig
 
 # %% [markdown]
@@ -344,12 +403,15 @@ normalization_method = "median"
 X = acore.normalization.normalize_data(
     proteins.dropna(how="any", axis=1), normalization_method
 )
+# X = acore.normalization.normalize_data(
+#     X, "zscore"
+# )  # to make it more comparable across proteins, but not necessary for the clustering
 X
 
 # %%
 X.median(axis="columns")
 
-# %%
+# %% tags=["hide-input"]
 vuecore.set_font_sizes(7)
 cg = sns.clustermap(
     X,
@@ -380,6 +442,11 @@ fig.savefig(
 )
 
 # %% [markdown]
+# Exercise: 
+# 1. Try out different normalization methods and see how the clustering changes.
+# 2. Maybe you want to combine a sample based with a protein based normalization method.
+
+# %% [markdown]
 # # Differential Regulation
 
 # %%
@@ -400,15 +467,52 @@ group_counts = proteins.groupby(label_suf).count()
 group_counts
 
 # %% [markdown]
-# Then we can filter the proteins to only those with at least 3 observations in each grou
+# Let's see how many observations are present by condition (group)
+# - The order is dermined by the treatment group here
+# - Some proteins are absent in the control group that are observed in the treatment
+#   group, which is interesting for a separate analysis (not shown).
+
+# %% tags=["hide-input"]
+frac_non_na_by_group = (
+    proteins.join(label_suf, how="inner")
+    .groupby(label_suf.name)
+    .apply(lambda x: x.notna().sum(), include_groups=False)
+    .T
+)
+frac_non_na_by_group = frac_non_na_by_group.sort_values(by=frac_non_na_by_group.columns[0])
+fig, ax = plt.subplots(figsize=(7, 3))
+n_groups = len(frac_non_na_by_group.columns)
+jitter_span = 0.1
+offsets = np.linspace(-jitter_span / 2, jitter_span / 2, n_groups) if n_groups > 1 else [0.0]
+for i, g in enumerate(frac_non_na_by_group.columns):
+    (frac_non_na_by_group[g] + offsets[i]).plot(
+        kind="line",
+        ax=ax,
+        style=".",
+        alpha=0.5,
+    )
+ax.legend(title="Group")
+ax.set_ylabel("Ratio of non-missing values\n(completeness)")
+ax.set_title("Number of observations")
+
+# %% [markdown]
+# For now, we filter the proteins to only those with at least 3 observations
+# in each group.
 
 # %%
-mask = group_counts.groupby("label_suf").transform(lambda x: x >= 3).all(axis=0)
+mask = group_counts.groupby("label_suf").transform(
+    lambda x: x >= min_obs_per_group
+).all(axis=0)
 mask
 
+# %% [markdown]
+# We use a simple t-test for the differential regulation analysis.
+#
+# > Experiment with the normalization method and it's effect on the results.
+
 # %%
-view = proteins.loc[:, mask].join(label_suf)
-group = "label_suf"
+view = X.loc[:, mask].join(label_suf)
+group = label_suf.name
 diff_reg = acore.differential_regulation.run_anova(
     view,
     alpha=0.15,
@@ -422,13 +526,15 @@ diff_reg.sort_values("pvalue")
 # %%
 diff_reg.sort_values("pvalue").head(20)
 
-# %%
-diff_reg.plot(x="log2FC", y="-log10 pvalue", kind="scatter", title=group)
-
 # %% [markdown]
 # # Interactive Volcano Plot
+# - y-axis: -log10(p-value)
+# - x-axis: log2(fold-change)
+# - color: rejected (significant or not after multiple testing correction)
+#
+# > Hover over the points to see additional information
 
-# %%
+# %% tags=["hide-input"]
 str_cols = diff_reg.dtypes[diff_reg.dtypes == "object"].index.tolist()
 hover_data = {
     "rejected": ":.0f",
@@ -465,6 +571,9 @@ diff_reg.to_csv(out_dir_subsection / "1_differential_regulation.csv")
 
 # %% [markdown]
 # # Enrichment Analysis
+#
+# - You can reload the annotations, but for latency, I added a cached version
+#   to the repository
 
 # %%
 out_dir_subsection = out_dir / "uniprot_annotations"
@@ -510,7 +619,12 @@ enriched = acore.enrichment_analysis.run_up_down_regulation_enrichment(
 )
 enriched
 
-# %%
+# %% [markdown]
+# Plot the enrichment scores for the up- and down-regulated proteins separately.
+# - y-axis: GO term
+# - x-axis: enrichment score (e.g. -log10(p-pvalue adjusted))
+
+# %% tags=["hide-input"]
 fig = get_enrichment_plots(
     enriched,
     identifier="anything",  # ToDo: figure out what this does
@@ -532,8 +646,9 @@ out_dir_subsection.mkdir(parents=True, exist_ok=True)
 
 # %% [markdown]
 # Apply filtering of 'differentially abundant proteins' as described in the paper
-# > Differentially abundant proteins were determined as those with log2 fold-change
-# > > 1 and < -1, and p < 0.05
+# > "Differentially abundant proteins were determined as those with log2 fold-change
+# > $log2FC > 1$  and $log2FC < -1$, and $p < 0.05$"
+#
 # This means no multiple testing correction was applied.
 
 # %%
@@ -545,9 +660,11 @@ view.to_csv(
 view
 
 # %% [markdown]
-# Let's find the proteins highlighted in the volcano plot in Figure 3.
+# Let's find the proteins highlighted in the volcano plot in Figure 3 in the
+# [paper](https://www.sciencedirect.com/science/article/pii/S1756464623002451):
+# ![Figure 3](https://ars.els-cdn.com/content/image/1-s2.0-S1756464623002451-gr3_lrg.jpg)
 
-# %%
+# %% tags=["hide-input"]
 highlighted_genes = ["LamB", "MalE", "Malk", "CitF", "CitT", "CitE", "Frd"]
 highlighted_genes = "|".join([p.upper() for p in highlighted_genes])
 highlighted_genes = proteins_meta.query(
@@ -555,7 +672,7 @@ highlighted_genes = proteins_meta.query(
 )
 highlighted_genes
 
-# %%
+# %% tags=["hide-input"]
 highlighted_proteins = "|".join([p.upper() for p in highlighted_genes["ProteinName"]])
 view = diff_reg.query(f"`identifier`.str.contains('{highlighted_proteins}')")
 view = view.set_index("identifier").join(proteins_meta.set_index("ProteinName"))
@@ -577,9 +694,32 @@ sel_cols = [
 view.reset_index()[sel_cols].sort_values("log2FC", ascending=False)
 
 # %% [markdown]
-# Let's see their original data
+# - See normalized data.
 
-# %%
+# %% tags=["hide-input"]
+view_X = (
+    (
+        X.loc[:, X.columns.isin(highlighted_genes["ProteinName"].to_list())].T.join(
+            proteins_meta.set_index("ProteinName")["GeneName"]
+        )
+    )
+    .set_index("GeneName", append=True)
+    .T
+)  # to check]
+view_X.to_csv(
+    out_dir_subsection / "3_highlighted_proteins_in_figure3_intensities_normalized.csv",
+    index=True,
+)
+view_X
+
+# %% [markdown]
+# Let's see their original data:
+# - See unnormalized data.
+# - note that proteins can be discarded based on your filtering criteria.
+#
+# > How would the analysis change with imputation?
+
+# %% tags=["hide-input"]
 view_proteins = (
     (
         proteins[highlighted_genes["ProteinName"].to_list()].T.join(
@@ -594,6 +734,7 @@ view_proteins.to_csv(
     index=True,
 )
 view_proteins
+
 
 # %% [markdown]
 # How to explain the differences?
