@@ -61,6 +61,18 @@ Create and start the streamlit app with the following command:
 vuegen -dir data/PXD040621/report -st_autorun
 ```
 
+### Inspect streamlit report example online
+
+A deployed version of the report can be accessed online at the following link:
+
+- [dsp-course-proteomics-intro-report.streamlit.app/](https://dsp-course-proteomics-intro-report.streamlit.app/)
+
+### Download the VueGen HTML report
+
+- [html report](pmultiqc_report/multiqc_report_pmultiqc.html)
+
+See instructions on [biosustain/dsp_course_proteomics_intro_report](https://github.com/biosustain/dsp_course_proteomics_intro_report).
+
 ### VueGen GUI (app)
 
 We also ship a GUI for VueGen. Check out our
