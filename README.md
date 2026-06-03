@@ -7,23 +7,32 @@ where we will perform the basic processing steps using
 [acore, short for analytical core](https://analytics-core.readthedocs.io/latest/)
 for the downstream analysis.
 
+## Location
+
+Room `011/ALC2` in building `208` at DTU.
+
 ## Agenda
 
 | Time          | Topic                                                 | lecturer        |
 | ------------- | ----------------------------------------------------- | --------------- |
-| 8.30 - 10.00  | Introduction with overview of all the components      | Marco Reverenna |
-| 10.30 - 12.00 | Steps in data processing and running quantms hands-on | Henry Webel     |
-| 12.00 - 13.00 | Lunch (sandwiches are provided)                       | -               |
+| 09.00 - 09:10 | Welcome, coffee, and setup                            | -               |
+| 09:10 - 11.00 | Introduction with overview of all the components      | Marco Reverenna |
+| 11.00 - 11.15 | break                                                 | -               |
+| 11.15 - 12.15 | Steps in data processing and running quantms hands-on | Henry Webel     |
+| 12.15 - 13.00 | Lunch (sandwiches are provided)                       | -               |
 | 13.00 - 14.30 | Steps in statistical analysis (lecture )              | Alberto Santos  |
+| 14.30 - 15.00 | break                                                 | -               |
 | 15.00 - 16.30 | Steps in statistical analysis (Hands-On)              | Henry Webel     |
+
+> Each 90mins session will have a small break of 5mins inbetween.
 
 ### Some details to the agenda points
 
-#### 8.30-10.00 - introduction
+#### 09.10 - 11.00 - Introduction
 
 See the slides for introduction [here](material/slides/introduction.pdf).
 
-#### 10.30-12.00 - data processing and hands-on quantms
+#### 11.15 - 12.15 - data processing and hands-on quantms
 
 Find the instruction [here](material/instructions_quantms_PXD04621.md) and the slides [here](material/slides/quantms_and_data_analysis.pdf)
 
@@ -45,8 +54,8 @@ Basic statistical analysis of a two-group experiment with one timepoint (option 
 
 - Peptide to protein (group) aggregation
 - Downstream data analysis of proteins (using [analytical core library](https://analytics-core.readthedocs.io/latest/)
-  developed at biosustain and other Python libraries)
-- Building a report with [vuegen](https://vuegen.readthedocs.io/en/latest/) reports (developed at biosustain)
+  developed at Biosustain/BRIGHT and other Python libraries)
+- Building a report with [vuegen](https://vuegen.readthedocs.io/en/latest/) reports (developed at biosustain/BRIGHT)
 
 ## QuantMS help
 

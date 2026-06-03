@@ -9,7 +9,8 @@ modifications for ecoli:
 
 We consider the following datasets:
 
-
 - [PXD040621](https://www.ebi.ac.uk/pride/archive/projects/PXD040621) - broccoli-derived antioxidant sulforaphane in human gut - [article](https://www.sciencedirect.com/science/article/pii/S1756464623002451)
 
 - [PXD041301](https://www.ebi.ac.uk/pride/archive/projects/PXD041301) - membrane proteins in a time-course experiment - [article](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2024.1361270/full)
+
+- [PXD070899](https://www.ebi.ac.uk/pride/archive/projects/PXD070899) - Capture and functional conversion of mitochondrial protein translocase by lipid metabolism enzyme - [article](http://nature.com/articles/s41556-026-01890-3)

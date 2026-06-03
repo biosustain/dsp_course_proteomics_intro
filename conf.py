@@ -1,6 +1,7 @@
 project = "Mass spectrometry-based Proteomics introduction"
 copyright = "2025, DTU Biosustain, Informatics Platform, DSP"
 author = "Henry Webel, Alberto Santos, Marco Reverenna"
+version = "2026.06.03"
 
 extensions = [
     "myst_nb",
@@ -21,7 +22,10 @@ exclude_patterns = [
     "conf.py",
     "*.py",
     ".pytest_cache",
-    "data/PXD041301/*",  # leave it out for now
+    "data/PXD040621/processed/README.md",
+    "data/PXD040621/proteins/README.md",
+    "data/fasta/README.md",
+    "material/streamlit_report/README.md"
 ]
 
 #  https://myst-nb.readthedocs.io/en/latest/computation/execute.html
@@ -54,7 +58,7 @@ suppress_warnings = ["mystnb.unknown_mime_type"]
 # a list of builtin themes.
 # See:
 # https://github.com/executablebooks/MyST-NB/blob/master/docs/conf.py
-# html_title = ""
+html_title = f"{project} {version}"
 html_theme = "sphinx_book_theme"
 # html_logo = "_static/logo-wide.svg"
 # html_favicon = "_static/logo-square.svg"
