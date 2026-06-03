@@ -21,7 +21,9 @@ exclude_patterns = [
     "conf.py",
     "*.py",
     ".pytest_cache",
-    "data/PXD041301/*",  # leave it out for now
+    "data/PXD040621/processed/README.md",
+    "data/PXD040621/proteins/README.md",
+    "data/fasta/README.md",
     "material/streamlit_report/README.md"
 ]
 
