@@ -1,0 +1,1851 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Exercise: Data Analysis PXD070899 &#8212; Mass spectrometry-based Proteomics introduction  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3_data_analysis_PXD070899';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example datasets" href="data/README.html" />
+    <link rel="prev" title="Data Analysis PXD040621" href="2_data_analysis.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Mass spectrometry-based Proteomics introduction  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/biosustain/dsp_course_proteomics_intro" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">QuantMS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="material/instructions_quantms_PXD04621.html">QuantMS Hands-On for PXD04621</a></li>
+<li class="toctree-l1"><a class="reference internal" href="material/quantms_input_files.html">QuantMS Input Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/PXD040621/mzML/README.html">mzML files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="material/instructions_statistics_PXD04621.html">Data Analysis Hands-On for PXD04621</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_data_analysis.html">Data Analysis PXD040621</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exercise: Data Analysis PXD070899</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Datasets</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data/README.html">Example datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/PXD040621/README.html">PXD040621</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/PXD041301/README.html">PXD041301</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data/PXD070899/README.html">PXD070899</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Codespace</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href=".devcontainer/README.html">Container info</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/biosustain/dsp_course_proteomics_intro/blob/master/3_data_analysis_PXD070899.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/biosustain/dsp_course_proteomics_intro" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/3_data_analysis_PXD070899.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exercise: Data Analysis PXD070899</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise: Data Analysis PXD070899</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#paramters">Paramters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-data-analysis-pxd070899">
+<h1>Exercise: Data Analysis PXD070899<a class="headerlink" href="#exercise-data-analysis-pxd070899" title="Link to this heading">#</a></h1>
+<p>Plan</p>
+<ul class="simple">
+<li><p>read data and log2 transform intensity values</p></li>
+<li><p>aggregate peptide intensities to protein intensities</p></li>
+<li><p>format data from long to wide format</p></li>
+<li><p>remove contaminant proteins</p></li>
+<li><p>check for missing values</p></li>
+<li><p>Clustermap of sample and proteins</p></li>
+<li><p>differential analysis (Volcano Plots)</p></li>
+<li><p>Enrichment Analysis</p></li>
+<li><p>check for maltose update pathway (Fig. 3 in paper)</p></li>
+</ul>
+<div class="cell tag_hide-output docutils container">
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install acore vuecore &quot;pingouin&lt;0.6.0&quot;
+</pre></div>
+</div>
+</div>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: acore in /home/runner/.local/lib/python3.12/site-packages (0.2.2)
+Requirement already satisfied: vuecore in /home/runner/.local/lib/python3.12/site-packages (0.1.1)
+Requirement already satisfied: pingouin&lt;0.6.0 in /home/runner/.local/lib/python3.12/site-packages (0.5.5)
+Requirement already satisfied: numpy in /home/runner/.local/lib/python3.12/site-packages (from acore) (2.4.6)
+Requirement already satisfied: pandas in /home/runner/.local/lib/python3.12/site-packages (from acore) (2.3.3)
+Requirement already satisfied: dsp-pandas in /home/runner/.local/lib/python3.12/site-packages (from acore) (0.0.5)
+Requirement already satisfied: scipy in /home/runner/.local/lib/python3.12/site-packages (from acore) (1.17.1)
+Requirement already satisfied: scikit-learn&gt;=1.5 in /home/runner/.local/lib/python3.12/site-packages (from acore) (1.9.0)
+Requirement already satisfied: networkx in /home/runner/.local/lib/python3.12/site-packages (from acore) (3.6.1)
+Requirement already satisfied: biopython in /home/runner/.local/lib/python3.12/site-packages (from acore) (1.87)
+Requirement already satisfied: combat in /home/runner/.local/lib/python3.12/site-packages (from acore) (0.3.3)
+Requirement already satisfied: gseapy!=1.1.5 in /home/runner/.local/lib/python3.12/site-packages (from acore) (1.2.1)
+Requirement already satisfied: kmapper in /home/runner/.local/lib/python3.12/site-packages (from acore) (2.1.0)
+Requirement already satisfied: lifelines in /home/runner/.local/lib/python3.12/site-packages (from acore) (0.30.3)
+Requirement already satisfied: python-louvain in /home/runner/.local/lib/python3.12/site-packages (from acore) (0.16)
+Requirement already satisfied: PyWGCNA!=2.2.0 in /home/runner/.local/lib/python3.12/site-packages (from acore) (1.16.0)
+Requirement already satisfied: snfpy in /home/runner/.local/lib/python3.12/site-packages (from acore) (0.2.2)
+Requirement already satisfied: umap-learn in /home/runner/.local/lib/python3.12/site-packages (from acore) (0.5.12)
+Requirement already satisfied: statsmodels in /home/runner/.local/lib/python3.12/site-packages (from acore) (0.14.6)
+Requirement already satisfied: inmoose in /home/runner/.local/lib/python3.12/site-packages (from acore) (0.9.1)
+Requirement already satisfied: requests in /usr/lib/python3/dist-packages (from acore) (2.31.0)
+Requirement already satisfied: rarfile in /home/runner/.local/lib/python3.12/site-packages (from acore) (4.2)
+Requirement already satisfied: pandera in /home/runner/.local/lib/python3.12/site-packages (from acore) (0.31.1)
+Requirement already satisfied: plotly in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (5.24.1)
+Requirement already satisfied: beautifulsoup4 in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (4.14.3)
+Requirement already satisfied: dash in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (4.2.0)
+Requirement already satisfied: matplotlib in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (3.10.9)
+Requirement already satisfied: kaleido in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (0.2.1)
+Requirement already satisfied: pyvis in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (0.3.2)
+Requirement already satisfied: wordcloud in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (1.9.6)
+Requirement already satisfied: cyjupyter in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (0.2.0)
+Requirement already satisfied: nltk in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (3.9.4)
+Requirement already satisfied: webweb in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (0.0.37)
+Requirement already satisfied: dash-cytoscape in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (1.0.2)
+Requirement already satisfied: pydantic in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (2.13.4)
+Requirement already satisfied: nbformat&gt;=4.2.0 in /home/runner/.local/lib/python3.12/site-packages (from vuecore) (5.10.4)
+Requirement already satisfied: pandas-flavor in /home/runner/.local/lib/python3.12/site-packages (from pingouin&lt;0.6.0) (0.8.1)
+Requirement already satisfied: seaborn in /home/runner/.local/lib/python3.12/site-packages (from pingouin&lt;0.6.0) (0.13.2)
+Requirement already satisfied: tabulate in /home/runner/.local/lib/python3.12/site-packages (from pingouin&lt;0.6.0) (0.10.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /home/runner/.local/lib/python3.12/site-packages (from matplotlib-&gt;vuecore) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in /home/runner/.local/lib/python3.12/site-packages (from matplotlib-&gt;vuecore) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /home/runner/.local/lib/python3.12/site-packages (from matplotlib-&gt;vuecore) (4.63.0)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /home/runner/.local/lib/python3.12/site-packages (from matplotlib-&gt;vuecore) (1.5.0)
+Requirement already satisfied: packaging&gt;=20.0 in /home/runner/.local/lib/python3.12/site-packages (from matplotlib-&gt;vuecore) (26.2)
+Requirement already satisfied: pillow&gt;=8 in /home/runner/.local/lib/python3.12/site-packages (from matplotlib-&gt;vuecore) (12.2.0)
+Requirement already satisfied: pyparsing&gt;=3 in /usr/lib/python3/dist-packages (from matplotlib-&gt;vuecore) (3.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/lib/python3/dist-packages (from matplotlib-&gt;vuecore) (2.8.2)
+Requirement already satisfied: fastjsonschema&gt;=2.15 in /home/runner/.local/lib/python3.12/site-packages (from nbformat&gt;=4.2.0-&gt;vuecore) (2.21.2)
+Requirement already satisfied: jsonschema&gt;=2.6 in /home/runner/.local/lib/python3.12/site-packages (from nbformat&gt;=4.2.0-&gt;vuecore) (4.26.0)
+Requirement already satisfied: jupyter-core!=5.0.*,&gt;=4.12 in /home/runner/.local/lib/python3.12/site-packages (from nbformat&gt;=4.2.0-&gt;vuecore) (5.9.1)
+Requirement already satisfied: traitlets&gt;=5.1 in /home/runner/.local/lib/python3.12/site-packages (from nbformat&gt;=4.2.0-&gt;vuecore) (5.15.0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/lib/python3/dist-packages (from pandas-&gt;acore) (2024.1)
+Requirement already satisfied: tzdata&gt;=2022.7 in /home/runner/.local/lib/python3.12/site-packages (from pandas-&gt;acore) (2026.2)
+Requirement already satisfied: anndata&gt;=0.8.0 in /home/runner/.local/lib/python3.12/site-packages (from PyWGCNA!=2.2.0-&gt;acore) (0.12.16)
+Requirement already satisfied: biomart&gt;=0.9.2 in /home/runner/.local/lib/python3.12/site-packages (from PyWGCNA!=2.2.0-&gt;acore) (0.9.2)
+Requirement already satisfied: reactome2py&gt;=3.0.0 in /home/runner/.local/lib/python3.12/site-packages (from PyWGCNA!=2.2.0-&gt;acore) (3.0.0)
+Requirement already satisfied: rsrc&gt;=0.1.3 in /home/runner/.local/lib/python3.12/site-packages (from PyWGCNA!=2.2.0-&gt;acore) (0.1.3)
+Requirement already satisfied: setuptools&gt;=59.8.0 in /usr/lib/python3/dist-packages (from PyWGCNA!=2.2.0-&gt;acore) (68.1.2)
+Requirement already satisfied: ipython&gt;=5.3.0 in /home/runner/.local/lib/python3.12/site-packages (from pyvis-&gt;vuecore) (9.14.0)
+Requirement already satisfied: jinja2&gt;=2.9.6 in /usr/lib/python3/dist-packages (from pyvis-&gt;vuecore) (3.1.2)
+Requirement already satisfied: jsonpickle&gt;=1.4.1 in /home/runner/.local/lib/python3.12/site-packages (from pyvis-&gt;vuecore) (4.1.2)
+Requirement already satisfied: joblib&gt;=1.4.0 in /home/runner/.local/lib/python3.12/site-packages (from scikit-learn&gt;=1.5-&gt;acore) (1.5.3)
+Requirement already satisfied: narwhals&gt;=2.0.1 in /home/runner/.local/lib/python3.12/site-packages (from scikit-learn&gt;=1.5-&gt;acore) (2.22.0)
+Requirement already satisfied: threadpoolctl&gt;=3.5.0 in /home/runner/.local/lib/python3.12/site-packages (from scikit-learn&gt;=1.5-&gt;acore) (3.6.0)
+Requirement already satisfied: patsy&gt;=0.5.6 in /home/runner/.local/lib/python3.12/site-packages (from statsmodels-&gt;acore) (1.0.2)
+Requirement already satisfied: soupsieve&gt;=1.6.1 in /home/runner/.local/lib/python3.12/site-packages (from beautifulsoup4-&gt;vuecore) (2.8.4)
+Requirement already satisfied: typing-extensions&gt;=4.0.0 in /home/runner/.local/lib/python3.12/site-packages (from beautifulsoup4-&gt;vuecore) (4.15.0)
+Requirement already satisfied: mpmath&gt;=1.1.0 in /home/runner/.local/lib/python3.12/site-packages (from combat-&gt;acore) (1.4.1)
+Requirement already satisfied: ipywidgets&gt;=7.0.0 in /home/runner/.local/lib/python3.12/site-packages (from cyjupyter-&gt;vuecore) (8.1.8)
+Requirement already satisfied: Flask&lt;3.2,&gt;=1.0.4 in /home/runner/.local/lib/python3.12/site-packages (from dash-&gt;vuecore) (3.1.3)
+Requirement already satisfied: Werkzeug&lt;3.2 in /home/runner/.local/lib/python3.12/site-packages (from dash-&gt;vuecore) (3.1.8)
+Requirement already satisfied: importlib-metadata in /home/runner/.local/lib/python3.12/site-packages (from dash-&gt;vuecore) (9.0.0)
+Requirement already satisfied: retrying in /home/runner/.local/lib/python3.12/site-packages (from dash-&gt;vuecore) (1.4.2)
+Requirement already satisfied: nest-asyncio in /home/runner/.local/lib/python3.12/site-packages (from dash-&gt;vuecore) (1.6.0)
+Requirement already satisfied: janus&gt;=1.0.0 in /home/runner/.local/lib/python3.12/site-packages (from dash-&gt;vuecore) (2.0.0)
+Requirement already satisfied: tenacity&gt;=6.2.0 in /home/runner/.local/lib/python3.12/site-packages (from plotly-&gt;vuecore) (9.1.4)
+Requirement already satisfied: openpyxl in /home/runner/.local/lib/python3.12/site-packages (from dsp-pandas-&gt;acore) (3.1.5)
+Requirement already satisfied: fastcluster in /home/runner/.local/lib/python3.12/site-packages (from inmoose-&gt;acore) (1.3.0)
+Requirement already satisfied: autograd&gt;=1.5 in /home/runner/.local/lib/python3.12/site-packages (from lifelines-&gt;acore) (1.8.0)
+Requirement already satisfied: autograd-gamma&gt;=0.3 in /home/runner/.local/lib/python3.12/site-packages (from lifelines-&gt;acore) (0.5.0)
+Requirement already satisfied: formulaic&gt;=0.2.2 in /home/runner/.local/lib/python3.12/site-packages (from lifelines-&gt;acore) (1.2.2)
+Requirement already satisfied: click in /usr/lib/python3/dist-packages (from nltk-&gt;vuecore) (8.1.6)
+Requirement already satisfied: regex&gt;=2021.8.3 in /home/runner/.local/lib/python3.12/site-packages (from nltk-&gt;vuecore) (2026.5.9)
+Requirement already satisfied: tqdm in /home/runner/.local/lib/python3.12/site-packages (from nltk-&gt;vuecore) (4.67.3)
+Requirement already satisfied: xarray in /home/runner/.local/lib/python3.12/site-packages (from pandas-flavor-&gt;pingouin&lt;0.6.0) (2026.4.0)
+Requirement already satisfied: typeguard in /home/runner/.local/lib/python3.12/site-packages (from pandera-&gt;acore) (4.5.2)
+Requirement already satisfied: typing_inspect&gt;=0.6.0 in /home/runner/.local/lib/python3.12/site-packages (from pandera-&gt;acore) (0.9.0)
+Requirement already satisfied: annotated-types&gt;=0.6.0 in /home/runner/.local/lib/python3.12/site-packages (from pydantic-&gt;vuecore) (0.7.0)
+Requirement already satisfied: pydantic-core==2.46.4 in /home/runner/.local/lib/python3.12/site-packages (from pydantic-&gt;vuecore) (2.46.4)
+Requirement already satisfied: typing-inspection&gt;=0.4.2 in /home/runner/.local/lib/python3.12/site-packages (from pydantic-&gt;vuecore) (0.4.2)
+Requirement already satisfied: numba&gt;=0.51.2 in /home/runner/.local/lib/python3.12/site-packages (from umap-learn-&gt;acore) (0.65.1)
+Requirement already satisfied: pynndescent&gt;=0.5 in /home/runner/.local/lib/python3.12/site-packages (from umap-learn-&gt;acore) (0.6.0)
+Requirement already satisfied: array-api-compat&gt;=1.7.1 in /home/runner/.local/lib/python3.12/site-packages (from anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (1.14.0)
+Requirement already satisfied: h5py&gt;=3.8 in /home/runner/.local/lib/python3.12/site-packages (from anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (3.16.0)
+Requirement already satisfied: legacy-api-wrap in /home/runner/.local/lib/python3.12/site-packages (from anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (1.5)
+Requirement already satisfied: natsort in /home/runner/.local/lib/python3.12/site-packages (from anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (8.4.0)
+Requirement already satisfied: scverse-misc&gt;=0.0.3 in /home/runner/.local/lib/python3.12/site-packages (from anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (0.0.7)
+Requirement already satisfied: zarr!=3.0.*,&gt;=2.18.7 in /home/runner/.local/lib/python3.12/site-packages (from anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (3.2.1)
+Requirement already satisfied: blinker&gt;=1.9.0 in /home/runner/.local/lib/python3.12/site-packages (from Flask&lt;3.2,&gt;=1.0.4-&gt;dash-&gt;vuecore) (1.9.0)
+Requirement already satisfied: itsdangerous&gt;=2.2.0 in /home/runner/.local/lib/python3.12/site-packages (from Flask&lt;3.2,&gt;=1.0.4-&gt;dash-&gt;vuecore) (2.2.0)
+Requirement already satisfied: markupsafe&gt;=2.1.1 in /usr/lib/python3/dist-packages (from Flask&lt;3.2,&gt;=1.0.4-&gt;dash-&gt;vuecore) (2.1.5)
+Requirement already satisfied: interface-meta&gt;=1.2.0 in /home/runner/.local/lib/python3.12/site-packages (from formulaic&gt;=0.2.2-&gt;lifelines-&gt;acore) (2.0.1)
+Requirement already satisfied: wrapt&gt;=1.0 in /home/runner/.local/lib/python3.12/site-packages (from formulaic&gt;=0.2.2-&gt;lifelines-&gt;acore) (2.2.1)
+Requirement already satisfied: decorator&gt;=5.1.0 in /home/runner/.local/lib/python3.12/site-packages (from ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (5.3.1)
+Requirement already satisfied: ipython-pygments-lexers&gt;=1.0.0 in /home/runner/.local/lib/python3.12/site-packages (from ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (1.1.1)
+Requirement already satisfied: jedi&gt;=0.18.2 in /home/runner/.local/lib/python3.12/site-packages (from ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (0.20.0)
+Requirement already satisfied: matplotlib-inline&gt;=0.1.6 in /home/runner/.local/lib/python3.12/site-packages (from ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (0.2.2)
+Requirement already satisfied: pexpect&gt;4.6 in /usr/lib/python3/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (4.9.0)
+Requirement already satisfied: prompt_toolkit&lt;3.1.0,&gt;=3.0.41 in /home/runner/.local/lib/python3.12/site-packages (from ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (3.0.52)
+Requirement already satisfied: psutil&gt;=7 in /home/runner/.local/lib/python3.12/site-packages (from ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (7.2.2)
+Requirement already satisfied: pygments&gt;=2.14.0 in /usr/lib/python3/dist-packages (from ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (2.17.2)
+Requirement already satisfied: stack_data&gt;=0.6.0 in /home/runner/.local/lib/python3.12/site-packages (from ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (0.6.3)
+Requirement already satisfied: comm&gt;=0.1.3 in /home/runner/.local/lib/python3.12/site-packages (from ipywidgets&gt;=7.0.0-&gt;cyjupyter-&gt;vuecore) (0.2.3)
+Requirement already satisfied: widgetsnbextension~=4.0.14 in /home/runner/.local/lib/python3.12/site-packages (from ipywidgets&gt;=7.0.0-&gt;cyjupyter-&gt;vuecore) (4.0.15)
+Requirement already satisfied: jupyterlab_widgets~=3.0.15 in /home/runner/.local/lib/python3.12/site-packages (from ipywidgets&gt;=7.0.0-&gt;cyjupyter-&gt;vuecore) (3.0.16)
+Requirement already satisfied: attrs&gt;=22.2.0 in /usr/lib/python3/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;vuecore) (23.2.0)
+Requirement already satisfied: jsonschema-specifications&gt;=2023.03.6 in /home/runner/.local/lib/python3.12/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;vuecore) (2025.9.1)
+Requirement already satisfied: referencing&gt;=0.28.4 in /home/runner/.local/lib/python3.12/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;vuecore) (0.37.0)
+Requirement already satisfied: rpds-py&gt;=0.25.0 in /home/runner/.local/lib/python3.12/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;vuecore) (2026.5.1)
+Requirement already satisfied: platformdirs&gt;=2.5 in /usr/local/lib/python3.12/dist-packages (from jupyter-core!=5.0.*,&gt;=4.12-&gt;nbformat&gt;=4.2.0-&gt;vuecore) (4.9.6)
+Requirement already satisfied: llvmlite&lt;0.48,&gt;=0.47.0dev0 in /home/runner/.local/lib/python3.12/site-packages (from numba&gt;=0.51.2-&gt;umap-learn-&gt;acore) (0.47.0)
+Requirement already satisfied: json5&gt;=0.8.4 in /home/runner/.local/lib/python3.12/site-packages (from reactome2py&gt;=3.0.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (0.14.0)
+Requirement already satisfied: memoir&gt;=0.0.3 in /home/runner/.local/lib/python3.12/site-packages (from rsrc&gt;=0.1.3-&gt;PyWGCNA!=2.2.0-&gt;acore) (0.0.3)
+Requirement already satisfied: reprit&gt;=0.3.0 in /home/runner/.local/lib/python3.12/site-packages (from rsrc&gt;=0.1.3-&gt;PyWGCNA!=2.2.0-&gt;acore) (0.9.0)
+Requirement already satisfied: mypy-extensions&gt;=0.3.0 in /home/runner/.local/lib/python3.12/site-packages (from typing_inspect&gt;=0.6.0-&gt;pandera-&gt;acore) (1.1.0)
+Requirement already satisfied: zipp&gt;=3.20 in /home/runner/.local/lib/python3.12/site-packages (from importlib-metadata-&gt;dash-&gt;vuecore) (4.1.0)
+Requirement already satisfied: et-xmlfile in /home/runner/.local/lib/python3.12/site-packages (from openpyxl-&gt;dsp-pandas-&gt;acore) (2.0.0)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.6 in /home/runner/.local/lib/python3.12/site-packages (from jedi&gt;=0.18.2-&gt;ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (0.8.7)
+Requirement already satisfied: wcwidth in /home/runner/.local/lib/python3.12/site-packages (from prompt_toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (0.7.0)
+Requirement already satisfied: session-info2 in /home/runner/.local/lib/python3.12/site-packages (from scverse-misc&gt;=0.0.3-&gt;anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (0.4.1)
+Requirement already satisfied: executing&gt;=1.2.0 in /home/runner/.local/lib/python3.12/site-packages (from stack_data&gt;=0.6.0-&gt;ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (2.2.1)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /home/runner/.local/lib/python3.12/site-packages (from stack_data&gt;=0.6.0-&gt;ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (3.0.1)
+Requirement already satisfied: pure-eval in /home/runner/.local/lib/python3.12/site-packages (from stack_data&gt;=0.6.0-&gt;ipython&gt;=5.3.0-&gt;pyvis-&gt;vuecore) (0.2.3)
+Requirement already satisfied: donfig&gt;=0.8 in /home/runner/.local/lib/python3.12/site-packages (from zarr!=3.0.*,&gt;=2.18.7-&gt;anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (0.8.1.post1)
+Requirement already satisfied: google-crc32c&gt;=1.5 in /home/runner/.local/lib/python3.12/site-packages (from zarr!=3.0.*,&gt;=2.18.7-&gt;anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (1.8.0)
+Requirement already satisfied: numcodecs&gt;=0.14 in /home/runner/.local/lib/python3.12/site-packages (from zarr!=3.0.*,&gt;=2.18.7-&gt;anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (0.16.5)
+Requirement already satisfied: pyyaml in /home/runner/.local/lib/python3.12/site-packages (from donfig&gt;=0.8-&gt;zarr!=3.0.*,&gt;=2.18.7-&gt;anndata&gt;=0.8.0-&gt;PyWGCNA!=2.2.0-&gt;acore) (6.0.3)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span> <span class="nn">acore.differential_regulation</span>
+<span class="kn">import</span> <span class="nn">acore.enrichment_analysis</span>
+<span class="kn">import</span> <span class="nn">acore.normalization</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="nn">px</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">vuecore</span>
+<span class="kn">from</span> <span class="nn">acore.io.uniprot</span> <span class="kn">import</span> <span class="n">fetch_annotations</span><span class="p">,</span> <span class="n">process_annotations</span>
+<span class="kn">from</span> <span class="nn">vuecore.viz</span> <span class="kn">import</span> <span class="n">get_enrichment_plots</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="paramters">
+<h1>Paramters<a class="headerlink" href="#paramters" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">file_in</span></code>: input file with the quantified peptide data in MSstats format
+as provided by quantms</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">out_dir</span></code>: output directory for the results of the data analysis,
+which will be used later for the report generation with VueGen.</p></li>
+</ul>
+<p>The file will be loaded from the online repository if it is not present.</p>
+<div class="cell tag_parameters docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_in</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+    <span class="s2">&quot;data/PXD070899/processed/report.pg_matrix.tsv&quot;</span>
+<span class="p">)</span> <span class="c1"># input file with the quantified peptide data in MSstats format as provided by quantms</span>
+<span class="n">out_dir</span> <span class="o">=</span> <span class="s2">&quot;data/PXD070899/report/&quot;</span> <span class="c1"># output directory for the results of the data analysis, which will be used later for the report generation with VueGen.</span>
+<span class="n">min_obs_per_group</span><span class="p">:</span><span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># minimum number of observations per group for a protein to be included in the differential regulation analysis</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create output directory if it does not exist</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">out_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">out_dir</span><span class="p">)</span>
+<span class="n">out_dir</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output directory: </span><span class="si">{</span><span class="n">out_dir</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output directory: data/PXD070899/report
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have the following columns in the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">file_in</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">file_in</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s2">&quot;https://raw.githubusercontent.com/biosustain/dsp_course_proteomics_intro/HEAD&quot;</span>
+        <span class="s2">&quot;/data/PXD070899/processed/report.pg_matrix.tsv&quot;</span>
+    <span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_in</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># .set_index([])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Protein.Names</th>
+      <th>Genes</th>
+      <th>First.Protein.Description</th>
+      <th>N.Sequences</th>
+      <th>N.Proteotypic.Sequences</th>
+      <th>SB_4_64_SH_AYa2022_R1.raw</th>
+      <th>SB_4_64_SH_AYa2022_R2.raw</th>
+      <th>SB_4_64_SH_AYa2022_R3.raw</th>
+      <th>SB_4_64_SH_WT_R1.raw</th>
+      <th>SB_4_64_SH_WT_R2.raw</th>
+      <th>SB_4_64_SH_WT_R3.raw</th>
+      <th>SB_4_64_SH_AY_R1.raw</th>
+      <th>SB_4_64_SH_AY_R2.raw</th>
+      <th>SB_4_64_SH_AY_R3.raw</th>
+      <th>SB_4_64_SH_AYa18_R1.raw</th>
+      <th>SB_4_64_SH_AYa18_R2.raw</th>
+      <th>SB_4_64_SH_AYa18_R3.raw</th>
+    </tr>
+    <tr>
+      <th>Protein.Group</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A5Z2X5</th>
+      <td>YP010_YEAST</td>
+      <td>YPR010C-A</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>4</td>
+      <td>196,213,000.000</td>
+      <td>201,658,000.000</td>
+      <td>224,749,000.000</td>
+      <td>220,341,000.000</td>
+      <td>210,709,000.000</td>
+      <td>269,670,000.000</td>
+      <td>163,279,000.000</td>
+      <td>137,780,000.000</td>
+      <td>225,286,000.000</td>
+      <td>197,233,000.000</td>
+      <td>150,317,000.000</td>
+      <td>193,584,000.000</td>
+    </tr>
+    <tr>
+      <th>D6VTK4</th>
+      <td>STE2_YEAST</td>
+      <td>STE2</td>
+      <td>NaN</td>
+      <td>6</td>
+      <td>6</td>
+      <td>8,340,980.000</td>
+      <td>5,193,640.000</td>
+      <td>2,078,550.000</td>
+      <td>9,899,680.000</td>
+      <td>4,052,790.000</td>
+      <td>NaN</td>
+      <td>20,108,400.000</td>
+      <td>8,787,580.000</td>
+      <td>2,464,330.000</td>
+      <td>8,628,820.000</td>
+      <td>11,099,400.000</td>
+      <td>2,842,180.000</td>
+    </tr>
+    <tr>
+      <th>O13329</th>
+      <td>FOB1_YEAST</td>
+      <td>FOB1</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>58,997.800</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>45,124.500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>O13516</th>
+      <td>RS9A_YEAST</td>
+      <td>RPS9A</td>
+      <td>NaN</td>
+      <td>17</td>
+      <td>1</td>
+      <td>194,925,000.000</td>
+      <td>142,185,000.000</td>
+      <td>170,798,000.000</td>
+      <td>210,142,000.000</td>
+      <td>124,835,000.000</td>
+      <td>157,529,000.000</td>
+      <td>305,432,000.000</td>
+      <td>113,893,000.000</td>
+      <td>127,791,000.000</td>
+      <td>188,020,000.000</td>
+      <td>150,662,000.000</td>
+      <td>85,463,000.000</td>
+    </tr>
+    <tr>
+      <th>O13525</th>
+      <td>COQ4_YEAST</td>
+      <td>COQ4</td>
+      <td>NaN</td>
+      <td>17</td>
+      <td>17</td>
+      <td>50,320,900.000</td>
+      <td>58,710,400.000</td>
+      <td>61,916,400.000</td>
+      <td>64,847,800.000</td>
+      <td>70,983,700.000</td>
+      <td>66,808,300.000</td>
+      <td>66,351,200.000</td>
+      <td>60,963,000.000</td>
+      <td>51,681,200.000</td>
+      <td>57,557,100.000</td>
+      <td>64,895,400.000</td>
+      <td>41,240,700.000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Potentiall clean filepath names in DIANN output</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;/|</span><span class="se">\\</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Protein.Names</th>
+      <th>Genes</th>
+      <th>First.Protein.Description</th>
+      <th>N.Sequences</th>
+      <th>N.Proteotypic.Sequences</th>
+      <th>SB_4_64_SH_AYa2022_R1.raw</th>
+      <th>SB_4_64_SH_AYa2022_R2.raw</th>
+      <th>SB_4_64_SH_AYa2022_R3.raw</th>
+      <th>SB_4_64_SH_WT_R1.raw</th>
+      <th>SB_4_64_SH_WT_R2.raw</th>
+      <th>SB_4_64_SH_WT_R3.raw</th>
+      <th>SB_4_64_SH_AY_R1.raw</th>
+      <th>SB_4_64_SH_AY_R2.raw</th>
+      <th>SB_4_64_SH_AY_R3.raw</th>
+      <th>SB_4_64_SH_AYa18_R1.raw</th>
+      <th>SB_4_64_SH_AYa18_R2.raw</th>
+      <th>SB_4_64_SH_AYa18_R3.raw</th>
+    </tr>
+    <tr>
+      <th>Protein.Group</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A5Z2X5</th>
+      <td>YP010_YEAST</td>
+      <td>YPR010C-A</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>4</td>
+      <td>196,213,000.000</td>
+      <td>201,658,000.000</td>
+      <td>224,749,000.000</td>
+      <td>220,341,000.000</td>
+      <td>210,709,000.000</td>
+      <td>269,670,000.000</td>
+      <td>163,279,000.000</td>
+      <td>137,780,000.000</td>
+      <td>225,286,000.000</td>
+      <td>197,233,000.000</td>
+      <td>150,317,000.000</td>
+      <td>193,584,000.000</td>
+    </tr>
+    <tr>
+      <th>D6VTK4</th>
+      <td>STE2_YEAST</td>
+      <td>STE2</td>
+      <td>NaN</td>
+      <td>6</td>
+      <td>6</td>
+      <td>8,340,980.000</td>
+      <td>5,193,640.000</td>
+      <td>2,078,550.000</td>
+      <td>9,899,680.000</td>
+      <td>4,052,790.000</td>
+      <td>NaN</td>
+      <td>20,108,400.000</td>
+      <td>8,787,580.000</td>
+      <td>2,464,330.000</td>
+      <td>8,628,820.000</td>
+      <td>11,099,400.000</td>
+      <td>2,842,180.000</td>
+    </tr>
+    <tr>
+      <th>O13329</th>
+      <td>FOB1_YEAST</td>
+      <td>FOB1</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>58,997.800</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>45,124.500</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>O13516</th>
+      <td>RS9A_YEAST</td>
+      <td>RPS9A</td>
+      <td>NaN</td>
+      <td>17</td>
+      <td>1</td>
+      <td>194,925,000.000</td>
+      <td>142,185,000.000</td>
+      <td>170,798,000.000</td>
+      <td>210,142,000.000</td>
+      <td>124,835,000.000</td>
+      <td>157,529,000.000</td>
+      <td>305,432,000.000</td>
+      <td>113,893,000.000</td>
+      <td>127,791,000.000</td>
+      <td>188,020,000.000</td>
+      <td>150,662,000.000</td>
+      <td>85,463,000.000</td>
+    </tr>
+    <tr>
+      <th>O13525</th>
+      <td>COQ4_YEAST</td>
+      <td>COQ4</td>
+      <td>NaN</td>
+      <td>17</td>
+      <td>17</td>
+      <td>50,320,900.000</td>
+      <td>58,710,400.000</td>
+      <td>61,916,400.000</td>
+      <td>64,847,800.000</td>
+      <td>70,983,700.000</td>
+      <td>66,808,300.000</td>
+      <td>66,351,200.000</td>
+      <td>60,963,000.000</td>
+      <td>51,681,200.000</td>
+      <td>57,557,100.000</td>
+      <td>64,895,400.000</td>
+      <td>41,240,700.000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The first 6 columns contain the meta information about the peptides,
+while the remaining columns contain the intensities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proteins_meta</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">proteins_meta</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Protein.Names</th>
+      <th>Genes</th>
+      <th>First.Protein.Description</th>
+      <th>N.Sequences</th>
+      <th>N.Proteotypic.Sequences</th>
+    </tr>
+    <tr>
+      <th>Protein.Group</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A5Z2X5</th>
+      <td>YP010_YEAST</td>
+      <td>YPR010C-A</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>D6VTK4</th>
+      <td>STE2_YEAST</td>
+      <td>STE2</td>
+      <td>NaN</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>O13329</th>
+      <td>FOB1_YEAST</td>
+      <td>FOB1</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>O13516</th>
+      <td>RS9A_YEAST</td>
+      <td>RPS9A</td>
+      <td>NaN</td>
+      <td>17</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>O13525</th>
+      <td>COQ4_YEAST</td>
+      <td>COQ4</td>
+      <td>NaN</td>
+      <td>17</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>cRAP-P02769</th>
+      <td>cRAP-ALBU_BOVIN</td>
+      <td>cRAP-ALB</td>
+      <td>NaN</td>
+      <td>44</td>
+      <td>44</td>
+    </tr>
+    <tr>
+      <th>cRAP-P04264</th>
+      <td>cRAP-K2C1_HUMAN</td>
+      <td>cRAP-KRT1</td>
+      <td>NaN</td>
+      <td>16</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>cRAP-P13645</th>
+      <td>cRAP-K1C10_HUMAN</td>
+      <td>cRAP-KRT10</td>
+      <td>NaN</td>
+      <td>18</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>cRAP-P35527</th>
+      <td>cRAP-K1C9_HUMAN</td>
+      <td>cRAP-KRT9</td>
+      <td>NaN</td>
+      <td>14</td>
+      <td>14</td>
+    </tr>
+    <tr>
+      <th>cRAP-P35908</th>
+      <td>cRAP-K22E_HUMAN</td>
+      <td>cRAP-KRT2</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+<p>3586 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proteins</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">5</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span>
+<span class="n">proteins</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;SampleID&quot;</span>
+<span class="n">proteins</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ProteinName&quot;</span>
+<span class="n">proteins</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ProteinName</th>
+      <th>A5Z2X5</th>
+      <th>D6VTK4</th>
+      <th>O13329</th>
+      <th>O13516</th>
+      <th>O13525</th>
+      <th>O13563</th>
+      <th>O13585</th>
+      <th>O14455</th>
+      <th>O14467</th>
+      <th>O14468</th>
+      <th>...</th>
+      <th>cRAP-P02662</th>
+      <th>cRAP-P02663</th>
+      <th>cRAP-P02666</th>
+      <th>cRAP-P02668</th>
+      <th>cRAP-P02768</th>
+      <th>cRAP-P02769</th>
+      <th>cRAP-P04264</th>
+      <th>cRAP-P13645</th>
+      <th>cRAP-P35527</th>
+      <th>cRAP-P35908</th>
+    </tr>
+    <tr>
+      <th>SampleID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SB_4_64_SH_AYa2022_R1.raw</th>
+      <td>196,213,000.000</td>
+      <td>8,340,980.000</td>
+      <td>NaN</td>
+      <td>194,925,000.000</td>
+      <td>50,320,900.000</td>
+      <td>2,871,670.000</td>
+      <td>2,240,990.000</td>
+      <td>325,647,000.000</td>
+      <td>53,770,700.000</td>
+      <td>1,341,650.000</td>
+      <td>...</td>
+      <td>1,293,560.000</td>
+      <td>8,061,300.000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5,591,100.000</td>
+      <td>2,954,770,000.000</td>
+      <td>10,837,100.000</td>
+      <td>4,622,900.000</td>
+      <td>9,769,450.000</td>
+      <td>3,494,090.000</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AYa2022_R2.raw</th>
+      <td>201,658,000.000</td>
+      <td>5,193,640.000</td>
+      <td>58,997.800</td>
+      <td>142,185,000.000</td>
+      <td>58,710,400.000</td>
+      <td>2,695,290.000</td>
+      <td>1,323,580.000</td>
+      <td>224,329,000.000</td>
+      <td>49,659,900.000</td>
+      <td>1,710,070.000</td>
+      <td>...</td>
+      <td>105,439,000.000</td>
+      <td>41,599,900.000</td>
+      <td>67,757,800.000</td>
+      <td>22,124,200.000</td>
+      <td>11,533,200.000</td>
+      <td>5,289,410,000.000</td>
+      <td>8,067,970.000</td>
+      <td>4,010,270.000</td>
+      <td>6,966,230.000</td>
+      <td>3,496,160.000</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AYa2022_R3.raw</th>
+      <td>224,749,000.000</td>
+      <td>2,078,550.000</td>
+      <td>NaN</td>
+      <td>170,798,000.000</td>
+      <td>61,916,400.000</td>
+      <td>1,364,950.000</td>
+      <td>NaN</td>
+      <td>114,717,000.000</td>
+      <td>27,135,000.000</td>
+      <td>729,509.000</td>
+      <td>...</td>
+      <td>2,417,300.000</td>
+      <td>NaN</td>
+      <td>600,944.000</td>
+      <td>NaN</td>
+      <td>3,634,230.000</td>
+      <td>2,255,610,000.000</td>
+      <td>5,640,980.000</td>
+      <td>1,964,420.000</td>
+      <td>6,998,510.000</td>
+      <td>2,408,860.000</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_WT_R1.raw</th>
+      <td>220,341,000.000</td>
+      <td>9,899,680.000</td>
+      <td>NaN</td>
+      <td>210,142,000.000</td>
+      <td>64,847,800.000</td>
+      <td>3,740,660.000</td>
+      <td>1,978,800.000</td>
+      <td>377,715,000.000</td>
+      <td>82,570,700.000</td>
+      <td>2,985,240.000</td>
+      <td>...</td>
+      <td>1,934,850.000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10,806,300.000</td>
+      <td>3,734,340,000.000</td>
+      <td>19,107,400.000</td>
+      <td>10,082,500.000</td>
+      <td>9,497,230.000</td>
+      <td>7,434,660.000</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_WT_R2.raw</th>
+      <td>210,709,000.000</td>
+      <td>4,052,790.000</td>
+      <td>NaN</td>
+      <td>124,835,000.000</td>
+      <td>70,983,700.000</td>
+      <td>2,623,000.000</td>
+      <td>931,863.000</td>
+      <td>197,967,000.000</td>
+      <td>42,563,700.000</td>
+      <td>803,845.000</td>
+      <td>...</td>
+      <td>22,855,800.000</td>
+      <td>13,385,900.000</td>
+      <td>12,795,200.000</td>
+      <td>6,610,350.000</td>
+      <td>10,679,100.000</td>
+      <td>4,302,160,000.000</td>
+      <td>11,455,700.000</td>
+      <td>6,321,750.000</td>
+      <td>11,779,100.000</td>
+      <td>5,144,510.000</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 3586 columns</p>
+</div></div></div>
+</div>
+<p>Log2 transform the intensity values and remove contaminant proteins</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">to_drop</span> <span class="o">=</span> <span class="n">proteins</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s2">&quot;cRAP-|CON_&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">to_drop</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;cRAP-P00698&#39;, &#39;cRAP-P00722&#39;, &#39;cRAP-P00761&#39;, &#39;cRAP-P02662&#39;,
+       &#39;cRAP-P02663&#39;, &#39;cRAP-P02666&#39;, &#39;cRAP-P02668&#39;, &#39;cRAP-P02768&#39;,
+       &#39;cRAP-P02769&#39;, &#39;cRAP-P04264&#39;, &#39;cRAP-P13645&#39;, &#39;cRAP-P35527&#39;,
+       &#39;cRAP-P35908&#39;],
+      dtype=&#39;object&#39;, name=&#39;ProteinName&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">proteins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">proteins</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">proteins</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>ProteinName</th>
+      <th>A5Z2X5</th>
+      <th>D6VTK4</th>
+      <th>O13329</th>
+      <th>O13516</th>
+      <th>O13525</th>
+      <th>O13563</th>
+      <th>O13585</th>
+      <th>O14455</th>
+      <th>O14467</th>
+      <th>O14468</th>
+      <th>...</th>
+      <th>Q99325</th>
+      <th>Q99332</th>
+      <th>Q99369</th>
+      <th>Q99373</th>
+      <th>Q99382</th>
+      <th>Q99383</th>
+      <th>Q99385</th>
+      <th>Q99394</th>
+      <th>Q9P305</th>
+      <th>Q9URQ5</th>
+    </tr>
+    <tr>
+      <th>SampleID</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>SB_4_64_SH_AYa2022_R1.raw</th>
+      <td>27.548</td>
+      <td>22.992</td>
+      <td>NaN</td>
+      <td>27.538</td>
+      <td>25.585</td>
+      <td>21.453</td>
+      <td>21.096</td>
+      <td>28.279</td>
+      <td>25.680</td>
+      <td>20.356</td>
+      <td>...</td>
+      <td>22.768</td>
+      <td>22.297</td>
+      <td>21.419</td>
+      <td>19.735</td>
+      <td>24.338</td>
+      <td>22.629</td>
+      <td>26.505</td>
+      <td>19.170</td>
+      <td>21.049</td>
+      <td>21.062</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AYa2022_R2.raw</th>
+      <td>27.587</td>
+      <td>22.308</td>
+      <td>15.848</td>
+      <td>27.083</td>
+      <td>25.807</td>
+      <td>21.362</td>
+      <td>20.336</td>
+      <td>27.741</td>
+      <td>25.566</td>
+      <td>20.706</td>
+      <td>...</td>
+      <td>22.218</td>
+      <td>21.849</td>
+      <td>22.326</td>
+      <td>20.254</td>
+      <td>24.351</td>
+      <td>21.473</td>
+      <td>26.856</td>
+      <td>19.296</td>
+      <td>21.207</td>
+      <td>21.121</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AYa2022_R3.raw</th>
+      <td>27.744</td>
+      <td>20.987</td>
+      <td>NaN</td>
+      <td>27.348</td>
+      <td>25.884</td>
+      <td>20.380</td>
+      <td>NaN</td>
+      <td>26.774</td>
+      <td>24.694</td>
+      <td>19.477</td>
+      <td>...</td>
+      <td>21.923</td>
+      <td>21.204</td>
+      <td>22.882</td>
+      <td>20.540</td>
+      <td>23.441</td>
+      <td>21.457</td>
+      <td>25.224</td>
+      <td>18.182</td>
+      <td>18.071</td>
+      <td>19.924</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_WT_R1.raw</th>
+      <td>27.715</td>
+      <td>23.239</td>
+      <td>NaN</td>
+      <td>27.647</td>
+      <td>25.951</td>
+      <td>21.835</td>
+      <td>20.916</td>
+      <td>28.493</td>
+      <td>26.299</td>
+      <td>21.509</td>
+      <td>...</td>
+      <td>23.027</td>
+      <td>22.554</td>
+      <td>21.419</td>
+      <td>19.827</td>
+      <td>24.763</td>
+      <td>22.968</td>
+      <td>26.934</td>
+      <td>18.237</td>
+      <td>21.557</td>
+      <td>22.068</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_WT_R2.raw</th>
+      <td>27.651</td>
+      <td>21.950</td>
+      <td>NaN</td>
+      <td>26.895</td>
+      <td>26.081</td>
+      <td>21.323</td>
+      <td>19.830</td>
+      <td>27.561</td>
+      <td>25.343</td>
+      <td>19.617</td>
+      <td>...</td>
+      <td>22.508</td>
+      <td>20.940</td>
+      <td>21.690</td>
+      <td>19.798</td>
+      <td>23.834</td>
+      <td>21.887</td>
+      <td>26.248</td>
+      <td>17.966</td>
+      <td>21.011</td>
+      <td>21.815</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_WT_R3.raw</th>
+      <td>28.007</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>27.231</td>
+      <td>25.994</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.694</td>
+      <td>23.840</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>20.278</td>
+      <td>NaN</td>
+      <td>21.579</td>
+      <td>19.640</td>
+      <td>22.274</td>
+      <td>21.557</td>
+      <td>24.698</td>
+      <td>17.095</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AY_R1.raw</th>
+      <td>27.283</td>
+      <td>24.261</td>
+      <td>NaN</td>
+      <td>28.186</td>
+      <td>25.984</td>
+      <td>22.298</td>
+      <td>21.508</td>
+      <td>28.702</td>
+      <td>26.291</td>
+      <td>20.260</td>
+      <td>...</td>
+      <td>22.419</td>
+      <td>23.165</td>
+      <td>23.174</td>
+      <td>19.862</td>
+      <td>24.227</td>
+      <td>23.309</td>
+      <td>27.179</td>
+      <td>18.961</td>
+      <td>21.864</td>
+      <td>21.818</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AY_R2.raw</th>
+      <td>27.038</td>
+      <td>23.067</td>
+      <td>15.462</td>
+      <td>26.763</td>
+      <td>25.861</td>
+      <td>20.989</td>
+      <td>20.437</td>
+      <td>26.949</td>
+      <td>25.445</td>
+      <td>20.282</td>
+      <td>...</td>
+      <td>22.981</td>
+      <td>22.215</td>
+      <td>22.402</td>
+      <td>20.017</td>
+      <td>24.341</td>
+      <td>21.198</td>
+      <td>27.059</td>
+      <td>17.872</td>
+      <td>20.540</td>
+      <td>19.814</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AY_R3.raw</th>
+      <td>27.747</td>
+      <td>21.233</td>
+      <td>NaN</td>
+      <td>26.929</td>
+      <td>25.623</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>26.262</td>
+      <td>24.292</td>
+      <td>19.950</td>
+      <td>...</td>
+      <td>20.805</td>
+      <td>21.183</td>
+      <td>23.328</td>
+      <td>20.166</td>
+      <td>21.834</td>
+      <td>21.081</td>
+      <td>25.173</td>
+      <td>17.889</td>
+      <td>18.187</td>
+      <td>19.127</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AYa18_R1.raw</th>
+      <td>27.555</td>
+      <td>23.041</td>
+      <td>NaN</td>
+      <td>27.486</td>
+      <td>25.778</td>
+      <td>21.611</td>
+      <td>21.384</td>
+      <td>28.405</td>
+      <td>25.903</td>
+      <td>20.551</td>
+      <td>...</td>
+      <td>22.940</td>
+      <td>22.038</td>
+      <td>22.308</td>
+      <td>19.885</td>
+      <td>24.329</td>
+      <td>22.955</td>
+      <td>26.574</td>
+      <td>19.529</td>
+      <td>21.309</td>
+      <td>22.649</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AYa18_R2.raw</th>
+      <td>27.163</td>
+      <td>23.404</td>
+      <td>NaN</td>
+      <td>27.167</td>
+      <td>25.952</td>
+      <td>21.216</td>
+      <td>20.952</td>
+      <td>27.579</td>
+      <td>25.254</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>22.893</td>
+      <td>22.278</td>
+      <td>22.526</td>
+      <td>19.705</td>
+      <td>24.568</td>
+      <td>21.738</td>
+      <td>26.625</td>
+      <td>19.872</td>
+      <td>21.077</td>
+      <td>18.024</td>
+    </tr>
+    <tr>
+      <th>SB_4_64_SH_AYa18_R3.raw</th>
+      <td>27.528</td>
+      <td>21.439</td>
+      <td>NaN</td>
+      <td>26.349</td>
+      <td>25.298</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>25.744</td>
+      <td>23.759</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>21.374</td>
+      <td>NaN</td>
+      <td>23.046</td>
+      <td>20.261</td>
+      <td>22.105</td>
+      <td>20.897</td>
+      <td>24.539</td>
+      <td>18.876</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>12 rows × 3573 columns</p>
+</div></div></div>
+</div>
+<p>Add label encoding</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># label_encoding = {&quot;WT&quot;: 0, &quot;AYa2022&quot;: 1, &quot;AYa18&quot;: 2, &quot;AY&quot;: 3}</span>
+<span class="n">label_suf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span>
+    <span class="n">proteins</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">index</span><span class="o">=</span><span class="n">proteins</span><span class="o">.</span><span class="n">index</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;condition&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">label_suf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SampleID
+SB_4_64_SH_AYa2022_R1.raw    AYa2022
+SB_4_64_SH_AYa2022_R2.raw    AYa2022
+SB_4_64_SH_AYa2022_R3.raw    AYa2022
+SB_4_64_SH_WT_R1.raw              WT
+SB_4_64_SH_WT_R2.raw              WT
+SB_4_64_SH_WT_R3.raw              WT
+SB_4_64_SH_AY_R1.raw              AY
+SB_4_64_SH_AY_R2.raw              AY
+SB_4_64_SH_AY_R3.raw              AY
+SB_4_64_SH_AYa18_R1.raw        AYa18
+SB_4_64_SH_AYa18_R2.raw        AYa18
+SB_4_64_SH_AYa18_R3.raw        AYa18
+Name: condition, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="homework">
+<h1>Homework<a class="headerlink" href="#homework" title="Link to this heading">#</a></h1>
+<p>Repeat the analysis based on the tutorial from the course.</p>
+<blockquote>
+<div><p>Small adjustments are needed.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>copy bit by bit</p></li>
+</ul>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="2_data_analysis.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Analysis PXD040621</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Example datasets</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exercise: Data Analysis PXD070899</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#paramters">Paramters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Henry Webel, Alberto Santos, Marco Reverenna
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, DTU Biosustain, Informatics Platform, DSP.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

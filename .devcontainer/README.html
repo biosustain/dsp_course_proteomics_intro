@@ -51,7 +51,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Protein Quantifications aggregated from Peptide Quantifications" href="../data/PXD040621/proteins/README.html" />
+    <link rel="prev" title="PXD070899" href="../data/PXD070899/README.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -160,7 +160,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../material/instructions_quantms_PXD04621.html">QuantMS Hands-On for PXD04621</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../material/quantms_input_files.html">QuantMS Input Files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/README.html">Example datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/PXD040621/mzML/README.html">mzML files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Analysis</span></p>
 <ul class="nav bd-sidenav">
@@ -182,14 +182,16 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../3_data_analysis_PXD070899.html">Exercise: Data Analysis PXD070899</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Datasets</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../data/fasta/README.html">Fasta file for searches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/README.html">Example datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../data/PXD040621/README.html">PXD040621</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/PXD040621/mzML/README.html">mzML files</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/PXD040621/processed/README.html">Processed Data for PXD040621</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../data/PXD040621/proteins/README.html">Protein Quantifications aggregated from Peptide Quantifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/PXD041301/README.html">PXD041301</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/PXD070899/README.html">PXD070899</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Codespace</span></p>
 <ul class="current nav bd-sidenav">
@@ -377,12 +379,12 @@ nextflow, which you can find in the
 one in this project, so if things break, have a look there.</p>
 <p>The devcontainer uses the
 <a class="reference external" href="https://github.com/nextflow-io/training/pkgs/container/training" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">nextflow-io/training</span></code> container</a>
-from GitHub Container Registry, as provided by the nextflow team. I copied the
+from GitHub Container Registry, as provided by the nextflow team. The
 <a class="reference external" href="https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/Dockerfile" rel="noreferrer" target="_blank">Dockerfile</a>
-which was used to build the container image <code class="docutils literal notranslate"><span class="pre">2.1.7</span></code> for reference of what the container contains.</p>
-<p>The Dockerimage is published based on a devcontainer configuration file in the nextflow training repo,
-<a class="reference external" href="https://github.com/nextflow-io/training/blob/master/.devcontainer/codespaces-dev/devcontainer.json" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">.devcontainer/codespaces-dev/devcontainer.json</span></code></a>
-and then published to the GitHub Container Registry using an action.</p>
+extends this image with some additional software, e.g. for the downstream data analysis, and is built
+and published to the GitHub Container Registry using an action.</p>
+<p>The devcontainer then uses this image, see,
+<a class="reference external" href="https://github.com/nextflow-io/training/blob/master/.devcontainer/codespaces-dev/devcontainer.json" rel="noreferrer" target="_blank"><code class="docutils literal notranslate"><span class="pre">.devcontainer/codespaces-dev/devcontainer.json</span></code></a>.</p>
 <section id="additional-software">
 <h2>Additional software<a class="headerlink" href="#additional-software" title="Link to this heading">#</a></h2>
 <p>Using an
@@ -428,12 +430,12 @@ script if needed, e.g. to install new software or new data sources</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../data/PXD040621/proteins/README.html"
+       href="../data/PXD070899/README.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Protein Quantifications aggregated from Peptide Quantifications</p>
+        <p class="prev-next-title">PXD070899</p>
       </div>
     </a>
 </div>

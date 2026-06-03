@@ -8,13 +8,13 @@ one in this project, so if things break, have a look there.
 
 The devcontainer uses the
 [`nextflow-io/training` container](https://github.com/nextflow-io/training/pkgs/container/training)
-from GitHub Container Registry, as provided by the nextflow team. I copied the
+from GitHub Container Registry, as provided by the nextflow team. The
 [Dockerfile](https://github.com/biosustain/dsp_course_proteomics_intro/blob/HEAD/.devcontainer/Dockerfile)
-which was used to build the container image `2.1.7` for reference of what the container contains.
+extends this image with some additional software, e.g. for the downstream data analysis, and is built
+and published to the GitHub Container Registry using an action.
 
-The Dockerimage is published based on a devcontainer configuration file in the nextflow training repo,
-[`.devcontainer/codespaces-dev/devcontainer.json`](https://github.com/nextflow-io/training/blob/master/.devcontainer/codespaces-dev/devcontainer.json)
-and then published to the GitHub Container Registry using an action.
+The devcontainer then uses this image, see,
+[`.devcontainer/codespaces-dev/devcontainer.json`](https://github.com/nextflow-io/training/blob/master/.devcontainer/codespaces-dev/devcontainer.json).
 
 ## Additional software
 
