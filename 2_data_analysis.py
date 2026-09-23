@@ -568,6 +568,35 @@ fig = px.scatter(
 fig
 
 # %% [markdown]
+# ## Static Volcano Plot
+
+# %% tags=["hide-input"]
+static_fig, ax = plt.subplots(figsize=(4, 3))
+for rejected, color in [(False, "lightgray"), (True, "crimson")]:
+    points = diff_reg[diff_reg["rejected"] == rejected]
+    ax.scatter(
+        points["log2FC"],
+        points["-log10 pvalue"],
+        c=color,
+        label="Significant" if rejected else "Not significant",
+        alpha=0.8,
+        edgecolors="none",
+    )
+ax.set(
+    xlabel="log2 fold-change",
+    ylabel="-log10 p-value",
+    title=f"Volcano plot for {view_name}s",
+)
+ax.legend(title="Rejected")
+static_fig.tight_layout()
+static_fig.savefig(
+    out_dir_subsection / "0_volcano_plot.png",
+    dpi=300,
+    bbox_inches="tight",
+)
+static_fig
+
+# %% [markdown]
 # Save result to subsection folder
 
 # %%
@@ -584,7 +613,7 @@ diff_reg.to_csv(out_dir_subsection / "1_differential_regulation.csv")
 #   to the repository
 
 # %%
-out_dir_subsection = out_dir / "uniprot_annotations"
+out_dir_subsection = out_dir / "enrichment_analysis"
 out_dir_subsection.mkdir(parents=True, exist_ok=True)
 
 # %% [markdown]
