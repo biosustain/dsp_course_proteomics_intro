@@ -45,13 +45,16 @@ import scipy.stats
 import seaborn as sns
 import vuecore
 from acore.io.uniprot import fetch_annotations, process_annotations
-from vuecore.viz import get_enrichment_plots
+from vuecore.enrichment_analysis import (
+    get_enrichment_plot_interactive,
+    get_enrichment_plot_static,
+)
 
 # %% [markdown]
 # # Paramters
 # - `file_in`: input file with the quantified peptide data in MSstats format
 #    as provided by quantms
-# - `out_dir`: output directory for the results of the data analysis, 
+# - `out_dir`: output directory for the results of the data analysis,
 #    which will be used later for the report generation with VueGen.
 #
 # The file will be loaded from the online repository if it is not present.
@@ -91,7 +94,7 @@ df.columns = df.columns.str.split(r"/|\\").str[-1]
 df.head()
 
 # %% [markdown]
-# The first 6 columns contain the meta information about the peptides, 
+# The first 6 columns contain the meta information about the peptides,
 # while the remaining columns contain the intensities.
 
 # %%
@@ -127,6 +130,7 @@ label_suf = pd.Series(
     name="condition",
 )
 label_suf
+
 # %% [markdown]
 # # Homework
 # Repeat the analysis based on the tutorial from the course.

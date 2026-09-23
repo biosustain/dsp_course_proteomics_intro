@@ -45,13 +45,16 @@ import scipy.stats
 import seaborn as sns
 import vuecore
 from acore.io.uniprot import fetch_annotations, process_annotations
-from vuecore.viz import get_enrichment_plots
+from vuecore.enrichment_analysis import (
+    get_enrichment_plot_interactive,
+    get_enrichment_plot_static,
+)
 
 # %% [markdown]
 # # Paramters
 # - `file_in`: input file with the quantified peptide data in MSstats format
 #    as provided by quantms
-# - `out_dir`: output directory for the results of the data analysis, 
+# - `out_dir`: output directory for the results of the data analysis,
 #    which will be used later for the report generation with VueGen.
 #
 # The file will be loaded from the online repository if it is not present.
@@ -131,7 +134,7 @@ fg = sns.displot(
 # # Aggregate the peptide intensities to protein intensities
 # - we use the median of the peptide intensities for each protein
 #
-# There are more sophisticated ways to do this, e.g. using MaxLFQ, iBAQ, FlashLFQ, 
+# There are more sophisticated ways to do this, e.g. using MaxLFQ, iBAQ, FlashLFQ,
 # DirectLFQ, etc.
 #
 # - shorten sample name for readability
@@ -181,7 +184,7 @@ label_suf
 # # Plot the data completeness for each protein.
 # - see the how many proteins are observed across how many samples.
 #
-# > We create a subfolder in our results folder to keep it organized for the 
+# > We create a subfolder in our results folder to keep it organized for the
 #   report generation later.
 
 # %% tags=["hide-input"]
@@ -398,7 +401,7 @@ fig
 # %% [markdown]
 # # Hierarchical Clustering of normalized data
 # - using completely observed data only
-# Checkout the 
+# Checkout the
 # [recipe on normalization methods](https://analytics-core.readthedocs.io/latest/api_examples/normalization_analysis.html).
 #
 # Let's see the effect of normalization on the clustering.
@@ -447,7 +450,7 @@ fig.savefig(
 )
 
 # %% [markdown]
-# Exercise: 
+# Exercise:
 # 1. Try out different normalization methods and see how the clustering changes.
 # 2. Maybe you want to combine a sample based with a protein based normalization method.
 
@@ -624,23 +627,38 @@ enriched = acore.enrichment_analysis.run_up_down_regulation_enrichment(
 )
 enriched.set_index('identifiers')
 
+# %%
+if not enriched.empty:
+    print(f"Enrichment analysis found {enriched.shape[0]} enriched GO terms.")
+    fname = out_dir_subsection / "enrichment_analysis.csv"
+    print(f"Saving enrichment analysis results to {fname}")
+    enriched.to_csv(fname, index=True)
+
 # %% [markdown]
 # Plot the enrichment scores for the up- and down-regulated proteins separately.
 # - y-axis: GO term
 # - x-axis: enrichment score (e.g. -log10(p-pvalue adjusted))
 
 # %% tags=["hide-input"]
-fig = get_enrichment_plots(
+fig = get_enrichment_plot_interactive(
     enriched,
-    identifier="anything",  # ToDo: figure out what this does
-    args=dict(title="Enrichment Analysis"),
 )
-fig = fig[0]
 fig.write_json(
     out_dir_subsection / "enrichment_analysis.json",
     pretty=True,
 )
 fig
+
+# %% [markdown]
+# And the static alternative for the enrichment analysis plot, which can be used in the report.
+
+# %%
+fig = get_enrichment_plot_static(enriched, legend_marker_size=8)
+fig.savefig(
+    out_dir_subsection / "enrichment_analysis.png",
+    dpi=300,
+    bbox_inches="tight",
+)
 
 # %% [markdown]
 # # Check for Maltose Uptake
